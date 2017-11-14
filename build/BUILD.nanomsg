@@ -1,0 +1,99 @@
+config_setting(
+    name="windows",
+    values={"cpu": "x64_windows_msvc"},
+    visibility=["//visibility:private"], )
+
+config_setting(
+    name="linux",
+    values={"cpu": "k8"},
+    visibility=["//visibility:private"], )
+
+config_setting(
+    name="darwin",
+    values={"cpu": "darwin"},
+    visibility=["//visibility:private"], )
+
+cc_library(
+    name="nanomsg",
+    srcs=glob(
+        ["src/**/*.c", "src/**/*.h", "src/**/*.inc"],
+        exclude=[
+            "src/aio/usock_win.h",
+            "src/aio/usock_win.inc",
+            "src/aio/worker_win.h",
+            "src/aio/worker_win.inc",
+            "src/aio/usock_posix.h",
+            "src/aio/usock_posix.inc",
+            "src/aio/worker_posix.h",
+            "src/aio/worker_posix.inc",
+            "src/aio/poller.h",
+            "src/aio/poller.c",
+            "src/aio/poller_epoll.h",
+            "src/aio/poller_epoll.inc",
+            "src/aio/poller_kqueue.h",
+            "src/aio/poller_kqueue.inc",
+            "src/aio/poller_poll.h",
+            "src/aio/poller_poll.inc",
+            "src/utils/thread_win.h",
+            "src/utils/thread_win.inc",
+            "src/utils/win.h",
+            "src/utils/thread_posix.h",
+            "src/utils/thread_posix.inc",
+            "src/utils/efd_eventfd.h",
+            "src/utils/efd_eventfd.inc",
+            "src/utils/efd_pipe.h",
+            "src/utils/efd_pipe.inc",
+            "src/utils/efd_socketpair.h",
+            "src/utils/efd_socketpair.inc",
+            "src/utils/efd_win.h",
+            "src/utils/efd_win.inc",
+        ]) + select({
+            ":windows": [
+                "src/aio/usock_win.h",
+                "src/aio/usock_win.inc",
+                "src/aio/worker_win.h",
+                "src/aio/worker_win.inc",
+                "src/utils/thread_win.h",
+                "src/utils/thread_win.inc",
+                "src/utils/win.h",
+                "src/utils/efd_win.h",
+                "src/utils/efd_win.inc",
+            ],
+            ":linux": [
+                "src/utils/thread_posix.h",
+                "src/utils/thread_posix.inc",
+                "src/aio/usock_posix.h",
+                "src/aio/usock_posix.inc",
+                "src/aio/worker_posix.h",
+                "src/aio/worker_posix.inc",
+                "src/aio/poller.h",
+                "src/aio/poller.c",
+                "src/aio/poller_epoll.h",
+                "src/aio/poller_epoll.inc",
+                "src/utils/efd_eventfd.h",
+                "src/utils/efd_eventfd.inc",
+            ]
+        }),
+    linkopts=select({
+        ":linux": ["-pthread"]
+    }),
+    copts=select({
+        ":windows": [
+            "-DNN_USE_WINSOCK",
+            "-DNN_HAVE_WINSOCK",
+            "-DNN_HAVE_WINDOWS",
+        ],
+        ":linux": [
+            "-DNN_USE_EVENTFD",
+            "-DNN_USE_EPOLL",
+            "-DNN_HAVE_EVENTFD",
+            "-DNN_HAVE_POLL",
+            "-DNN_HAVE_EPOLL",
+            "-DNN_HAVE_MSG_CONTROL",
+            "-DNN_HAVE_SEMAPHORE",
+        ]
+    }),
+    hdrs=glob(["src/**/*.h"]),
+    strip_include_prefix='src',
+    include_prefix='nanomsg',
+    visibility=['//visibility:public'])

@@ -100,6 +100,16 @@ def load_cpprestsdk():
         build_file="@rules_iota//:build/BUILD.cpprestsdk")
 
 
+def load_nanomsg():
+    native.new_http_archive(
+        name="nanomsg",
+        url="https://github.com/nanomsg/nanomsg/archive/1.1.2.tar.gz",
+        strip_prefix="nanomsg-1.1.2",
+        sha256=
+        "3c52165a735c2fb597d2306593ae4b17900688b90113d4115ad8480288f28ccb",
+        build_file="@rules_iota//:build/BUILD.nanomsg")
+
+
 def iota_cpp_repositories():
     load_cpprestsdk()
     load_fmtlib()
@@ -111,3 +121,4 @@ def iota_cpp_repositories():
     load_gtest()
     load_gflags()
     load_influxdb_cpp_rest()
+    load_nanomsg()

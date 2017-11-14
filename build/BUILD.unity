@@ -1,21 +1,36 @@
-cc_library(
-    name="hdrs",
-    hdrs=["src/unity.h", "src/unity_internals.h"],
-    strip_include_prefix='src')
+genrule(name='unity_fixture_c',
+        srcs=["extras/fixture/src/unity_fixture.c"],
+        outs=["src/unity_fixture.c"],
+        cmd="cat $(<) > $(@)")
+genrule(name='unity_fixture_h',
+        srcs=["extras/fixture/src/unity_fixture.h"],
+        outs=["src/unity_fixture.h"],
+        cmd="cat $(<) > $(@)")
+genrule(name='unity_fixture_internals_h',
+        srcs=["extras/fixture/src/unity_fixture_internals.h"],
+        outs=["src/unity_fixture_internals.h"],
+        cmd="cat $(<) > $(@)")
+genrule(name='unity_fixture_malloc_overrides_h',
+        srcs=["extras/fixture/src/unity_fixture_malloc_overrides.h"],
+        outs=["src/unity_fixture_malloc_overrides.h"],
+        cmd="cat $(<) > $(@)")
 
-cc_library(
-    name="fixture",
-    srcs=["extras/fixture/src/unity_fixture.c"],
-    hdrs=glob(["extras/fixture/src/*.h"]),
-    visibility=['//visibility:public'],
-    strip_include_prefix='extras/fixture/src',
-    deps=[":hdrs"])
-
-cc_library(
-    name="unity",
-    strip_include_prefix='src',
-    srcs=[
-        "src/unity.c",
-    ],
-    deps=[":fixture", ":hdrs"],
-    visibility=['//visibility:public'])
+cc_library(name="unity",
+           srcs=[
+               "src/unity.c",
+               ":unity_fixture_c",
+               "src/unity_internals.h",
+               "src/unity.h",
+               ":unity_fixture_h",
+               ":unity_fixture_internals_h",
+               ":unity_fixture_malloc_overrides_h",
+           ],
+           copts=["-Iexternal/unity/src"],
+           hdrs=[":unity_fixture_h",
+                 ":unity_fixture_internals_h",
+                 ":unity_fixture_malloc_overrides_h",
+                 "src/unity.h",
+                 "src/unity_internals.h", ],
+           strip_include_prefix='src',
+           include_prefix='unity',
+           visibility=["//visibility:public"], )

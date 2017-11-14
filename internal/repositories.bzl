@@ -110,6 +110,16 @@ def load_nanomsg():
         build_file="@rules_iota//:build/BUILD.nanomsg")
 
 
+def load_unity():
+    native.new_http_archive(
+        name="unity",
+        url="https://github.com/ThrowTheSwitch/Unity/archive/v2.4.2.tar.gz",
+        strip_prefix="Unity-2.4.2",
+        sha256=
+        "633bda7e0bd298aac404e50f6189a29213f3edf61657dda125409ad35290a603",
+        build_file="@rules_iota//:build/BUILD.unity")
+
+
 def iota_cpp_repositories():
     load_cpprestsdk()
     load_fmtlib()
@@ -122,3 +132,4 @@ def iota_cpp_repositories():
     load_gflags()
     load_influxdb_cpp_rest()
     load_nanomsg()
+    load_unity()

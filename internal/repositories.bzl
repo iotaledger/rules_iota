@@ -119,6 +119,15 @@ def load_unity():
         "633bda7e0bd298aac404e50f6189a29213f3edf61657dda125409ad35290a603",
         build_file="@rules_iota//:build/BUILD.unity")
 
+def load_yaml():
+    native.new_http_archive(
+        name="yaml",
+        url="https://github.com/yaml/libyaml/archive/0.1.7.tar.gz",
+        strip_prefix="libyaml-0.1.7",
+        sha256=
+        "e1884d0fa1eec8cf869ac6bebbf25391e81956aa2970267f974a9fa5e0b968e2",
+        build_file="@rules_iota//:build/BUILD.yaml")
+
 
 def iota_cpp_repositories():
     load_cpprestsdk()
@@ -133,3 +142,4 @@ def iota_cpp_repositories():
     load_influxdb_cpp_rest()
     load_nanomsg()
     load_unity()
+    load_yaml()

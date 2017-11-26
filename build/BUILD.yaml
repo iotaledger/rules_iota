@@ -1,34 +1,14 @@
-config_setting(
-    name="windows",
-    values={"cpu": "x64_windows_msvc"},
-    visibility=["//visibility:private"], )
-
-config_setting(
-    name="linux",
-    values={"cpu": "k8"},
-    visibility=["//visibility:private"], )
-
-config_setting(
-    name="darwin",
-    values={"cpu": "darwin"},
-    visibility=["//visibility:private"], )
-
 cc_library(
     name="yaml",
-    srcs=glob(["src/*.c"]),
-    copts=select({
-        ":windows": [
-            "-DYAML_DECLARE_EXPORT",
-            "-DHAVE_CONFIG_H",
-        ],
-        ":linux": [
-            "-DYAML_DECLARE_EXPORT",
-            "-DHAVE_CONFIG_H",
-        ]
-    }),
-    hdrs=glob(["include/*.h"]) + select({
-        ":windows": [glob(["win32/*.h")]
-    }),
+    srcs=glob(["src/*.c", "src/*.h"]),
+    copts=[
+        "-DYAML_DECLARE_EXPORT",
+        "-DYAML_VERSION_STRING='\"0.1.7\"'",
+        "-DYAML_VERSION_PATCH=7",
+        "-DYAML_VERSION_MINOR=1",
+        "-DYAML_VERSION_MAJOR=0",
+    ],
+    hdrs=glob(["include/*.h"]),
     strip_include_prefix='include',
     include_prefix='yaml',
     visibility=['//visibility:public'])

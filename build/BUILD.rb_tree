@@ -7,11 +7,10 @@ cc_library(
     "red_black_tree.c",
     "stack.c",
     "misc.c",
+    "misc.h",
     ],
     hdrs=[
     "red_black_tree.h",
     "stack.h",
-    "misc.h",
     ],
-    include_prefix='rb_tree',
     visibility=['//visibility:public'])

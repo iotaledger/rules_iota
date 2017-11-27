@@ -128,6 +128,14 @@ def load_yaml():
         "e1884d0fa1eec8cf869ac6bebbf25391e81956aa2970267f974a9fa5e0b968e2",
         build_file="@rules_iota//:build/BUILD.yaml")
 
+def load_rb_tree():
+    native.new_http_archive(
+        name="rb_tree",
+        url="http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
+        sha256=
+        "899a13a40c2d1c64a4690f0f316e9832c5db0df4971d51e35a66084295f7d0fc",
+        build_file="@rules_iota//:build/BUILD.rb_tree")
+
 
 def iota_cpp_repositories():
     load_cpprestsdk()
@@ -143,3 +151,4 @@ def iota_cpp_repositories():
     load_nanomsg()
     load_unity()
     load_yaml()
+    load_rb_tree()

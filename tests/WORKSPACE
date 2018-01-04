@@ -6,3 +6,7 @@ local_repository(
 load("@rules_iota//:defs.bzl", "iota_deps")
 
 iota_deps()
+
+load("@prometheus_cpp//:repositories.bzl", "prometheus_cpp_repositories")
+
+prometheus_cpp_repositories()

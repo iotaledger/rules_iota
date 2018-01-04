@@ -137,6 +137,17 @@ def load_rb_tree():
         build_file="@rules_iota//:build/BUILD.rb_tree")
 
 
+def load_prometheus_cpp():
+    native.new_http_archive(
+        name="prometheus_cpp",
+        url="https://github.com/th0br0/prometheus-cpp/archive/11057d8cc5618ee7f1e77051dcd67d7d8255c13a.zip",
+        strip_prefix=
+        "prometheus-cpp-11057d8cc5618ee7f1e77051dcd67d7d8255c13a",
+        sha256=
+        "63d8be02166ed2ca520750e414146bf3727872a63194ddbe803585b456b618e4",
+        build_file="@rules_iota//:build/BUILD.prometheus_cpp")
+
+
 def iota_cpp_repositories():
     load_cpprestsdk()
     load_fmtlib()
@@ -152,3 +163,4 @@ def iota_cpp_repositories():
     load_unity()
     load_yaml()
     load_rb_tree()
+    load_prometheus_cpp()

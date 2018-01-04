@@ -32,10 +32,5 @@ int main(int argc, char** argv) {
   // ask the exposer to scrape the registry on incoming scrapes
   exposer.RegisterCollectable(registry);
 
-  for (;;) {
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    // increment the counter by one (second)
-    second_counter.Increment();
-  }
   return 0;
 }

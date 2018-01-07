@@ -148,11 +148,14 @@ def load_civetweb():
     )
 
 def load_prometheus_client_model():
-    native.new_git_repository(
+    native.new_http_archive(
         name = "prometheus_client_model",
-        remote = "https://github.com/prometheus/client_model.git",
-        commit = "99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
-	build_file = "@rules_iota//:build/BUILD.prometheus_client_model"
+        url = "https://github.com/prometheus/client_model/archive/99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c.zip",
+        strip_prefix=
+        "client_model-99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
+        sha256=
+        "799ba403fa3879fcb60d6644d7583bd01cb3a4927c442211783c07f59ff99450",
+	build_file="@rules_iota//:build/BUILD.prometheus_client_model"
     )
 
 def load_com_google_protobuf():

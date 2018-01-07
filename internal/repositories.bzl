@@ -1,49 +1,3 @@
-_CIVETWEB_BUILD_FILE = """
-licenses(["notice"])  # MIT license
-
-cc_library(
-    name = "civetweb",
-    srcs = [
-        "src/CivetServer.cpp",
-        "src/civetweb.c",
-    ],
-    hdrs = [
-        "include/CivetServer.h",
-        "include/civetweb.h",
-    ],
-    copts = [
-        "-DUSE_IPV6",
-        "-DNDEBUG",
-        "-DNO_CGI",
-        "-DNO_CACHING",
-        "-DNO_SSL",
-        "-DNO_FILES",
-    ],
-    includes = [
-        "include",
-    ],
-    textual_hdrs = [
-        "src/md5.inl",
-        "src/handle_form.inl",
-    ],
-    visibility = ["//visibility:public"],
-)
-"""
-
-_PROMETHEUS_CLIENT_MODEL_BUILD_FILE = """
-licenses(["notice"])  # BSD license
-
-load("@com_google_protobuf//:protobuf.bzl", "cc_proto_library")
-
-cc_proto_library(
-    name = "prometheus_client_model",
-    srcs = ["metrics.proto"],
-    default_runtime = "@com_google_protobuf//:protobuf",
-    protoc = "@com_google_protobuf//:protoc",
-    visibility = ["//visibility:public"],
-)
-"""
-
 def load_gflags():
     native.http_archive(
         name="com_github_gflags_gflags",
@@ -190,7 +144,7 @@ def load_civetweb():
         urls = [
            "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
        ],
-       build_file_content = _CIVETWEB_BUILD_FILE,
+       build_file="@rules_iota//:build/BUILD.civetweb"
     )
 
 def load_prometheus_client_model():
@@ -198,7 +152,7 @@ def load_prometheus_client_model():
         name = "prometheus_client_model",
         remote = "https://github.com/prometheus/client_model.git",
         commit = "99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
-        build_file_content = _PROMETHEUS_CLIENT_MODEL_BUILD_FILE,
+	build_file = "@rules_iota//:build/BUILD.prometheus_client_model"
     )
 
 def load_com_google_protobuf():

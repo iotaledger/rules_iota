@@ -1,0 +1,11 @@
+licenses(["notice"])  # BSD license
+
+load("@com_google_protobuf//:protobuf.bzl", "cc_proto_library")
+
+cc_proto_library(
+    name = "prometheus_client_model",
+    srcs = ["metrics.proto"],
+    default_runtime = "@com_google_protobuf//:protobuf",
+    protoc = "@com_google_protobuf//:protoc",
+    visibility = ["//visibility:public"],
+)

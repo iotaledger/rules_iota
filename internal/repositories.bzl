@@ -1,3 +1,49 @@
+_CIVETWEB_BUILD_FILE = """
+licenses(["notice"])  # MIT license
+
+cc_library(
+    name = "civetweb",
+    srcs = [
+        "src/CivetServer.cpp",
+        "src/civetweb.c",
+    ],
+    hdrs = [
+        "include/CivetServer.h",
+        "include/civetweb.h",
+    ],
+    copts = [
+        "-DUSE_IPV6",
+        "-DNDEBUG",
+        "-DNO_CGI",
+        "-DNO_CACHING",
+        "-DNO_SSL",
+        "-DNO_FILES",
+    ],
+    includes = [
+        "include",
+    ],
+    textual_hdrs = [
+        "src/md5.inl",
+        "src/handle_form.inl",
+    ],
+    visibility = ["//visibility:public"],
+)
+"""
+
+_PROMETHEUS_CLIENT_MODEL_BUILD_FILE = """
+licenses(["notice"])  # BSD license
+
+load("@com_google_protobuf//:protobuf.bzl", "cc_proto_library")
+
+cc_proto_library(
+    name = "prometheus_client_model",
+    srcs = ["metrics.proto"],
+    default_runtime = "@com_google_protobuf//:protobuf",
+    protoc = "@com_google_protobuf//:protoc",
+    visibility = ["//visibility:public"],
+)
+"""
+
 def load_gflags():
     native.http_archive(
         name="com_github_gflags_gflags",
@@ -136,16 +182,43 @@ def load_rb_tree():
         "899a13a40c2d1c64a4690f0f316e9832c5db0df4971d51e35a66084295f7d0fc",
         build_file="@rules_iota//:build/BUILD.rb_tree")
 
+def load_civetweb():
+    native.new_http_archive(
+        name = "civetweb",
+        strip_prefix = "civetweb-1.9.1",
+        sha256 = "880d741724fd8de0ebc77bc5d98fa673ba44423dc4918361c3cd5cf80955e36d",
+        urls = [
+           "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
+       ],
+       build_file_content = _CIVETWEB_BUILD_FILE,
+    )
+
+def load_prometheus_client_model():
+    native.new_git_repository(
+        name = "prometheus_client_model",
+        remote = "https://github.com/prometheus/client_model.git",
+        commit = "99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
+        build_file_content = _PROMETHEUS_CLIENT_MODEL_BUILD_FILE,
+    )
+
+def load_com_google_protobuf():
+    native.http_archive(
+        name = "com_google_protobuf",
+        sha256 = "8e0236242106e680b4f9f576cc44b8cd711e948b20a9fc07769b0a20ceab9cc4",
+        strip_prefix = "protobuf-3.4.1",
+        urls = [
+            "https://github.com/google/protobuf/archive/v3.4.1.tar.gz",
+        ],
+    )
 
 def load_prometheus_cpp():
-    native.new_http_archive(
+    native.http_archive(
         name="prometheus_cpp",
         url="https://github.com/th0br0/prometheus-cpp/archive/11057d8cc5618ee7f1e77051dcd67d7d8255c13a.zip",
         strip_prefix=
         "prometheus-cpp-11057d8cc5618ee7f1e77051dcd67d7d8255c13a",
         sha256=
-        "63d8be02166ed2ca520750e414146bf3727872a63194ddbe803585b456b618e4",
-        build_file="@rules_iota//:build/BUILD.prometheus_cpp")
+        "63d8be02166ed2ca520750e414146bf3727872a63194ddbe803585b456b618e4")
 
 
 def iota_cpp_repositories():
@@ -163,4 +236,7 @@ def iota_cpp_repositories():
     load_unity()
     load_yaml()
     load_rb_tree()
+    load_com_google_protobuf()
+    load_prometheus_client_model()
+    load_civetweb()
     load_prometheus_cpp()

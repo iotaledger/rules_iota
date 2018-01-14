@@ -42,6 +42,7 @@ cc_library(
         '@boost//:filesystem',
         '@boost//:chrono',
         '@boost//:atomic',
+        '@boost//:asio',
         '@boost//:thread',
         '@boost//:random',
     ],

@@ -27,3 +27,9 @@ cc_test(
     size="small",
     srcs=["prometheus_test.cc"],
     deps=["@prometheus_cpp//:prometheus_cpp"])
+
+cc_test(
+    name="cpprestsdk_test",
+    size="small",
+    srcs=["cpprestsdk_test.cc"],
+    deps=["@cpprestsdk//:cpprestsdk"])

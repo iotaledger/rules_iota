@@ -1,4 +1,4 @@
-image: walberla/buildenv-ubuntu-gcc:7
+image: th0br0/iota-buildenv:latest
 
 stages:
   - test
@@ -15,11 +15,19 @@ before_script:
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
-tests:
+test64:
   stage: test
   script:
     - cd tests
     - mkdir /root/.cache && [ -d bazel-cache ] && mv bazel-cache /root/.cache/bazel
-    - tools/ci/build.sh
+    - tools/ci/build.sh 64
+    - mv /root/.cache/bazel bazel-cache
+
+test32:
+  stage: test
+  script:
+    - cd tests
+    - mkdir /root/.cache && [ -d bazel-cache ] && mv bazel-cache /root/.cache/bazel
+    - tools/ci/build.sh 32
     - mv /root/.cache/bazel bazel-cache
 

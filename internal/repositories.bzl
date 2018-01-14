@@ -53,10 +53,10 @@ def load_rxcpp():
 def load_libsodium():
     native.new_http_archive(
         name="libsodium",
-        url="https://github.com/jedisct1/libsodium/archive/1.0.15.tar.gz",
-        strip_prefix="libsodium-1.0.15",
+        url="https://github.com/jedisct1/libsodium/archive/1.0.16.tar.gz",
+        strip_prefix="libsodium-1.0.16",
         sha256=
-        "8889835aee49f3e216bb0f25d1b15aefd0b84da6dcdedbbcff1f77d881083407",
+        "0c14604bbeab2e82a803215d65c3b6e74bb28291aaee6236d65c699ccfe1a98c",
         build_file="@rules_iota//:build/BUILD.libsodium")
 
 

@@ -1,29 +1,25 @@
 licenses(['notice'])
 
-genrule(
-    name="gen_sh",
-    outs=[
-        "gen.sh",
-    ],
-    cmd="""
+genrule(name="gen_sh",
+        outs=[
+            "gen.sh",
+        ],
+        cmd="""
 cat > $@ <<"EOF"
 #! /bin/sh
 sed -e 's/@VERSION@/1.0.15/g' \
     -e 's/@SODIUM_LIBRARY_VERSION_MAJOR@/10/g' \
     -e 's/@SODIUM_LIBRARY_VERSION_MINOR@/0/g' \
-    -e 's/@SODIUM_LIBRARY_MINIMAL_DEF@//g'
+    -e 's/@SODIUM_LIBRARY_MINIMAL_DEF@//g' 
 EOF""")
 
-config_setting(
-    name="win",
-    values={"cpu": "x64_windows_msvc"}, )
+config_setting(name="win", values={"cpu": "x64_windows_msvc"}, )
 
-genrule(
-    name='version_h',
-    srcs=['src/libsodium/include/sodium/version.h.in'],
-    outs=['src/libsodium/include/sodium/version.h'],
-    cmd="$(location :gen_sh) < $(<) > $(@)",
-    tools=[":gen_sh"], )
+genrule(name='version_h',
+        srcs=['src/libsodium/include/sodium/version.h.in'],
+        outs=['src/libsodium/include/sodium/version.h'],
+        cmd="$(location :gen_sh) < $(<) > $(@)",
+        tools=[":gen_sh"], )
 
 cc_library(
     name='sodium',
@@ -54,20 +50,18 @@ cc_library(
         "src/libsodium/include/sodium",
         "src/libsodium/include/sodium/private",
     ],
-    copts=select(
-        {
-            ":win": [],
-            "//conditions:default": ["-pthread"],
-        }, ) +
-    [
+    copts=select({
+        ":win": [],
+        "//conditions:default": ["-pthread"],
+    }, ) + [
         "-DHAVE_PTHREAD",
         # TODO(th0br0) add bazel support for determining this on the fly
         # mmx
-        "-DHAVE_MMINTRIN_H",
+        # "-DHAVE_MMINTRIN_H",
         # sse2
-        "-DHAVE_EMMINTRIN_H",
+        # "-DHAVE_EMMINTRIN_H",
         # avx
-        "-DHAVE_AVXINTRIN_H",
+        # "-DHAVE_AVXINTRIN_H",
     ],
     linkopts=select({
         ":win": [],

@@ -1,3 +1,6 @@
+# Taken from https://github.com/nelhage/rules_boost
+# License: Apache 2.0 - https://github.com/nelhage/rules_boost/commit/f27dac072f2c830b08f0aec3aeaef8c313987202
+
 # Description:
 #   zlib is a general purpose data compression library.
 

@@ -1,3 +1,6 @@
+# Taken from https://github.com/nelhage/rules_boost
+# License: Apache 2.0 - https://github.com/nelhage/rules_boost/commit/f27dac072f2c830b08f0aec3aeaef8c313987202
+
 load("@rules_iota//:internal/boost.bzl", "boost_library")
 
 boost_library(
@@ -11,6 +14,33 @@ boost_library(
 
 boost_library(
     name = "align",
+)
+
+boost_library(
+    name = "any",
+    deps = [
+        ":config",
+        ":mpl",
+        ":static_assert",
+        ":throw_exception",
+        ":type_index",
+        ":type_traits",
+        ":utility",
+    ],
+)
+
+boost_library(
+    name = "assign",
+    deps = [
+        ":config",
+        ":detail",
+        ":mpl",
+        ":preprocessor",
+        ":ptr_container",
+        ":range",
+        ":static_assert",
+        ":type_traits",
+    ],
 )
 
 boost_library(
@@ -44,8 +74,12 @@ boost_library(
 boost_library(
     name = "array",
     deps = [
+        ":assert",
+        ":config",
+        ":core",
         ":functional",
         ":swap",
+        ":throw_exception",
     ],
 )
 
@@ -56,10 +90,35 @@ boost_library(
         ":date_time",
         ":regex",
     ],
+    linkopts = ["-lpthread"]
 )
 
 boost_library(
     name = "assert",
+)
+
+boost_library(
+    name = "beast",
+    deps = [
+        ":config",
+        ":core",
+        ":static_assert",
+        ":detail",
+        ":utility",
+        ":throw_exception",
+        ":system",
+        ":asio",
+        ":smart_ptr",
+    ],
+)
+
+boost_library(
+    name = "bimap",
+    deps = [
+        ":concept_check",
+        ":serialization",
+        ":multi_index",
+    ]
 )
 
 boost_library(
@@ -72,6 +131,13 @@ boost_library(
         ":type",
         ":visit_each",
     ],
+)
+
+boost_library (
+    name = "callable_traits",
+    deps = [
+
+    ]
 )
 
 boost_library(
@@ -205,6 +271,15 @@ boost_library(
 
 boost_library(
     name = "dynamic_bitset",
+    deps = [
+        ":config",
+        ":core",
+        ":detail",
+        ":integer",
+        ":move",
+        ":throw_exception",
+        ":utility",
+    ],
 )
 
 boost_library(
@@ -231,6 +306,9 @@ boost_library(
 
 boost_library(
     name = "filesystem",
+    copts = [
+        "-Wno-deprecated-declarations",
+    ],
     deps = [
         ":config",
         ":functional",
@@ -245,6 +323,16 @@ boost_library(
 
 boost_library(
     name = "foreach",
+    deps = [
+        ":config",
+        ":detail",
+        ":iterator",
+        ":mpl",
+        ":noncopyable",
+        ":range",
+        ":type_traits",
+        ":utility",
+    ],
 )
 
 boost_library(
@@ -255,7 +343,7 @@ boost_library(
         ":detail",
         ":limits",
         ":optional",
-        ":shared_ptr",
+        ":smart_ptr",
         ":throw_exception",
         ":timer",
         ":utility",
@@ -282,7 +370,44 @@ boost_library(
     name = "functional",
     deps = [
         ":detail",
+        ":integer",
     ],
+)
+
+boost_library(
+    name = "fusion",
+    deps = [
+        ":call_traits",
+        ":config",
+        ":core",
+        ":detail",
+        ":functional",
+        ":function_types",
+        ":get_pointer",
+        ":mpl",
+        ":preprocessor",
+        ":ref",
+        ":static_assert",
+        ":tuple",
+        ":typeof",
+        ":type_traits",
+        ":utility",
+    ],
+)
+
+boost_library(
+    name = "property_tree",
+    deps = [
+        ":multi_index",
+        ":utility",
+        ":optional",
+        ":throw_exception",
+        ":ref",
+        ":bind",
+        ":any",
+        ":range",
+        ":format",
+    ]
 )
 
 boost_library(
@@ -306,6 +431,7 @@ boost_library(
         "boost/cstdint.hpp",
         "boost/integer_traits.hpp",
         "boost/pending/integer_log2.hpp",
+        "boost/pending/lowest_bit.hpp",
     ],
     deps = [
         ":static_assert",
@@ -342,6 +468,8 @@ boost_library(
     deps = [
         ":detail",
         ":static_assert",
+        ":type_traits",
+        ":utility",
     ],
 )
 
@@ -394,6 +522,7 @@ boost_library(
         ":utility",
         "@net_zlib_zlib//:zlib",
         "@org_bzip_bzip2//:bz2lib",
+        "@org_lzma_lzma//:lzma"
     ],
 )
 
@@ -439,6 +568,14 @@ boost_library(
         ":assert",
         ":detail",
         ":static_assert",
+    ],
+)
+
+boost_library(
+    name = "mp11",
+    deps = [
+        ":config",
+        ":detail",
     ],
 )
 
@@ -493,14 +630,45 @@ boost_library(
 )
 
 boost_library(
+    name = "numeric_ublas",
+    hdrs = glob([
+        "boost/numeric/ublas/**/*.hpp",
+    ]),
+    deps = [
+        ":concept_check",
+        ":config",
+        ":core",
+        ":iterator",
+        ":mpl",
+        ":noncopyable",
+        ":numeric",
+        ":range",
+        ":serialization",
+        ":shared_array",
+        ":static_assert",
+        ":timer",
+        ":typeof",
+        ":type_traits",
+        ":utility",
+    ],
+)
+
+boost_library(
     name = "operators",
 )
 
 boost_library(
     name = "optional",
     deps = [
+        ":assert",
+        ":config",
+        ":detail",
         ":none",
+        ":static_assert",
+        ":throw_exception",
         ":type",
+        ":type_traits",
+        ":utility",
     ],
 )
 
@@ -514,6 +682,58 @@ boost_library(
 
 boost_library(
     name = "preprocessor",
+)
+
+boost_library(
+    name = "process",
+    deps = [
+        ":config",
+        ":system",
+        ":filesystem",
+        ":algorithm",
+        ":asio",
+        ":fusion",
+        ":winapi",
+    ]
+)
+
+boost_library(
+    name = "program_options",
+    deps = [
+        ":any",
+        ":bind",
+        ":config",
+        ":detail",
+        ":function",
+        ":iterator",
+        ":lexical_cast",
+        ":limits",
+        ":noncopyable",
+        ":shared_ptr",
+        ":static_assert",
+        ":throw_exception",
+        ":tokenizer",
+        ":type_traits",
+        ":version",
+    ],
+)
+
+boost_library(
+    name = "ptr_container",
+    deps = [
+        ":assert",
+        ":checked_delete",
+        ":circular_buffer",
+        ":config",
+        ":iterator",
+        ":mpl",
+        ":range",
+        ":serialization",
+        ":static_assert",
+        ":type_traits",
+        ":unordered",
+        ":utility",
+    ],
 )
 
 boost_library(
@@ -579,7 +799,10 @@ boost_library(
 boost_library(
     name = "ref",
     deps = [
+        ":config",
         ":core",
+        ":detail",
+        ":utility",
     ],
 )
 
@@ -702,6 +925,7 @@ boost_library(
     hdrs = [
         "boost/enable_shared_from_this.hpp",
         "boost/make_shared.hpp",
+        "boost/make_unique.hpp",
         "boost/pointer_to_other.hpp",
         "boost/weak_ptr.hpp",
     ],
@@ -846,15 +1070,8 @@ boost_library(
 
 boost_library(
     name = "tuple",
-)
-
-boost_library(
-    name = "tr1",
-    defines = [
-        "BOOST_FALLTHROUGH",
-    ],
     deps = [
-        ":config",
+        ":ref",
     ],
 )
 
@@ -893,6 +1110,22 @@ boost_library(
         ":config",
         ":detail",
         ":swap",
+    ],
+)
+
+boost_library(
+    name = "uuid",
+    deps = [
+        ":assert",
+        ":config",
+        ":core",
+        ":detail",
+        ":io",
+        ":random",
+        ":serialization",
+        ":static_assert",
+        ":type_traits",
+        ":throw_exception",
     ],
 )
 
@@ -980,4 +1213,9 @@ boost_library(
         ":utility",
         ":version",
     ],
+)
+
+boost_library (
+    name = "winapi",
+    visibility = ["//visibility:private"]
 )

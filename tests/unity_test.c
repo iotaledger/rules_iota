@@ -15,7 +15,10 @@ TEST_SETUP(ProductionCode) {
 
 TEST_TEAR_DOWN(ProductionCode) {}
 
-TEST(ProductionCode, Dummy) {}
+TEST(ProductionCode, Dummy) {
+	TEST_ASSERT_EQUAL_INT64(29, 29L);
+
+}
 
 TEST_GROUP_RUNNER(ProductionCode) { RUN_TEST_CASE(ProductionCode, Dummy); }
 

@@ -1,0 +1,42 @@
+config_setting(
+    name="windows",
+    values={"cpu": "x64_windows_msvc"},
+    visibility=["//visibility:private"], )
+
+config_setting(
+    name="linux",
+    values={"cpu": "k8"},
+    visibility=["//visibility:private"], )
+
+config_setting(
+    name="darwin",
+    values={"cpu": "darwin"},
+    visibility=["//visibility:private"], )
+
+cc_library(
+    name="keccak_common",
+    hdrs=[
+      "Common/align.h",
+      "Common/brg_endian.h",
+    ], )
+
+cc_library(
+    name="keccak_sponge_common",
+    hdrs=[
+      "Constructions/KeccakSponge-common.h",
+      "Constructions/KeccakSponge.inc",
+    ],
+    deps=["keccak_common",], )
+
+cc_library(
+    name="keccak",
+    srcs=[
+        "Constructions/KeccakSpongeWidth1600.c",
+    ],
+    strip_include_prefix='Constructions',
+    include_prefix='keccak',
+    hdrs=[
+        "Constructions/KeccakSpongeWidth1600.h",
+    ],
+    deps=["keccak_sponge_common",],
+    visibility=["//visibility:public"], )

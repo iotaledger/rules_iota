@@ -186,7 +186,14 @@ def load_yaml_cpp():
         "107a0c0711ba2d57e3e8acb148974e8b9c15f3bdc13d88de70dbb21e377a35ab",
         build_file="@rules_iota//:build/BUILD.yaml_cpp")
 
-
+def load_keccak():
+    native.http_archive(
+        name="keccak",
+        url="https://github.com/gvanas/KeccakCodePackage/archive/c737139c81fd191699886a9a74d3220f6e300b29.zip",
+        strip_prefix=
+        "KeccakCodePackage-c737139c81fd191699886a9a74d3220f6e300b29",
+        sha256=
+        "35c63620721ac4da418d4bb427ba7ae9aae76b4a1bea7758d6694a29f6e6488a")
 
 def iota_cpp_repositories():
     load_cpprestsdk()
@@ -208,3 +215,4 @@ def iota_cpp_repositories():
     load_civetweb()
     load_prometheus_cpp()
     load_yaml_cpp()
+    load_keccak()

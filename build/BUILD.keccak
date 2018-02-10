@@ -14,7 +14,7 @@ config_setting(
     visibility=["//visibility:private"], )
 
 cc_library(
-    name="keccak_common",
+    name="common",
     hdrs=[
       "Common/align.h",
       "Common/brg_endian.h",
@@ -26,7 +26,7 @@ cc_library(
       "Constructions/KeccakSponge-common.h",
       "Constructions/KeccakSponge.inc",
     ],
-    deps=["keccak_common",], )
+    deps=[":common",], )
 
 cc_library(
     name="keccak",
@@ -38,5 +38,5 @@ cc_library(
     hdrs=[
         "Constructions/KeccakSpongeWidth1600.h",
     ],
-    deps=["keccak_sponge_common",],
+    deps=[":keccak_sponge_common",],
     visibility=["//visibility:public"], )

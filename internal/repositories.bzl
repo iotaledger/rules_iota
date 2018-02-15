@@ -177,6 +177,16 @@ def load_prometheus_cpp():
         sha256=
         "63d8be02166ed2ca520750e414146bf3727872a63194ddbe803585b456b618e4")
 
+def load_yaml_cpp():
+    native.new_http_archive(
+        name="yaml_cpp",
+        url="https://github.com/jbeder/yaml-cpp/archive/5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f.zip",
+        strip_prefix="yaml-cpp-5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f",
+        sha256=
+        "107a0c0711ba2d57e3e8acb148974e8b9c15f3bdc13d88de70dbb21e377a35ab",
+        build_file="@rules_iota//:build/BUILD.yaml_cpp")
+
+
 
 def iota_cpp_repositories():
     load_cpprestsdk()
@@ -197,3 +207,4 @@ def iota_cpp_repositories():
     load_prometheus_client_model()
     load_civetweb()
     load_prometheus_cpp()
+    load_yaml_cpp()

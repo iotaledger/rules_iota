@@ -31,3 +31,19 @@ cc_test(name="cpprestsdk_test",
 cc_test(name="sodium_test",
         srcs=glob(['sodium/*.c', 'sodium/*.h', 'sodium/*.exp']),
         deps=["@libsodium//:sodium"])
+
+cc_test(
+    name="yaml_cpp_test",
+    size="small",
+    srcs=["yaml_cpp_test.cc"],
+    data = [":copy_config_test_example_file"],
+    deps=["@yaml_cpp//:yaml_cpp"])
+
+genrule(
+    name = 'copy_config_test_example_file',
+    local = 1,
+    srcs = glob(['config_test_example.yaml']),
+    outs = ["config_example.yaml"],
+    cmd = "cp $(SRCS) $@",
+    output_to_bindir = 1,
+)

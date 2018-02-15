@@ -1,0 +1,8 @@
+# Employee records
+  michael:
+    name: Michael Scott
+    job: Regional manager
+  
+  dwight:
+    name: Dwight Schrute
+    job: Assitant to the regional manager

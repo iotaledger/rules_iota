@@ -22,7 +22,7 @@ cc_test(name="prometheus_test",
         size="small",
         srcs=["prometheus_test.cc"],
         deps=["@prometheus_cpp//:prometheus_cpp"])
-
+	
 cc_test(name="cpprestsdk_test",
         size="small",
         srcs=["cpprestsdk_test.cc"],
@@ -35,3 +35,19 @@ cc_test(name="sodium_test",
 cc_test(name="boost_log_test",
 	srcs=["boost_log_test.cc"],
 	deps=["@boost//:log",])
+
+cc_test(
+    name="yaml_cpp_test",
+    size="small",
+    srcs=["yaml_cpp_test.cc"],
+    data = [":copy_config_test_example_file"],
+    deps=["@yaml_cpp//:yaml_cpp"])
+
+genrule(
+    name = 'copy_config_test_example_file',
+    local = 1,
+    srcs = glob(['config_test_example.yaml']),
+    outs = ["config_example.yaml"],
+    cmd = "cp $(SRCS) $@",
+    output_to_bindir = 1,
+)

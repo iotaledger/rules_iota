@@ -31,3 +31,7 @@ cc_test(name="cpprestsdk_test",
 cc_test(name="sodium_test",
         srcs=glob(['sodium/*.c', 'sodium/*.h', 'sodium/*.exp']),
         deps=["@libsodium//:sodium"])
+
+cc_test(name="boost_log_test",
+	srcs=["boost_log_test.cc"],
+	deps=["@boost//:log",])

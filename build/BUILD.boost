@@ -17,6 +17,40 @@ boost_library(
 )
 
 boost_library(
+    name = "locale"
+)
+
+boost_library(
+    name = "phoenix",
+)
+
+boost_library(
+    name = "proto",
+)
+
+boost_library( 
+    name = "log",
+    deps = [
+        ":asio",
+        ":filesystem",
+        ":foreach",
+        ":fusion",
+        ":locale",
+        ":parameter",
+        ":phoenix",
+        ":proto",
+        ":ptr_container",
+        ":random",
+        ":thread",
+        ":variant",
+    ],
+    exclude_src = [
+        "libs/log/src/dump_ssse3.cpp",
+        "libs/log/src/dump_avx2.cpp",
+    ]
+)
+
+boost_library(
     name = "any",
     deps = [
         ":config",
@@ -746,6 +780,7 @@ boost_library(
         ":integer",
         ":lexical_cast",
         ":limits",
+        ":interprocess",
         ":math",
         ":mpl",
         ":multi_index",
@@ -756,7 +791,6 @@ boost_library(
         ":shared_ptr",
         ":static_assert",
         ":system",
-        ":test",
         ":throw_exception",
         ":timer",
         ":tuple",
@@ -1201,6 +1235,8 @@ boost_library(
         ":io",
         ":iterator",
         ":limits",
+        ":locale",
+        ":log",
         ":mpl",
         ":numeric_conversion",
         ":optional",

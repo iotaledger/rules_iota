@@ -48,3 +48,7 @@ genrule(name = 'copy_config_test_example_file',
         outs = ["config_example.yaml"],
         cmd = "cp $(SRCS) $@",
         output_to_bindir = 1,)
+
+cc_test(name="keccak_test",
+	srcs=["keccak_test.c"],
+	deps=["@keccak//:keccak"])

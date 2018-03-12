@@ -51,4 +51,8 @@ genrule(name = 'copy_config_test_example_file',
 
 cc_test(name="keccak_test",
 	srcs=["keccak_test.c"],
-	deps=["@keccak//:keccak"])
+	deps=["@keccak//:keccak"], )
+
+cc_test(name="libcuckoo_test",
+	srcs=["libcuckoo_test.cc"],
+	deps=["@libcuckoo//:libcuckoo"], )

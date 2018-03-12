@@ -196,6 +196,16 @@ def load_keccak():
         sha256=
         "35c63620721ac4da418d4bb427ba7ae9aae76b4a1bea7758d6694a29f6e6488a")
 
+def load_libcuckoo():
+    native.new_http_archive(
+        name="libcuckoo",
+        url="https://github.com/efficient/libcuckoo/archive/1156aa8b1076da9931409b9d409d8edb377b50f3.zip",
+        strip_prefix=
+        "libcuckoo-1156aa8b1076da9931409b9d409d8edb377b50f3",
+        build_file="@rules_iota//:build/BUILD.libcuckoo",
+        sha256=
+        "9571b74f00436f86d8baed0c439a7331fb8e1ce5880617200a9f443aef28761b")
+
 def iota_cpp_repositories():
     load_cpprestsdk()
     load_fmtlib()
@@ -217,3 +227,4 @@ def iota_cpp_repositories():
     load_prometheus_cpp()
     load_yaml_cpp()
     load_keccak()
+    load_libcuckoo()

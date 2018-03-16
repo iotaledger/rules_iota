@@ -1,0 +1,6 @@
+licenses(["notice"])  # MIT
+
+cc_library(name="cJSON",
+           srcs=["cJSON.c", "cJSON_Utils.c"],
+           hdrs=["cJSON.h", "cJSON_Utils.h"],
+           visibility=["//visibility:public"])

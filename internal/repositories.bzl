@@ -10,7 +10,8 @@ def load_gflags():
 def load_gtest():
     native.new_http_archive(
         name="gtest",
-        url="https://github.com/google/googletest/archive/release-1.8.0.tar.gz",
+        url=
+        "https://github.com/google/googletest/archive/release-1.8.0.tar.gz",
         strip_prefix="googletest-release-1.8.0",
         sha256=
         "58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8",
@@ -119,6 +120,7 @@ def load_unity():
         "633bda7e0bd298aac404e50f6189a29213f3edf61657dda125409ad35290a603",
         build_file="@rules_iota//:build/BUILD.unity")
 
+
 def load_yaml():
     native.new_http_archive(
         name="yaml",
@@ -128,83 +130,104 @@ def load_yaml():
         "e1884d0fa1eec8cf869ac6bebbf25391e81956aa2970267f974a9fa5e0b968e2",
         build_file="@rules_iota//:build/BUILD.yaml")
 
+
 def load_rb_tree():
     native.new_http_archive(
         name="rb_tree",
-        url="http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
+        url=
+        "http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
         sha256=
         "899a13a40c2d1c64a4690f0f316e9832c5db0df4971d51e35a66084295f7d0fc",
         build_file="@rules_iota//:build/BUILD.rb_tree")
 
+
 def load_civetweb():
     native.new_http_archive(
-        name = "civetweb",
-        strip_prefix = "civetweb-1.9.1",
-        sha256 = "880d741724fd8de0ebc77bc5d98fa673ba44423dc4918361c3cd5cf80955e36d",
-        urls = [
-           "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
-       ],
-       build_file="@rules_iota//:build/BUILD.civetweb"
-    )
+        name="civetweb",
+        strip_prefix="civetweb-1.9.1",
+        sha256=
+        "880d741724fd8de0ebc77bc5d98fa673ba44423dc4918361c3cd5cf80955e36d",
+        urls=[
+            "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
+        ],
+        build_file="@rules_iota//:build/BUILD.civetweb")
+
 
 def load_prometheus_client_model():
     native.new_http_archive(
-        name = "prometheus_client_model",
-        url = "https://github.com/prometheus/client_model/archive/99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c.zip",
-        strip_prefix=
-        "client_model-99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
+        name="prometheus_client_model",
+        url=
+        "https://github.com/prometheus/client_model/archive/99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c.zip",
+        strip_prefix="client_model-99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
         sha256=
         "799ba403fa3879fcb60d6644d7583bd01cb3a4927c442211783c07f59ff99450",
-	build_file="@rules_iota//:build/BUILD.prometheus_client_model"
-    )
+        build_file="@rules_iota//:build/BUILD.prometheus_client_model")
+
 
 def load_com_google_protobuf():
     native.http_archive(
-        name = "com_google_protobuf",
-        sha256 = "8e0236242106e680b4f9f576cc44b8cd711e948b20a9fc07769b0a20ceab9cc4",
-        strip_prefix = "protobuf-3.4.1",
-        urls = [
+        name="com_google_protobuf",
+        sha256=
+        "8e0236242106e680b4f9f576cc44b8cd711e948b20a9fc07769b0a20ceab9cc4",
+        strip_prefix="protobuf-3.4.1",
+        urls=[
             "https://github.com/google/protobuf/archive/v3.4.1.tar.gz",
-        ],
-    )
+        ], )
+
 
 def load_prometheus_cpp():
     native.http_archive(
         name="prometheus_cpp",
-        url="https://github.com/th0br0/prometheus-cpp/archive/11057d8cc5618ee7f1e77051dcd67d7d8255c13a.zip",
-        strip_prefix=
-        "prometheus-cpp-11057d8cc5618ee7f1e77051dcd67d7d8255c13a",
+        url=
+        "https://github.com/th0br0/prometheus-cpp/archive/11057d8cc5618ee7f1e77051dcd67d7d8255c13a.zip",
+        strip_prefix="prometheus-cpp-11057d8cc5618ee7f1e77051dcd67d7d8255c13a",
         sha256=
         "63d8be02166ed2ca520750e414146bf3727872a63194ddbe803585b456b618e4")
+
 
 def load_yaml_cpp():
     native.new_http_archive(
         name="yaml_cpp",
-        url="https://github.com/jbeder/yaml-cpp/archive/5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f.zip",
+        url=
+        "https://github.com/jbeder/yaml-cpp/archive/5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f.zip",
         strip_prefix="yaml-cpp-5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f",
         sha256=
         "107a0c0711ba2d57e3e8acb148974e8b9c15f3bdc13d88de70dbb21e377a35ab",
         build_file="@rules_iota//:build/BUILD.yaml_cpp")
 
+
 def load_keccak():
     native.new_http_archive(
         name="keccak",
-        url="https://github.com/gvanas/KeccakCodePackage/archive/c737139c81fd191699886a9a74d3220f6e300b29.zip",
+        url=
+        "https://github.com/gvanas/KeccakCodePackage/archive/c737139c81fd191699886a9a74d3220f6e300b29.zip",
         strip_prefix=
         "KeccakCodePackage-c737139c81fd191699886a9a74d3220f6e300b29",
         build_file="@rules_iota//:build/BUILD.keccak",
         sha256=
         "35c63620721ac4da418d4bb427ba7ae9aae76b4a1bea7758d6694a29f6e6488a")
 
+
 def load_libcuckoo():
     native.new_http_archive(
         name="libcuckoo",
-        url="https://github.com/efficient/libcuckoo/archive/1156aa8b1076da9931409b9d409d8edb377b50f3.zip",
-        strip_prefix=
-        "libcuckoo-1156aa8b1076da9931409b9d409d8edb377b50f3",
+        url=
+        "https://github.com/efficient/libcuckoo/archive/1156aa8b1076da9931409b9d409d8edb377b50f3.zip",
+        strip_prefix="libcuckoo-1156aa8b1076da9931409b9d409d8edb377b50f3",
         build_file="@rules_iota//:build/BUILD.libcuckoo",
         sha256=
         "9571b74f00436f86d8baed0c439a7331fb8e1ce5880617200a9f443aef28761b")
+
+
+def load_cjson():
+    native.new_http_archive(
+        name="cJSON",
+        url="https://github.com/DaveGamble/cJSON/archive/v1.7.4.tar.gz",
+        strip_prefix="cJSON-1.7.4",
+        sha256=
+        "c3fc800cf9106db4ef5a5ef1fba7d144b21d73b68ad78234e182ebab12079277",
+        build_file="@rules_iota//:build/BUILD.cJSON")
+
 
 def iota_cpp_repositories():
     load_cpprestsdk()
@@ -228,3 +251,4 @@ def iota_cpp_repositories():
     load_yaml_cpp()
     load_keccak()
     load_libcuckoo()
+    load_cjson()

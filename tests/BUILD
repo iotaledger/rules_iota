@@ -23,11 +23,6 @@ cc_test(name="prometheus_test",
         srcs=["prometheus_test.cc"],
         deps=["@prometheus_cpp//:prometheus_cpp"])
 
-cc_test(name="cpprestsdk_test",
-        size="small",
-        srcs=["cpprestsdk_test.cc"],
-        deps=["@cpprestsdk//:cpprestsdk"])
-
 cc_test(name="sodium_test",
         srcs=glob(['sodium/*.c', 'sodium/*.h', 'sodium/*.exp']),
         deps=["@libsodium//:sodium"])

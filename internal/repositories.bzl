@@ -17,19 +17,6 @@ def load_gtest():
         "58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8",
         build_file="@rules_iota//:build/BUILD.gtest")
 
-
-def load_influxdb_cpp_rest():
-    native.new_http_archive(
-        name="influxdb_cpp_rest",
-        url=
-        "https://github.com/d-led/influxdb-cpp-rest/archive/50f597b2fbfa361dede850d4d54288f1c40c6f74.zip",
-        strip_prefix=
-        "influxdb-cpp-rest-50f597b2fbfa361dede850d4d54288f1c40c6f74",
-        sha256=
-        "a6f3508d24ead6c92e54f87d117a73ee056e971d08d0ead9a1846c1d3247d250",
-        build_file="@rules_iota//:build/BUILD.influxdb-cpp-rest")
-
-
 def load_glog():
     native.new_http_archive(
         name="glog",
@@ -89,17 +76,6 @@ def load_fmtlib():
         sha256=
         "35300a0d356529447a79ed5ccf419239d8b34f916e5d4625f046fd37afa3650a",
         build_file="@rules_iota//:build/BUILD.fmt")
-
-
-def load_cpprestsdk():
-    native.new_http_archive(
-        name="cpprestsdk",
-        url="https://github.com/Microsoft/cpprestsdk/archive/v2.10.0.tar.gz",
-        strip_prefix="cpprestsdk-2.10.0",
-        sha256=
-        "de333da67f1cb3d1b30be118860531092467f18d24ca6b4d36f6623fecab0de0",
-        build_file="@rules_iota//:build/BUILD.cpprestsdk")
-
 
 def load_nanomsg():
     native.new_http_archive(
@@ -230,7 +206,6 @@ def load_cjson():
 
 
 def iota_cpp_repositories():
-    load_cpprestsdk()
     load_fmtlib()
     load_cppzmq()
     load_libzmq()
@@ -239,7 +214,6 @@ def iota_cpp_repositories():
     load_glog()
     load_gtest()
     load_gflags()
-    load_influxdb_cpp_rest()
     load_nanomsg()
     load_unity()
     load_yaml()

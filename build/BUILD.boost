@@ -497,7 +497,13 @@ boost_library(
     name = "iterator",
     hdrs = [
         "boost/function_output_iterator.hpp",
+        "boost/generator_iterator.hpp",
+        "boost/indirect_reference.hpp",
+        "boost/iterator_adaptors.hpp",
+        "boost/next_prior.hpp",
         "boost/pointee.hpp",
+        "boost/shared_container_iterator.hpp",
+
     ],
     deps = [
         ":detail",
@@ -1045,6 +1051,12 @@ boost_library(
         ":tuple",
         ":type_traits",
     ],
+    defines = [
+	"BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION ",
+	"BOOST_THREAD_PROVIDES_EXECUTORS",
+	"BOOST_THREAD_PROVIDES_FUTURE",
+    ],
+
 )
 
 boost_library(

@@ -119,17 +119,6 @@ def load_civetweb():
         build_file="@rules_iota//:build/BUILD.civetweb")
 
 
-def load_prometheus_client_model():
-    native.new_http_archive(
-        name="prometheus_client_model",
-        url=
-        "https://github.com/prometheus/client_model/archive/99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c.zip",
-        strip_prefix="client_model-99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c",
-        sha256=
-        "799ba403fa3879fcb60d6644d7583bd01cb3a4927c442211783c07f59ff99450",
-        build_file="@rules_iota//:build/BUILD.prometheus_client_model")
-
-
 def load_com_google_protobuf():
     native.http_archive(
         name="com_google_protobuf",
@@ -142,14 +131,13 @@ def load_com_google_protobuf():
 
 
 def load_prometheus_cpp():
-    native.new_http_archive(
+    native.http_archive(
         name="prometheus_cpp",
         url=
         "https://github.com/jupp0r/prometheus-cpp/archive/6f7d712eba93f807cca58d144f525ac53147a234.zip",
         strip_prefix="prometheus-cpp-6f7d712eba93f807cca58d144f525ac53147a234",
         sha256=
-        "42f4854c83aad5d6688f130375d55bb14e000062c541050c58ba533d5aedb8ee",
-        build_file="@rules_iota//:build/BUILD.prometheus_cpp")
+        "42f4854c83aad5d6688f130375d55bb14e000062c541050c58ba533d5aedb8ee")
 
 
 def load_yaml_cpp():
@@ -209,7 +197,6 @@ def iota_cpp_repositories():
     load_yaml()
     load_rb_tree()
     load_com_google_protobuf()
-    load_prometheus_client_model()
     load_civetweb()
     load_prometheus_cpp()
     load_yaml_cpp()

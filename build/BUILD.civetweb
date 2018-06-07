@@ -18,7 +18,9 @@ cc_library(
         "-DNO_SSL",
         "-DNO_FILES",
     ],
-    
+
+    linkopts = ["-pthread"],
+
     strip_include_prefix = 'include',
 
     textual_hdrs = [

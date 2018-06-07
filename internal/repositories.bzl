@@ -61,10 +61,10 @@ def load_libzmq():
 def load_cppzmq():
     native.new_http_archive(
         name="cppzmq",
-        url="https://github.com/zeromq/cppzmq/archive/v4.2.2.tar.gz",
-        strip_prefix="cppzmq-4.2.2",
+        url="https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
+        strip_prefix="cppzmq-97d2cb249851447856a850216d5f8fb68264511a",
         sha256=
-        "3ef50070ac5877c06c6bb25091028465020e181bbfd08f110294ed6bc419737d",
+        "8ad004a648172479ff31126045c1034f90b4b5ca8c6349c7b6903504f37384cf",
         build_file="@rules_iota//:build/BUILD.cppzmq")
 
 
@@ -184,6 +184,25 @@ def load_cjson():
         build_file="@rules_iota//:build/BUILD.cJSON")
 
 
+def load_optional_lite():
+    native.new_http_archive(
+        name = "optional_lite",
+        build_file = "@rules_iota//:build/BUILD.optional_lite",
+        sha256 = "4627df0f5c8631b1f1e09a520a023d1b690f44b0c8addc31a09f38bc62b12c1f",
+        url = "https://github.com/martinmoene/optional-lite/archive/807da49219e55210614402e4937f364f486b897d.zip",
+        strip_prefix="optional-lite",
+    )
+
+def load_nlohmann():
+    native.new_http_archive(
+        name = "nlohmann",
+        build_file = "@rules_iota//:build/BUILD.nlohmann_json",
+        sha256 = "0c103fad107004d13fb646ae94cf2752a80b6a14f218b01166923217f2059ae7",
+        url = "https://github.com/th0br0/json/archive/435fc32a697188a43c86c559e60069711317ffc9.zip",
+        strip_prefix="json",
+    )
+
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -203,3 +222,5 @@ def iota_cpp_repositories():
     load_keccak()
     load_libcuckoo()
     load_cjson()
+    load_optional_lite()
+    load_nlohmann()

@@ -51,10 +51,10 @@ def load_libsodium():
 def load_libzmq():
     native.new_http_archive(
         name="libzmq",
-        url="https://github.com/zeromq/libzmq/archive/v4.2.2.tar.gz",
-        strip_prefix="libzmq-4.2.2",
+        url="https://github.com/zeromq/libzmq/archive/v4.2.5.tar.gz",
+        strip_prefix="libzmq-4.2.5",
         sha256=
-        "ea5eecbb9cc231a750535a7b74f887b18656014cc92601e8ab34734db799b796",
+        "f33807105ce47f684c26751ce4e27a708a83ce120cbabbc614c8df21252b238c",
         build_file="@rules_iota//:build/BUILD.libzmq")
 
 
@@ -71,29 +71,19 @@ def load_cppzmq():
 def load_fmtlib():
     native.new_http_archive(
         name="fmtlib",
-        url="https://github.com/fmtlib/fmt/archive/4.0.0.tar.gz",
-        strip_prefix="fmt-4.0.0",
+        url="https://github.com/fmtlib/fmt/archive/5.0.0.tar.gz",
+        strip_prefix="fmt-5.0.0",
         sha256=
-        "35300a0d356529447a79ed5ccf419239d8b34f916e5d4625f046fd37afa3650a",
+        "fc33d64d5aa2739ad2ca1b128628a7fc1b7dca1ad077314f09affc57d59cf88a",
         build_file="@rules_iota//:build/BUILD.fmt")
-
-def load_nanomsg():
-    native.new_http_archive(
-        name="nanomsg",
-        url="https://github.com/nanomsg/nanomsg/archive/1.1.2.tar.gz",
-        strip_prefix="nanomsg-1.1.2",
-        sha256=
-        "3c52165a735c2fb597d2306593ae4b17900688b90113d4115ad8480288f28ccb",
-        build_file="@rules_iota//:build/BUILD.nanomsg")
-
 
 def load_unity():
     native.new_http_archive(
         name="unity",
-        url="https://github.com/ThrowTheSwitch/Unity/archive/v2.4.2.tar.gz",
-        strip_prefix="Unity-2.4.2",
+        url="https://github.com/ThrowTheSwitch/Unity/archive/v2.4.3.tar.gz",
+        strip_prefix="Unity-2.4.3",
         sha256=
-        "633bda7e0bd298aac404e50f6189a29213f3edf61657dda125409ad35290a603",
+        "a8c5e384f511a03c603bbecc9edc24d2cb4a916998d51a29cf2e3a2896920d03",
         build_file="@rules_iota//:build/BUILD.unity")
 
 
@@ -144,31 +134,32 @@ def load_com_google_protobuf():
     native.http_archive(
         name="com_google_protobuf",
         sha256=
-        "8e0236242106e680b4f9f576cc44b8cd711e948b20a9fc07769b0a20ceab9cc4",
-        strip_prefix="protobuf-3.4.1",
+        "826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f",
+        strip_prefix="protobuf-3.5.1",
         urls=[
-            "https://github.com/google/protobuf/archive/v3.4.1.tar.gz",
+            "https://github.com/google/protobuf/archive/v3.5.1.tar.gz",
         ], )
 
 
 def load_prometheus_cpp():
-    native.http_archive(
+    native.new_http_archive(
         name="prometheus_cpp",
         url=
-        "https://github.com/th0br0/prometheus-cpp/archive/11057d8cc5618ee7f1e77051dcd67d7d8255c13a.zip",
-        strip_prefix="prometheus-cpp-11057d8cc5618ee7f1e77051dcd67d7d8255c13a",
+        "https://github.com/jupp0r/prometheus-cpp/archive/6f7d712eba93f807cca58d144f525ac53147a234.zip",
+        strip_prefix="prometheus-cpp-6f7d712eba93f807cca58d144f525ac53147a234",
         sha256=
-        "63d8be02166ed2ca520750e414146bf3727872a63194ddbe803585b456b618e4")
+        "42f4854c83aad5d6688f130375d55bb14e000062c541050c58ba533d5aedb8ee",
+        build_file="@rules_iota//:build/BUILD.prometheus_cpp")
 
 
 def load_yaml_cpp():
     native.new_http_archive(
         name="yaml_cpp",
         url=
-        "https://github.com/jbeder/yaml-cpp/archive/5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f.zip",
-        strip_prefix="yaml-cpp-5d5bb52ec2825eb4c0c932a9c2d50dc3699f932f",
+        "https://github.com/jbeder/yaml-cpp/archive/4fb1c4b92bf8d94b32ebccdd890407d45b3bc794.zip",
+        strip_prefix="yaml-cpp-4fb1c4b92bf8d94b32ebccdd890407d45b3bc794",
         sha256=
-        "107a0c0711ba2d57e3e8acb148974e8b9c15f3bdc13d88de70dbb21e377a35ab",
+        "e434837d4eb49832fa982c111c7da4e3c9c2b8d5627736f295dd129199559f42",
         build_file="@rules_iota//:build/BUILD.yaml_cpp")
 
 
@@ -188,20 +179,20 @@ def load_libcuckoo():
     native.new_http_archive(
         name="libcuckoo",
         url=
-        "https://github.com/efficient/libcuckoo/archive/1156aa8b1076da9931409b9d409d8edb377b50f3.zip",
-        strip_prefix="libcuckoo-1156aa8b1076da9931409b9d409d8edb377b50f3",
+        "https://github.com/efficient/libcuckoo/archive/6591795a944fa8c7268848d181ba2852f4a7897f.zip",
+        strip_prefix="libcuckoo-6591795a944fa8c7268848d181ba2852f4a7897f",
         build_file="@rules_iota//:build/BUILD.libcuckoo",
         sha256=
-        "9571b74f00436f86d8baed0c439a7331fb8e1ce5880617200a9f443aef28761b")
+        "c31f300fe33a5668528027174150715b238c96f9e9a77cd1d933d7ba43480452")
 
 
 def load_cjson():
     native.new_http_archive(
         name="cJSON",
-        url="https://github.com/DaveGamble/cJSON/archive/v1.7.4.tar.gz",
-        strip_prefix="cJSON-1.7.4",
+        url="https://github.com/DaveGamble/cJSON/archive/v1.7.7.tar.gz",
+        strip_prefix="cJSON-1.7.7",
         sha256=
-        "c3fc800cf9106db4ef5a5ef1fba7d144b21d73b68ad78234e182ebab12079277",
+        "6eb9d852a97ffbe149e747f54d63e39a674fa248bb24902a14c079803067949a",
         build_file="@rules_iota//:build/BUILD.cJSON")
 
 
@@ -214,7 +205,6 @@ def iota_cpp_repositories():
     load_glog()
     load_gtest()
     load_gflags()
-    load_nanomsg()
     load_unity()
     load_yaml()
     load_rb_tree()

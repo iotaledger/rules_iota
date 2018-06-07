@@ -1,8 +1,3 @@
-cc_test(name="nanomsg_test",
-        size="small",
-        srcs=["nanomsg_test.c"],
-        deps=["@nanomsg//:nanomsg"])
-
 cc_test(name="yaml_test",
         size="small",
         srcs=["yaml_test.c"],

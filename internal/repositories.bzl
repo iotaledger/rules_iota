@@ -190,7 +190,7 @@ def load_optional_lite():
         build_file = "@rules_iota//:build/BUILD.optional_lite",
         sha256 = "4627df0f5c8631b1f1e09a520a023d1b690f44b0c8addc31a09f38bc62b12c1f",
         url = "https://github.com/martinmoene/optional-lite/archive/807da49219e55210614402e4937f364f486b897d.zip",
-        strip_prefix="optional-lite",
+        strip_prefix="optional-lite-807da49219e55210614402e4937f364f486b897d",
     )
 
 def load_nlohmann():
@@ -199,7 +199,7 @@ def load_nlohmann():
         build_file = "@rules_iota//:build/BUILD.nlohmann_json",
         sha256 = "11d1e49243a0b570ba742715a1526432752719faf9b675e8c2d14468d79c0e6b",
         url = "https://github.com/th0br0/json/archive/8a0fda26060a45c1dd6e85c71db20730b6b830ff.zip",
-        strip_prefix="json",
+        strip_prefix="json-8a0fda26060a45c1dd6e85c71db20730b6b830ff",
     )
 
 

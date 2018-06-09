@@ -1,30 +1,19 @@
 def load_gflags():
-    native.http_archive(
-        name="com_github_gflags_gflags",
-        url="https://github.com/gflags/gflags/archive/v2.2.1.tar.gz",
-        strip_prefix="gflags-2.2.1",
-        sha256=
-        "ae27cdbcd6a2f935baa78e4f21f675649271634c092b1be01469440495609d0e")
+    native.git_repository(name="com_github_gflags_gflags",
+                          commit="e292e0452fcfd5a8ae055b59052fc041cbab4abf",
+                          remote="https://github.com/gflags/gflags.git", )
+
+
+def load_glog():
+    native.git_repository(name="com_github_google_glog",
+                          commit="2f493d292c92abf16ebd46cfd0cc0bf8eef5724d",
+                          remote="https://github.com/google/glog.git", )
 
 
 def load_gtest():
-    native.new_http_archive(
-        name="gtest",
-        url=
-        "https://github.com/google/googletest/archive/release-1.8.0.tar.gz",
-        strip_prefix="googletest-release-1.8.0",
-        sha256=
-        "58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8",
-        build_file="@rules_iota//:build/BUILD.gtest")
-
-def load_glog():
-    native.new_http_archive(
-        name="glog",
-        url="https://github.com/google/glog/archive/v0.3.5.tar.gz",
-        sha256=
-        "7580e408a2c0b5a89ca214739978ce6ff480b5e7d8d7698a2aa92fadc484d1e0",
-        strip_prefix="glog-0.3.5",
-        build_file="@rules_iota//:build/BUILD.glog", )
+    native.git_repository(name="com_google_googletest",
+                          commit="a6f06bf2fd3b832822cd4e9e554b7d47f32ec084",
+                          remote="https://github.com/google/googletest.git", )
 
 
 def load_rxcpp():
@@ -61,7 +50,8 @@ def load_libzmq():
 def load_cppzmq():
     native.new_http_archive(
         name="cppzmq",
-        url="https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
+        url=
+        "https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
         strip_prefix="cppzmq-97d2cb249851447856a850216d5f8fb68264511a",
         sha256=
         "8ad004a648172479ff31126045c1034f90b4b5ca8c6349c7b6903504f37384cf",
@@ -76,6 +66,7 @@ def load_fmtlib():
         sha256=
         "fc33d64d5aa2739ad2ca1b128628a7fc1b7dca1ad077314f09affc57d59cf88a",
         build_file="@rules_iota//:build/BUILD.fmt")
+
 
 def load_unity():
     native.new_http_archive(
@@ -186,21 +177,25 @@ def load_cjson():
 
 def load_optional_lite():
     native.new_http_archive(
-        name = "optional_lite",
-        build_file = "@rules_iota//:build/BUILD.optional_lite",
-        sha256 = "4627df0f5c8631b1f1e09a520a023d1b690f44b0c8addc31a09f38bc62b12c1f",
-        url = "https://github.com/martinmoene/optional-lite/archive/807da49219e55210614402e4937f364f486b897d.zip",
-        strip_prefix="optional-lite-807da49219e55210614402e4937f364f486b897d",
-    )
+        name="optional_lite",
+        build_file="@rules_iota//:build/BUILD.optional_lite",
+        sha256=
+        "4627df0f5c8631b1f1e09a520a023d1b690f44b0c8addc31a09f38bc62b12c1f",
+        url=
+        "https://github.com/martinmoene/optional-lite/archive/807da49219e55210614402e4937f364f486b897d.zip",
+        strip_prefix=
+        "optional-lite-807da49219e55210614402e4937f364f486b897d", )
+
 
 def load_nlohmann():
     native.new_http_archive(
-        name = "nlohmann",
-        build_file = "@rules_iota//:build/BUILD.nlohmann_json",
-        sha256 = "11d1e49243a0b570ba742715a1526432752719faf9b675e8c2d14468d79c0e6b",
-        url = "https://github.com/th0br0/json/archive/8a0fda26060a45c1dd6e85c71db20730b6b830ff.zip",
-        strip_prefix="json-8a0fda26060a45c1dd6e85c71db20730b6b830ff",
-    )
+        name="nlohmann",
+        build_file="@rules_iota//:build/BUILD.nlohmann_json",
+        sha256=
+        "11d1e49243a0b570ba742715a1526432752719faf9b675e8c2d14468d79c0e6b",
+        url=
+        "https://github.com/th0br0/json/archive/8a0fda26060a45c1dd6e85c71db20730b6b830ff.zip",
+        strip_prefix="json-8a0fda26060a45c1dd6e85c71db20730b6b830ff", )
 
 
 def iota_cpp_repositories():

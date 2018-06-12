@@ -1,67 +1,77 @@
 config_setting(
-    name="windows",
-    values={"cpu": "x64_windows_msvc"},
-    visibility=["//visibility:private"], )
+    name = "windows",
+    values = {"cpu": "x64_windows_msvc"},
+    visibility = ["//visibility:private"],
+)
 
 config_setting(
-    name="linux",
-    values={"cpu": "k8"},
-    visibility=["//visibility:private"], )
+    name = "linux",
+    values = {"cpu": "k8"},
+    visibility = ["//visibility:private"],
+)
 
 config_setting(
-    name="darwin",
-    values={"cpu": "darwin"},
-    visibility=["//visibility:private"], )
+    name = "darwin",
+    values = {"cpu": "darwin"},
+    visibility = ["//visibility:private"],
+)
 
 cc_library(
-    name="snp_1600_reference",
-    strip_include_prefix="SnP/KeccakP-1600/Reference",
-    hdrs=[
-      "SnP/KeccakP-1600/Reference/KeccakP-1600-reference.h",
-      "SnP/KeccakP-1600/Reference/KeccakP-1600-SnP.h",
+    name = "snp_1600_reference",
+    strip_include_prefix = "SnP/KeccakP-1600/Reference",
+    hdrs = [
+        "SnP/KeccakP-1600/Reference/KeccakP-1600-reference.h",
+        "SnP/KeccakP-1600/Reference/KeccakP-1600-SnP.h",
     ],
-    srcs=["SnP/KeccakP-1600/Reference/KeccakP-1600-reference.c"],
-    deps=[":common"], )
+    srcs = ["SnP/KeccakP-1600/Reference/KeccakP-1600-reference.c"],
+    deps = [":common"],
+)
 
 cc_library(
-    name="common",
-    strip_include_prefix='Common',
-    hdrs=[
-      "Common/align.h",
-      "Common/brg_endian.h",
-    ], )
-
-cc_library(
-    name="keccak_sponge_common",
-    hdrs=[
-      "Constructions/KeccakSponge-common.h",
-      "Constructions/KeccakSponge.inc",
+    name = "common",
+    strip_include_prefix = "Common",
+    hdrs = [
+        "Common/align.h",
+        "Common/brg_endian.h",
     ],
-    strip_include_prefix='Constructions',
-    deps=[":common",], )
+)
 
 cc_library(
-    name="keccak_sponge_1600",
-    srcs=[
+    name = "keccak_sponge_common",
+    hdrs = [
+        "Constructions/KeccakSponge-common.h",
+        "Constructions/KeccakSponge.inc",
+    ],
+    strip_include_prefix = "Constructions",
+    deps = [":common"],
+)
+
+cc_library(
+    name = "keccak_sponge_1600",
+    srcs = [
+        "Constructions/KeccakSponge-common.h",
+        "Constructions/KeccakSponge.inc",
         "Constructions/KeccakSpongeWidth1600.c",
         "Constructions/KeccakSpongeWidth1600.h",
     ],
-    strip_include_prefix='Constructions',
-    hdrs=[
+    strip_include_prefix = "Constructions",
+    hdrs = [
         "Constructions/KeccakSpongeWidth1600.h",
     ],
-    deps=[":keccak_sponge_common",":snp_1600_reference"], )
+    deps = [":keccak_sponge_common", ":snp_1600_reference"],
+)
 
 cc_library(
-    name="keccak",
-    srcs=[
+    name = "keccak",
+    srcs = [
         "Modes/KeccakHash.c",
         "Modes/KeccakHash.h",
     ],
-    hdrs=[
+    hdrs = [
         "Modes/KeccakHash.h",
     ],
-    include_prefix="keccak",
-    strip_include_prefix="Modes",
-    deps=[":keccak_sponge_1600"],
-    visibility=["//visibility:public"], )
+    include_prefix = "keccak",
+    strip_include_prefix = "Modes",
+    deps = [":keccak_sponge_1600"],
+    visibility = ["//visibility:public"],
+)

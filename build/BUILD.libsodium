@@ -23,7 +23,7 @@ genrule(name='version_h',
 
 cc_library(
     name='sodium',
-    srcs=glob(["src/**/*.c", "src/**/*.h"]),
+    srcs=glob(["src/**/*.c", "src/**/**/*.c", "src/**/*.h"]),
     hdrs=[":version_h"] + glob(["src/**/*.h"]),
     includes=[
         "src/libsodium/crypto_core/curve25519/ref10",

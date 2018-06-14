@@ -20,7 +20,7 @@ int main() {
 
   std::array<uint8_t, BYTE_LEN> byteSeed;
 
-  argon2i_hash_raw(4, 1 << 17, 1, dataToHash.c_str(), dataToHash.size(),
+  argon2i_hash_raw(4, 1 << 8, 1, dataToHash.c_str(), dataToHash.size(),
                    salt.c_str(), salt.size(), byteSeed.data(), BYTE_LEN);
 
   crypto_auth_hmacsha512_state state;

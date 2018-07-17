@@ -197,6 +197,15 @@ def load_nlohmann():
         "https://github.com/th0br0/json/archive/8a0fda26060a45c1dd6e85c71db20730b6b830ff.zip",
         strip_prefix="json-8a0fda26060a45c1dd6e85c71db20730b6b830ff", )
 
+def load_sqlite3():
+  native.new_http_archive(
+      name = "sqlite3",
+      build_file = "@rules_iota//:build/BUILD.sqlite3",
+      sha256 = "4239a1f69e5721d07d9a374eb84d594225229e54be4ee628da2995f4315d8dfc",
+      strip_prefix = "sqlite-amalgamation-3230100",
+      url = "https://www.sqlite.org/2018/sqlite-amalgamation-3230100.zip",
+  )
+
 
 def iota_cpp_repositories():
     load_fmtlib()
@@ -219,3 +228,4 @@ def iota_cpp_repositories():
     load_cjson()
     load_optional_lite()
     load_nlohmann()
+    load_sqlite3()

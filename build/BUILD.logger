@@ -1,0 +1,7 @@
+licenses(["notice"])  # MIT
+
+cc_library(name="logger",
+           srcs=["src/logger.c"],
+           hdrs=["include/logger.h"],
+           strip_include_prefix = "include",
+           visibility=["//visibility:public"])

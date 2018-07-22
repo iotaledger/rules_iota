@@ -215,6 +215,16 @@ def load_sqlite3():
       url = "https://www.sqlite.org/2018/sqlite-amalgamation-3230100.zip",
   )
 
+def load_logger():
+    native.new_http_archive(
+        name="com_github_embear_logger",
+        url ="https://github.com/embear/logger/archive/v4.0.x.zip",
+        strip_prefix="logger-4.0.x",
+        sha256=
+        "f82b485ef0e3d42de22b49f483c93c4c721d80a9ee8b6bd80c1c0ceb3bfc64a0",
+        build_file="@rules_iota//:build/BUILD.logger")
+
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -238,3 +248,4 @@ def iota_cpp_repositories():
     load_nlohmann()
     load_argon2()
     load_sqlite3()
+    load_logger()

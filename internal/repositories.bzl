@@ -192,10 +192,11 @@ def load_nlohmann():
         name="nlohmann",
         build_file="@rules_iota//:build/BUILD.nlohmann_json",
         sha256=
-        "11d1e49243a0b570ba742715a1526432752719faf9b675e8c2d14468d79c0e6b",
+        "a422ae5511024efd36111716bb5a9dae21813caaaec365990747dbf76d77960a",
         url=
         "https://github.com/th0br0/json/archive/0ae87e9993dc802b17ad7850a727b86bb9b98287.zip",
-        strip_prefix="json-0ae87e9993dc802b17ad7850a727b86bb9b98287", )
+                strip_prefix=
+                "json-0ae87e9993dc802b17ad7850a727b86bb9b98287",)
     
 def load_argon2():
   native.new_http_archive(

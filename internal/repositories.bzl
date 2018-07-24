@@ -194,8 +194,8 @@ def load_nlohmann():
         sha256=
         "11d1e49243a0b570ba742715a1526432752719faf9b675e8c2d14468d79c0e6b",
         url=
-        "https://github.com/th0br0/json/archive/8a0fda26060a45c1dd6e85c71db20730b6b830ff.zip",
-        strip_prefix="json-8a0fda26060a45c1dd6e85c71db20730b6b830ff", )
+        "https://github.com/th0br0/json/archive/3760a38b7e37c23a944d2c4fdec9028ae5ebde3a.zip",
+        strip_prefix="json-3760a38b7e37c23a944d2c4fdec9028ae5ebde3a", )
     
 def load_argon2():
   native.new_http_archive(

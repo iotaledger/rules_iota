@@ -89,3 +89,9 @@ cc_test(
     srcs = ["logger_test.c"],
     deps = ["@com_github_embear_logger//:logger"],
 )
+
+cc_test(
+    name = "nlohmann_test",
+    srcs = ["nlohmann_test.cc"],
+    deps = ["@nlohmann//:json"],
+)

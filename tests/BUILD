@@ -95,3 +95,9 @@ cc_test(
     srcs = ["nlohmann_test.cc"],
     deps = ["@nlohmann//:json"],
 )
+
+cc_test(
+    name = "uthash_test",
+    srcs = ["uthash_test.c"],
+    deps = ["@com_github_uthash//:uthash"],
+)

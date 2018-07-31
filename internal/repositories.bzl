@@ -225,6 +225,14 @@ def load_logger():
         "f82b485ef0e3d42de22b49f483c93c4c721d80a9ee8b6bd80c1c0ceb3bfc64a0",
         build_file="@rules_iota//:build/BUILD.logger")
 
+def load_uthash():
+    native.new_http_archive(
+        name="com_github_uthash",
+        url ="https://github.com/troydhanson/uthash/archive/master.zip",
+        strip_prefix="uthash-master",
+        sha256=
+        "0c40f3cb9a1e746f128bfb71df55932286ac0a1ccdeb7fe883df78bd3c41414f",
+        build_file="@rules_iota//:build/BUILD.uthash")
 
 def iota_cpp_repositories():
     load_fmtlib()
@@ -250,3 +258,4 @@ def iota_cpp_repositories():
     load_argon2()
     load_sqlite3()
     load_logger()
+    load_uthash()

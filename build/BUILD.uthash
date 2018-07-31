@@ -1,0 +1,7 @@
+cc_library(
+    name = "uthash",
+    srcs = glob(["src/.h"]),
+    hdrs = glob(["include/*.h"]),
+    visibility = ["//visibility:public"],
+    strip_include_prefix = "include",
+)

@@ -26,6 +26,7 @@ cc_library(
     textual_hdrs = [
         "src/md5.inl",
         "src/handle_form.inl",
+		"src/file_ops.inl",
     ],
     visibility = ["//visibility:public"],
 )

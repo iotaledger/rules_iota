@@ -11,9 +11,13 @@ def load_glog():
 
 
 def load_gtest():
-    native.git_repository(name="com_google_googletest",
-                          commit="a6f06bf2fd3b832822cd4e9e554b7d47f32ec084",
-                          remote="https://github.com/google/googletest.git", )
+    native.new_http_archive(name="com_google_googletest",
+        url=
+        "https://github.com/google/googletest/archive/587ceaeaee6c2ccb5e565858d7fe12aaf69795e6.tar.gz",
+        strip_prefix="googletest-587ceaeaee6c2ccb5e565858d7fe12aaf69795e6",
+        sha256=
+        "c9bc49be74e3551826b8b2554342ef388c67b831c635520cf67c200ed565ce1e",
+        build_file="@rules_iota//:build/BUILD.googletest")
 
 
 def load_rxcpp():

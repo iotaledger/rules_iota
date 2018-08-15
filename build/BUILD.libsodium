@@ -15,7 +15,13 @@ sed -e 's/@VERSION@/1.0.15/g' \
 EOF""",
 )
 
-config_setting(name = "win", values = {"cpu": "x64_windows_msvc"})
+config_setting(
+    name = "windows",
+    constraint_values = [
+        "@bazel_tools//platforms:windows",
+    ],
+    visibility = ["//visibility:public"],
+)
 
 genrule(
     name = "version_h",
@@ -55,10 +61,9 @@ cc_library(
         "src/libsodium/include/sodium/private",
     ],
     copts = select({
-        ":win": [],
-        "//conditions:default": ["-pthread"],
+        ":windows": [],
+        "//conditions:default": ["-pthread", "-DHAVE_PTHREAD"],
     }) + [
-        "-DHAVE_PTHREAD",
         # TODO(th0br0) add bazel support for determining this on the fly
         # mmx
         # "-DHAVE_MMINTRIN_H",
@@ -68,7 +73,7 @@ cc_library(
         # "-DHAVE_AVXINTRIN_H",
     ],
     linkopts = select({
-        ":win": [],
+        ":windows": [],
         "//conditions:default": [
             "-pthread",
         ],

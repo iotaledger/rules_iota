@@ -200,7 +200,12 @@ boost_library(
 
 boost_library(
     name = "asio",
-    linkopts = ["-lpthread"],
+    linkopts = select({
+        ":linux_x86_64": [
+            "-lpthread",
+        ],
+        "//conditions:default": [],
+    }),
     deps = [
         ":bind",
         ":date_time",
@@ -334,6 +339,13 @@ boost_library(
     deps = [
         ":version",
     ],
+	defines = select({
+        ":windows": [
+	         "BOOST_ALL_NO_LIB",
+			 "BOOST_USE_WINDOWS_H",
+        ],
+	    "//conditions:default": [],
+	})
 )
 
 boost_library(
@@ -490,9 +502,12 @@ boost_library(
 
 boost_library(
     name = "filesystem",
-    copts = [
-        "-Wno-deprecated-declarations",
-    ],
+    copts = select({
+        ":linux": [
+            "-Wno-deprecated-declarations",
+        ],
+        "//conditions:default": []
+    }),
     deps = [
         ":config",
         ":functional",
@@ -1271,14 +1286,27 @@ boost_library(
 
 boost_library(
     name = "thread",
-    srcs = [
-        "libs/thread/src/pthread/once.cpp",
-        "libs/thread/src/pthread/thread.cpp",
-    ],
+    srcs = select({
+        ":windows": [
+            "libs/thread/src/win32/thread.cpp",
+            "libs/thread/src/win32/thread_primitives.cpp",
+			"libs/thread/src/win32/tss_dll.cpp",
+			"libs/thread/src/win32/tss_pe.cpp",
+        ],
+        "//conditions:default": [
+            "libs/thread/src/pthread/once.cpp",
+            "libs/thread/src/pthread/thread.cpp",
+        ]
+    }),
     hdrs = [
         "libs/thread/src/pthread/once_atomic.cpp",
     ],
-    linkopts = ["-lpthread"],
+    linkopts = select({
+        ":linux_x86_64": [
+            "-lpthread",
+        ],
+        "//conditions:default": [],
+    }),
     deps = [
         ":algorithm",
         ":atomic",
@@ -1302,7 +1330,13 @@ boost_library(
         "BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION",
         "BOOST_THREAD_PROVIDES_EXECUTORS",
         "BOOST_THREAD_PROVIDES_FUTURE",
-    ],
+    ] + select({
+	    ":windows": [		   
+		   "BOOST_THREAD_BUILD_LIB=1",
+	    ],
+		"//conditions:default": []
+	
+	}),
 )
 
 boost_library(
@@ -1536,7 +1570,6 @@ boost_library(
 
 boost_library(
     name = "log",
-    copts = ["-msse4.2"],
     defines = [
         "BOOST_LOG_WITHOUT_WCHAR_T",
         "BOOST_LOG_USE_STD_REGEX",

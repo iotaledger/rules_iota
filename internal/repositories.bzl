@@ -235,7 +235,7 @@ def load_uthash():
         url ="https://github.com/troydhanson/uthash/archive/master.zip",
         strip_prefix="uthash-master",
         sha256=
-        "0c40f3cb9a1e746f128bfb71df55932286ac0a1ccdeb7fe883df78bd3c41414f",
+        "37b7270e9d2e965c176495984dc57f7d20687cfabf251cfa94dfbad408c42b13",
         build_file="@rules_iota//:build/BUILD.uthash")
 
 def iota_cpp_repositories():

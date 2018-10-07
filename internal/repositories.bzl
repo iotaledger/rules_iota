@@ -232,10 +232,10 @@ def load_logger():
 def load_uthash():
     native.new_http_archive(
         name="com_github_uthash",
-        url ="https://github.com/troydhanson/uthash/archive/master.zip",
-        strip_prefix="uthash-master",
+        url ="https://github.com/troydhanson/uthash/archive/91fcf37aea9f79535d281ae366996c9f409a1701.zip",
+        strip_prefix="uthash-91fcf37aea9f79535d281ae366996c9f409a1701",
         sha256=
-        "0c40f3cb9a1e746f128bfb71df55932286ac0a1ccdeb7fe883df78bd3c41414f",
+        "24f9a80d7e016ad7eb06116c96fe285d47de365232c3d08fcb7ddcbebc3df3a5",
         build_file="@rules_iota//:build/BUILD.uthash")
 
 def iota_cpp_repositories():

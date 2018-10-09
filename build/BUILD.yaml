@@ -1,18 +1,19 @@
 licenses(["notice"])  # MIT
 
 cc_library(
-    name="yaml",
-    srcs=glob([
+    name = "yaml",
+    srcs = glob([
         "src/*.c",
         "src/*.h",
     ]),
-    copts=[
+    copts = [
         "-DYAML_DECLARE_EXPORT",
         "-DYAML_VERSION_STRING='\"0.1.7\"'",
         "-DYAML_VERSION_PATCH=7",
         "-DYAML_VERSION_MINOR=1",
         "-DYAML_VERSION_MAJOR=0",
     ],
-    hdrs=glob(["include/*.h"]),
-    strip_include_prefix='include',
-    visibility=['//visibility:public'])
+    hdrs = glob(["include/*.h"]),
+    strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+)

@@ -1,16 +1,17 @@
 licenses(["notice"])  # MIT
 
 cc_library(
-    name="rb_tree",
-    srcs=[
-    "test_red_black_tree.c",
-    "red_black_tree.c",
-    "stack.c",
-    "misc.c",
-    "misc.h",
+    name = "rb_tree",
+    srcs = [
+        "test_red_black_tree.c",
+        "red_black_tree.c",
+        "stack.c",
+        "misc.c",
+        "misc.h",
     ],
-    hdrs=[
-    "red_black_tree.h",
-    "stack.h",
+    hdrs = [
+        "red_black_tree.h",
+        "stack.h",
     ],
-    visibility=['//visibility:public'])
+    visibility = ["//visibility:public"],
+)

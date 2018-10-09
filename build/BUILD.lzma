@@ -6,22 +6,22 @@
 #    Public Domain
 
 # Generate config.h
-genrule (
+genrule(
     name = "configure_lzma",
     tools = [
-        "configure", 
+        "configure",
         "src/liblzma/common/common.h",
     ] + glob([
         "build-aux/*",
-        "**/*.in"
+        "**/*.in",
     ]),
     outs = [
-        "config.h"
+        "config.h",
     ],
     cmd = "cd external/org_lzma_lzma && ./configure && cp config.h ../../$(location config.h)",
 )
 
-cc_library (
+cc_library(
     name = "lzma",
     srcs = [
         "src/common/tuklib_physmem.c",
@@ -99,24 +99,23 @@ cc_library (
         "src/liblzma/simple/sparc.c",
     ],
     defines = [
-        "HAVE_CONFIG_H"
+        "HAVE_CONFIG_H",
     ],
     hdrs = glob(["src/**/*.h"]) + ["config.h"],
     visibility = ["//visibility:public"],
     includes = [
         ".",
-        "src", 
+        "src",
         "src/common",
-        "src/liblzma", 
-        "src/liblzma/api", 
-        "src/liblzma/common", 
-        "src/liblzma/check", 
-        "src/liblzma/lz", 
-        "src/liblzma/rangecoder", 
-        "src/liblzma/lzma", 
-        "src/liblzma/delta", 
-        "src/liblzma/simple", 
+        "src/liblzma",
+        "src/liblzma/api",
+        "src/liblzma/common",
+        "src/liblzma/check",
+        "src/liblzma/lz",
+        "src/liblzma/rangecoder",
+        "src/liblzma/lzma",
+        "src/liblzma/delta",
+        "src/liblzma/simple",
     ],
-    linkopts = ["-lpthread"]
+    linkopts = ["-lpthread"],
 )
-

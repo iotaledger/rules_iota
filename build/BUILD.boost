@@ -339,13 +339,13 @@ boost_library(
     deps = [
         ":version",
     ],
-	defines = select({
+    defines = select({
         ":windows": [
-	         "BOOST_ALL_NO_LIB",
-			 "BOOST_USE_WINDOWS_H",
+            "BOOST_ALL_NO_LIB",
+            "BOOST_USE_WINDOWS_H",
         ],
-	    "//conditions:default": [],
-	})
+        "//conditions:default": [],
+    }),
 )
 
 boost_library(
@@ -506,7 +506,7 @@ boost_library(
         ":linux": [
             "-Wno-deprecated-declarations",
         ],
-        "//conditions:default": []
+        "//conditions:default": [],
     }),
     deps = [
         ":config",
@@ -1290,13 +1290,13 @@ boost_library(
         ":windows": [
             "libs/thread/src/win32/thread.cpp",
             "libs/thread/src/win32/thread_primitives.cpp",
-			"libs/thread/src/win32/tss_dll.cpp",
-			"libs/thread/src/win32/tss_pe.cpp",
+            "libs/thread/src/win32/tss_dll.cpp",
+            "libs/thread/src/win32/tss_pe.cpp",
         ],
         "//conditions:default": [
             "libs/thread/src/pthread/once.cpp",
             "libs/thread/src/pthread/thread.cpp",
-        ]
+        ],
     }),
     hdrs = [
         "libs/thread/src/pthread/once_atomic.cpp",
@@ -1331,12 +1331,11 @@ boost_library(
         "BOOST_THREAD_PROVIDES_EXECUTORS",
         "BOOST_THREAD_PROVIDES_FUTURE",
     ] + select({
-	    ":windows": [		   
-		   "BOOST_THREAD_BUILD_LIB=1",
-	    ],
-		"//conditions:default": []
-	
-	}),
+        ":windows": [
+            "BOOST_THREAD_BUILD_LIB=1",
+        ],
+        "//conditions:default": [],
+    }),
 )
 
 boost_library(

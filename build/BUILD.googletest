@@ -85,14 +85,14 @@ cc_library(
             ":has_absl": [
                 "GTEST_HAS_ABSL=1",
             ],
-	    ":windows": [
-	        "GTEST_USE_OWN_TR1_TUPLE=0",
-		"GTEST_HAS_TR1_TUPLE=0",
-	    ],
-	    ":windows_msvc": [
-	        "GTEST_USE_OWN_TR1_TUPLE=0",
-		"GTEST_HAS_TR1_TUPLE=0",
-	    ],
+            ":windows": [
+                "GTEST_USE_OWN_TR1_TUPLE=0",
+                "GTEST_HAS_TR1_TUPLE=0",
+            ],
+            ":windows_msvc": [
+                "GTEST_USE_OWN_TR1_TUPLE=0",
+                "GTEST_HAS_TR1_TUPLE=0",
+            ],
             "//conditions:default": [],
         },
     ),

@@ -1,4 +1,4 @@
-licenses(["notice"]) #MIT
+licenses(["notice"])  #MIT
 
 package(default_visibility = ["//visibility:public"])
 
@@ -11,6 +11,5 @@ cc_library(
     hdrs = glob([
         "include/**/*.h",
     ]),
-    strip_include_prefix='include',
+    strip_include_prefix = "include",
 )
-

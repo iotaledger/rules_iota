@@ -1,8 +1,10 @@
 licenses(["notice"])  # MIT
 
-cc_library(name="logger",
-           srcs=["src/logger.c"],
-           hdrs=["include/logger.h"],
-           copts=["-DLOGGER_ENABLE"],
-           strip_include_prefix = "include",
-           visibility=["//visibility:public"])
+cc_library(
+    name = "logger",
+    srcs = ["src/logger.c"],
+    hdrs = ["include/logger.h"],
+    copts = ["-DLOGGER_ENABLE"],
+    strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+)

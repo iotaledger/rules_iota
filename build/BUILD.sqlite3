@@ -14,3 +14,11 @@ cc_library(
     linkopts = ["-ldl"],
     visibility = ["//visibility:public"],
 )
+
+cc_binary(
+    name = "shell",
+    srcs = ["shell.c"],
+    deps = [":sqlite3"],
+    linkopts = ["-pthread"],
+    visibility = ["//visibility:public"],
+)

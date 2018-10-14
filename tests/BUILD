@@ -101,3 +101,9 @@ cc_test(
     srcs = ["uthash_test.c"],
     deps = ["@com_github_uthash//:uthash"],
 )
+
+cc_test(
+    name = "http_parser_test",
+    srcs = ["http_parser_test.c"],
+    deps = ["@http_parser//:http_parser"],
+)

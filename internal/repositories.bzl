@@ -239,10 +239,11 @@ def load_uthash():
         build_file="@rules_iota//:build/BUILD.uthash")
 
 def load_http_parser():
-    native.new_git_repository(
+    native.new_http_archive(
         name = "http_parser",
-        tag = "v2.8.1",
-        remote = "https://github.com/nodejs/http-parser.git",
+        url = "https://github.com/nodejs/http-parser/archive/v2.8.1.zip",
+        sha256 = "8d734182456143fc94ab95dcea01b84c13d83b2c9345930445da7eb83ebe4090",
+        strip_prefix="http-parser-2.8.1",
         build_file="@rules_iota//:build/BUILD.http_parser",
     )
 

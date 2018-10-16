@@ -24,10 +24,10 @@ def load_rxcpp():
     native.new_http_archive(
         name="rxcpp",
         url=
-        "https://github.com/Reactive-Extensions/RxCpp/archive/v4.0.0.tar.gz",
+        "https://github.com/Reactive-Extensions/RxCpp/archive/v4.1.0.tar.gz",
         sha256=
-        "50e7395ab1bc2a0000df126c6920a36dd3c4ee04a71496b2f4c10adf50d65178",
-        strip_prefix="RxCpp-4.0.0",
+        "d3bb49c7ac6b5c43235df710510fce87d827bb88a1b78242017f190d2acbbdea",
+        strip_prefix="RxCpp-4.1.0",
         build_file="@rules_iota//:build/BUILD.rxcpp", )
 
 

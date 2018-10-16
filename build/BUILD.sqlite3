@@ -19,6 +19,6 @@ cc_binary(
     name = "shell",
     srcs = ["shell.c"],
     deps = [":sqlite3"],
-    linkopts = ["-pthread"],
+    linkopts = ["-lpthread"],
     visibility = ["//visibility:public"],
 )

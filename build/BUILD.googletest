@@ -73,13 +73,6 @@ cc_library(
         "googletest/include/gtest/*.h",
         "googlemock/include/gmock/*.h",
     ]),
-    copts = select(
-        {
-            ":windows": [],
-            ":windows_msvc": [],
-            "//conditions:default": ["-pthread"],
-        },
-    ),
     defines = select(
         {
             ":has_absl": [
@@ -106,7 +99,7 @@ cc_library(
         ":windows": [],
         ":windows_msvc": [],
         "//conditions:default": [
-            "-pthread",
+            "-lpthread",
         ],
     }),
     deps = select(

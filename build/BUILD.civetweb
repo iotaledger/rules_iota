@@ -18,7 +18,7 @@ cc_library(
         "-DNO_SSL",
         "-DNO_FILES",
     ],
-    linkopts = ["-pthread"],
+    linkopts = ["-lpthread"],
     strip_include_prefix = "include",
     textual_hdrs = [
         "src/md5.inl",

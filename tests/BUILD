@@ -80,7 +80,7 @@ cc_test(
 cc_test(
     name = "argon2_and_sodium_test",
     srcs = ["argon2_and_sodium_test.cc"],
-    linkopts = ["-pthread"],
+    linkopts = ["-lpthread"],
     deps = ["@libsodium//:sodium"],
 )
 

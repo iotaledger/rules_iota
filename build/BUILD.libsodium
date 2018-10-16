@@ -62,7 +62,7 @@ cc_library(
     ],
     copts = select({
         ":windows": [],
-        "//conditions:default": ["-pthread", "-DHAVE_PTHREAD"],
+        "//conditions:default": ["-DHAVE_PTHREAD"],
     }) + [
         # TODO(th0br0) add bazel support for determining this on the fly
         # mmx
@@ -75,7 +75,7 @@ cc_library(
     linkopts = select({
         ":windows": [],
         "//conditions:default": [
-            "-pthread",
+            "-lpthread",
         ],
     }),
     deps = ["@argon2"],

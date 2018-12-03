@@ -1,3 +1,5 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
 def load_gflags():
     native.git_repository(
         name = "com_github_gflags_gflags",
@@ -13,7 +15,7 @@ def load_glog():
     )
 
 def load_gtest():
-    native.new_http_archive(
+    http_archive(
         name = "com_google_googletest",
         url =
             "https://github.com/google/googletest/archive/587ceaeaee6c2ccb5e565858d7fe12aaf69795e6.tar.gz",
@@ -24,7 +26,7 @@ def load_gtest():
     )
 
 def load_rxcpp():
-    native.new_http_archive(
+    http_archive(
         name = "rxcpp",
         url =
             "https://github.com/Reactive-Extensions/RxCpp/archive/v4.1.0.tar.gz",
@@ -35,7 +37,7 @@ def load_rxcpp():
     )
 
 def load_libsodium():
-    native.new_http_archive(
+    http_archive(
         name = "libsodium",
         url = "https://github.com/jedisct1/libsodium/archive/1.0.16.tar.gz",
         strip_prefix = "libsodium-1.0.16",
@@ -45,7 +47,7 @@ def load_libsodium():
     )
 
 def load_libzmq():
-    native.new_http_archive(
+    http_archive(
         name = "libzmq",
         url = "https://github.com/zeromq/libzmq/archive/v4.2.5.tar.gz",
         strip_prefix = "libzmq-4.2.5",
@@ -55,7 +57,7 @@ def load_libzmq():
     )
 
 def load_cppzmq():
-    native.new_http_archive(
+    http_archive(
         name = "cppzmq",
         url =
             "https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
@@ -66,7 +68,7 @@ def load_cppzmq():
     )
 
 def load_fmtlib():
-    native.new_http_archive(
+    http_archive(
         name = "fmtlib",
         url = "https://github.com/fmtlib/fmt/archive/5.0.0.tar.gz",
         strip_prefix = "fmt-5.0.0",
@@ -76,7 +78,7 @@ def load_fmtlib():
     )
 
 def load_unity():
-    native.new_http_archive(
+    http_archive(
         name = "unity",
         url = "https://github.com/ThrowTheSwitch/Unity/archive/v2.4.3.tar.gz",
         strip_prefix = "Unity-2.4.3",
@@ -86,7 +88,7 @@ def load_unity():
     )
 
 def load_yaml():
-    native.new_http_archive(
+    http_archive(
         name = "yaml",
         url = "https://github.com/yaml/libyaml/archive/0.1.7.tar.gz",
         strip_prefix = "libyaml-0.1.7",
@@ -96,7 +98,7 @@ def load_yaml():
     )
 
 def load_rb_tree():
-    native.new_http_archive(
+    http_archive(
         name = "rb_tree",
         url =
             "http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
@@ -106,7 +108,7 @@ def load_rb_tree():
     )
 
 def load_civetweb():
-    native.new_http_archive(
+    http_archive(
         name = "civetweb",
         strip_prefix = "civetweb-1.9.1",
         sha256 =
@@ -118,7 +120,7 @@ def load_civetweb():
     )
 
 def load_com_google_protobuf():
-    native.http_archive(
+    http_archive(
         name = "com_google_protobuf",
         sha256 =
             "826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f",
@@ -129,7 +131,7 @@ def load_com_google_protobuf():
     )
 
 def load_prometheus_cpp():
-    native.http_archive(
+    http_archive(
         name = "prometheus_cpp",
         url =
             "https://github.com/jupp0r/prometheus-cpp/archive/6f7d712eba93f807cca58d144f525ac53147a234.zip",
@@ -139,7 +141,7 @@ def load_prometheus_cpp():
     )
 
 def load_yaml_cpp():
-    native.new_http_archive(
+    http_archive(
         name = "yaml_cpp",
         url =
             "https://github.com/jbeder/yaml-cpp/archive/4fb1c4b92bf8d94b32ebccdd890407d45b3bc794.zip",
@@ -150,7 +152,7 @@ def load_yaml_cpp():
     )
 
 def load_keccak():
-    native.new_http_archive(
+    http_archive(
         name = "keccak",
         url =
             "https://github.com/XKCP/XKCP/archive/c737139c81fd191699886a9a74d3220f6e300b29.zip",
@@ -162,7 +164,7 @@ def load_keccak():
     )
 
 def load_libcuckoo():
-    native.new_http_archive(
+    http_archive(
         name = "libcuckoo",
         url =
             "https://github.com/efficient/libcuckoo/archive/6591795a944fa8c7268848d181ba2852f4a7897f.zip",
@@ -173,7 +175,7 @@ def load_libcuckoo():
     )
 
 def load_cjson():
-    native.new_http_archive(
+    http_archive(
         name = "cJSON",
         url = "https://github.com/DaveGamble/cJSON/archive/v1.7.7.tar.gz",
         strip_prefix = "cJSON-1.7.7",
@@ -183,7 +185,7 @@ def load_cjson():
     )
 
 def load_optional_lite():
-    native.new_http_archive(
+    http_archive(
         name = "optional_lite",
         build_file = "@rules_iota//:build/BUILD.optional_lite",
         sha256 =
@@ -195,7 +197,7 @@ def load_optional_lite():
     )
 
 def load_nlohmann():
-    native.new_http_archive(
+    http_archive(
         name = "nlohmann",
         build_file = "@rules_iota//:build/BUILD.nlohmann_json",
         sha256 =
@@ -207,7 +209,7 @@ def load_nlohmann():
     )
 
 def load_argon2():
-    native.new_http_archive(
+    http_archive(
         name = "argon2",
         build_file = "@rules_iota//:build/BUILD.argon2",
         sha256 = "eaea0172c1f4ee4550d1b6c9ce01aab8d1ab66b4207776aa67991eb5872fdcd8",
@@ -216,7 +218,7 @@ def load_argon2():
     )
 
 def load_sqlite3():
-    native.new_http_archive(
+    http_archive(
         name = "sqlite3",
         build_file = "@rules_iota//:build/BUILD.sqlite3",
         sha256 = "8dba212aeb7c25352a74d70141f20ba421bf20af8b2fb661f2b0dce473aba487",
@@ -225,7 +227,7 @@ def load_sqlite3():
     )
 
 def load_logger():
-    native.new_http_archive(
+    http_archive(
         name = "com_github_embear_logger",
         url = "https://github.com/embear/logger/archive/v4.0.x.zip",
         strip_prefix = "logger-4.0.x",
@@ -235,7 +237,7 @@ def load_logger():
     )
 
 def load_uthash():
-    native.new_http_archive(
+    http_archive(
         name = "com_github_uthash",
         url = "https://github.com/troydhanson/uthash/archive/91fcf37aea9f79535d281ae366996c9f409a1701.zip",
         strip_prefix = "uthash-91fcf37aea9f79535d281ae366996c9f409a1701",
@@ -245,7 +247,7 @@ def load_uthash():
     )
 
 def load_http_parser():
-    native.new_http_archive(
+    http_archive(
         name = "http_parser",
         url = "https://github.com/nodejs/http-parser/archive/v2.8.1.zip",
         sha256 = "8d734182456143fc94ab95dcea01b84c13d83b2c9345930445da7eb83ebe4090",

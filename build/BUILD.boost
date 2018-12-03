@@ -37,6 +37,23 @@ config_setting(
     visibility = ["//visibility:public"],
 )
 
+config_setting(
+    name = "osx",
+    constraint_values = [
+        "@bazel_tools//platforms:osx",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "osx_x86_64",
+    constraint_values = [
+        "@bazel_tools//platforms:osx",
+        "@bazel_tools//platforms:x86_64",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 BOOST_CTX_ASM_SOURCES = select({
     ":linux_x86_64": [
         "libs/context/src/asm/jump_x86_64_sysv_elf_gas.S",
@@ -48,6 +65,11 @@ BOOST_CTX_ASM_SOURCES = select({
         "libs/context/src/asm/jump_x86_64_ms_pe_masm.asm",
         "libs/context/src/asm/ontop_x86_64_ms_pe_masm.asm",
     ],
+    ":osx_x86_64": [
+        "libs/context/src/asm/jump_x86_64_sysv_macho_gas.S",
+        "libs/context/src/asm/make_x86_64_sysv_macho_gas.S",
+        "libs/context/src/asm/ontop_x86_64_sysv_macho_gas.S",
+    ],
 })
 
 boost_library(
@@ -58,6 +80,9 @@ boost_library(
         ],
         ":windows_x86_64": [
             "libs/context/src/windows/stack_traits.cpp",
+        ],
+        ":osx_x86_64": [
+            "libs/context/src/posix/stack_traits.cpp",
         ],
     }),
     exclude_src = [
@@ -84,6 +109,7 @@ BOOST_FIBER_NUMA_SRCS = select({
         "libs/fiber/src/numa/windows/pin_thread.cpp",
         "libs/fiber/src/numa/windows/topology.cpp",
     ],
+    "//conditions:default": [],
 })
 
 boost_library(
@@ -98,6 +124,9 @@ boost_library(
     exclude_src = ["libs/fiber/src/numa/**/*.cpp"],
     linkopts = select({
         ":linux_x86_64": [
+            "-lpthread",
+        ],
+        ":osx_x86_64": [
             "-lpthread",
         ],
         "//conditions:default": [],
@@ -306,9 +335,17 @@ boost_library(
 
 boost_library(
     name = "compute",
-    linkopts = [
-        "-lOpenCL",
-    ],
+    linkopts = select({
+        ":linux_x86_64": [
+            "-lOpenCL",
+        ],
+        ":osx_x86_64": [
+            "-framework OpenCL",
+        ],
+        "//conditions:default": [
+            "-lOpenCL",
+        ],
+    }),
     deps = [
         ":algorithm",
         ":chrono",
@@ -400,6 +437,9 @@ BOOST_CORO_SRCS = select({
     ],
     ":windows_x86_64": [
         "libs/coroutine/src/windows/stack_traits.cpp",
+    ],
+    ":osx_x86_64": [
+        "libs/coroutine/src/posix/stack_traits.cpp",
     ],
 })
 
@@ -648,6 +688,10 @@ boost_library(
 )
 
 boost_library(
+    name = "implicit_cast",
+)
+
+boost_library(
     name = "is_placeholder",
 )
 
@@ -784,6 +828,32 @@ boost_library(
 
 boost_library(
     name = "locale",
+    srcs =
+        glob(
+            [
+                "libs/locale/src/**/*.cpp",
+                "libs/locale/src/**/*.hpp",
+                "libs/locale/src/**/*.ipp",
+            ],
+            exclude = [
+                "libs/locale/src/win32/*.cpp",
+                "libs/locale/src/icu/*.cpp",
+            ],
+        ),
+    copts = [
+        "-DBOOST_LOCALE_WITH_ICONV",
+        "-DBOOST_LOCALE_NO_WINAPI_BACKEND",
+        # boost::locale implementation uses deprecated auto_ptr
+        "-Wno-deprecated-declarations",
+    ],
+    deps = [
+        ":assert",
+        ":config",
+        ":cstdint",
+        ":smart_ptr",
+        ":thread",
+        ":unordered",
+    ],
 )
 
 boost_library(
@@ -854,6 +924,7 @@ boost_library(
 
 boost_library(
     name = "noncopyable",
+    deps = [":core"],
 )
 
 boost_library(
@@ -1273,6 +1344,7 @@ boost_library(
 
 boost_library(
     name = "swap",
+    deps = [":core"],
 )
 
 boost_library(
@@ -1452,6 +1524,15 @@ boost_library(
 )
 
 boost_library(
+    name = "crc",
+    deps = [
+        ":config",
+        ":integer",
+        ":limits",
+    ],
+)
+
+boost_library(
     name = "utility",
     hdrs = [
         "boost/compressed_pair.hpp",
@@ -1461,6 +1542,7 @@ boost_library(
         ":config",
         ":detail",
         ":swap",
+        ":preprocessor",
     ],
 )
 
@@ -1580,6 +1662,7 @@ boost_library(
     ],
     exclude_src = [
         "libs/log/src/dump_avx2.cpp",
+        "libs/log/src/dump_ssse3.cpp",
     ],
     deps = [
         ":asio",
@@ -1604,4 +1687,61 @@ boost_library(
 boost_library(
     name = "winapi",
     visibility = ["//visibility:private"],
+)
+
+boost_library(
+    name = "lockfree",
+    deps = [
+        ":align",
+        ":array",
+        ":assert",
+        ":config",
+        ":detail",
+        ":noncopyable",
+        ":parameter",
+        ":predef",
+        ":static_assert",
+        ":type_traits",
+        ":utility",
+    ],
+)
+
+BOOST_STACKTRACE_SOURCES = select({
+    ":linux_x86_64": [
+        "libs/stacktrace/src/backtrace.cpp",
+    ],
+    ":osx_x86_64": [
+        "libs/stacktrace/src/addr2line.cpp",
+    ],
+    ":windows_x86_64": [
+        "libs/stacktrace/src/windbg.cpp",
+        "libs/stacktrace/src/windbg_cached.cpp",
+    ],
+})
+
+boost_library(
+    name = "stacktrace",
+    srcs = BOOST_STACKTRACE_SOURCES,
+    exclude_src = ["libs/stacktrace/src/*.cpp"],
+    defines = select({
+        ":osx_x86_64": [
+            "BOOST_STACKTRACE_GNU_SOURCE_NOT_REQUIRED",
+        ],
+        "//conditions:default": [],
+    }),
+    linkopts = select({
+        ":linux_x86_64": [
+            "-lbacktrace -ldl",
+        ],
+        "//conditions:default": [],
+    }),
+    deps = [
+        ":array",
+        ":config",
+        ":core",
+        ":detail",
+        ":lexical_cast",
+        ":static_assert",
+        ":type_traits",
+    ],
 )

@@ -33,8 +33,26 @@ genrule(
 
 cc_library(
     name = "sodium",
-    srcs = glob(["src/**/*.c", "src/**/*.h"], exclude = ["src/libsodium/crypto_pwhash/argon2/argon2.c"]),
+    srcs = glob(
+        [
+            "src/**/*.c",
+            "src/**/*.h",
+        ],
+        exclude = ["src/libsodium/crypto_pwhash/argon2/argon2.c"],
+    ),
     hdrs = [":version_h"] + glob(["src/**/*.h"]),
+    copts = select({
+        ":windows": [],
+        "//conditions:default": ["-DHAVE_PTHREAD"],
+    }) + [
+        # TODO(th0br0) add bazel support for determining this on the fly
+        # mmx
+        # "-DHAVE_MMINTRIN_H",
+        # sse2
+        # "-DHAVE_EMMINTRIN_H",
+        # avx
+        # "-DHAVE_AVXINTRIN_H",
+    ],
     includes = [
         "src/libsodium/crypto_core/curve25519/ref10",
         "src/libsodium/crypto_generichash/blake2b/ref",
@@ -60,24 +78,12 @@ cc_library(
         "src/libsodium/include/sodium",
         "src/libsodium/include/sodium/private",
     ],
-    copts = select({
-        ":windows": [],
-        "//conditions:default": ["-DHAVE_PTHREAD"],
-    }) + [
-        # TODO(th0br0) add bazel support for determining this on the fly
-        # mmx
-        # "-DHAVE_MMINTRIN_H",
-        # sse2
-        # "-DHAVE_EMMINTRIN_H",
-        # avx
-        # "-DHAVE_AVXINTRIN_H",
-    ],
     linkopts = select({
         ":windows": [],
         "//conditions:default": [
             "-lpthread",
         ],
     }),
-    deps = ["@argon2"],
     visibility = ["//visibility:public"],
+    deps = ["@argon2"],
 )

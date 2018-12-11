@@ -1,4 +1,7 @@
-licenses(["reciprocal", "restricted"])
+licenses([
+    "reciprocal",
+    "restricted",
+])
 
 genrule(
     name = "platform_hpp",
@@ -90,16 +93,18 @@ config_setting(
 
 cc_library(
     name = "zmq",
-    srcs = glob(["src/*.cpp", "src/*.hpp"]),
+    srcs = glob([
+        "src/*.cpp",
+        "src/*.hpp",
+    ]),
     hdrs = [
-        ":platform_hpp",
         "include/zmq.h",
         "include/zmq_utils.h",
-        "src/zmq_draft.h",
         "src/tweetnacl.h",
+        "src/zmq_draft.h",
+        ":platform_hpp",
     ],
     includes = ["include"],
-    deps = ["@libsodium//:sodium"],
     linkopts = select({
         ":win": [],
         "//conditions:default": [
@@ -109,4 +114,5 @@ cc_library(
     visibility = [
         "//visibility:public",
     ],
+    deps = ["@libsodium//:sodium"],
 )

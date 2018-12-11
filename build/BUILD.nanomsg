@@ -19,7 +19,11 @@ config_setting(
 cc_library(
     name = "nanomsg",
     srcs = glob(
-        ["src/**/*.c", "src/**/*.h", "src/**/*.inc"],
+        [
+            "src/**/*.c",
+            "src/**/*.h",
+            "src/**/*.inc",
+        ],
         exclude = [
             "src/aio/usock_win.h",
             "src/aio/usock_win.inc",
@@ -78,9 +82,7 @@ cc_library(
             "src/utils/efd_eventfd.inc",
         ],
     }),
-    linkopts = select({
-        ":linux": ["-lpthread"],
-    }),
+    hdrs = glob(["src/**/*.h"]),
     copts = select({
         ":windows": [
             "-DNN_USE_WINSOCK",
@@ -97,8 +99,10 @@ cc_library(
             "-DNN_HAVE_SEMAPHORE",
         ],
     }),
-    hdrs = glob(["src/**/*.h"]),
-    strip_include_prefix = "src",
     include_prefix = "nanomsg",
+    linkopts = select({
+        ":linux": ["-lpthread"],
+    }),
+    strip_include_prefix = "src",
     visibility = ["//visibility:public"],
 )

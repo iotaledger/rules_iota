@@ -105,5 +105,11 @@ cc_test(
 cc_test(
     name = "http_parser_test",
     srcs = ["http_parser_test.c"],
-    deps = ["@http_parser//:http_parser"],
+    deps = ["@http_parser"],
+)
+
+cc_test(
+    name = "liblfds_test",
+    srcs = ["liblfds_test.c"],
+    deps = ["@liblfds"],
 )

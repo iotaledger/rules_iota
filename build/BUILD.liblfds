@@ -1,0 +1,12 @@
+cc_library(
+    name = "binary",
+    srcs = glob(["inc/**/*.h", "src/**/*.c", "src/**/*.h"]),
+)
+
+cc_library(
+    name = "liblfds",
+    deps = [":binary"],
+    hdrs = glob(["inc/**/*.h"]),
+    strip_include_prefix="inc",
+    visibility = ["//visibility:public"],
+)

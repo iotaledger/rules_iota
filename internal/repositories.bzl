@@ -255,6 +255,15 @@ def load_http_parser():
         build_file = "@rules_iota//:build/BUILD.http_parser",
     )
 
+def load_liblfds():
+    http_archive(
+        name = "liblfds",
+        url = "http://www.liblfds.org/downloads/liblfds%20release%207.1.1%20source.tar.bz2",
+        sha256 = "4cb93868e5830bc02214b90bb76bdce836c38007757eec96d56eb5d9a4b78c47",
+        strip_prefix = "liblfds7.1.1/liblfds711",
+        build_file = "@rules_iota//:build/BUILD.liblfds",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -281,3 +290,4 @@ def iota_cpp_repositories():
     load_logger()
     load_uthash()
     load_http_parser()
+    load_liblfds()

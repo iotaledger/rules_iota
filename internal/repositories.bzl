@@ -1,14 +1,15 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 def load_gflags():
-    native.git_repository(
+    git_repository(
         name = "com_github_gflags_gflags",
         commit = "e292e0452fcfd5a8ae055b59052fc041cbab4abf",
         remote = "https://github.com/gflags/gflags.git",
     )
 
 def load_glog():
-    native.git_repository(
+    git_repository(
         name = "com_github_google_glog",
         commit = "2f493d292c92abf16ebd46cfd0cc0bf8eef5724d",
         remote = "https://github.com/google/glog.git",

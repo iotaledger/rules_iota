@@ -1,0 +1,44 @@
+
+genrule(
+    name = "ck_md_h",
+    outs = ["include/ck_md.h"],
+    cmd = """cat > $@ <<"EOF"
+#ifndef CK_MD_H
+#define CK_MD_H
+#ifndef CK_MD_CACHELINE
+#define CK_MD_CACHELINE (64)
+#endif
+#ifndef CK_MD_PAGESIZE
+#define CK_MD_PAGESIZE (4096)
+#endif
+#ifndef CK_MD_RTM_DISABLE
+#define CK_MD_RTM_DISABLE
+#endif /* CK_MD_RTM_DISABLE */
+#ifndef CK_MD_LSE_DISABLE
+#define CK_MD_LSE_DISABLE
+#endif /* CK_MD_LSE_DISABLE */
+#ifndef CK_MD_POINTER_PACK_DISABLE
+#define CK_MD_POINTER_PACK_DISABLE
+#endif /* CK_MD_POINTER_PACK_DISABLE */
+#ifndef CK_MD_VMA_BITS 
+#define CK_MD_VMA_BITS 48ULL
+#endif /* CK_MD_VMA_BITS */
+#ifndef CK_MD_TSO
+#define CK_MD_TSO
+#endif /* CK_MD_TSO */
+#ifndef CK_PR_DISABLE_DOUBLE
+#define CK_PR_DISABLE_DOUBLE
+#endif /* CK_PR_DISABLE_DOUBLE */
+#define CK_VERSION "0.6.0"
+#define CK_GIT_SHA "bazel"
+#endif
+EOF""")
+
+
+cc_library(
+    name = "concurrencykit",
+    srcs=glob(["src/**/*.c", "src/**/*.h"]),
+    hdrs = glob(["include/**/*.h"]) + [":ck_md_h"],
+    strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+)

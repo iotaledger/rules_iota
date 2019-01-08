@@ -256,13 +256,13 @@ def load_http_parser():
         build_file = "@rules_iota//:build/BUILD.http_parser",
     )
 
-def load_liblfds():
+def load_concurrencykit():
     http_archive(
-        name = "liblfds",
-        url = "http://www.liblfds.org/downloads/liblfds%20release%207.1.1%20source.tar.bz2",
-        sha256 = "4cb93868e5830bc02214b90bb76bdce836c38007757eec96d56eb5d9a4b78c47",
-        strip_prefix = "liblfds7.1.1/liblfds711",
-        build_file = "@rules_iota//:build/BUILD.liblfds",
+        name = "concurrencykit",
+        url = "https://github.com/concurrencykit/ck/archive/0.6.0.tar.gz",
+        sha256 = "d7e27dd0a679e45632951e672f8288228f32310dfed2d5855e9573a9cf0d62df",
+        strip_prefix = "ck-0.6.0",
+        build_file = "@rules_iota//:build/BUILD.concurrencykit",
     )
 
 def iota_cpp_repositories():
@@ -291,4 +291,4 @@ def iota_cpp_repositories():
     load_logger()
     load_uthash()
     load_http_parser()
-    load_liblfds()
+    load_concurrencykit()

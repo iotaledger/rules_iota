@@ -109,7 +109,7 @@ cc_test(
 )
 
 cc_test(
-    name = "liblfds_test",
-    srcs = ["liblfds_test.c"],
-    deps = ["@liblfds"],
+    name = "concurrencykit_test",
+    srcs = ["concurrencykit_test.c"],
+    deps = ["@concurrencykit"],
 )

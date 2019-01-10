@@ -259,9 +259,9 @@ def load_http_parser():
 def load_concurrencykit():
     http_archive(
         name = "concurrencykit",
-        url = "https://github.com/thibault-martinez/ck/archive/017a237f13046dc5ce0fcd1e338ace7da76d4586.zip",
-        sha256 = "c2c112527cc3ce9446c9234dc0275aa67581a55c2f18fdfcdaeb41cdb4198b5f",
-        strip_prefix = "ck-017a237f13046dc5ce0fcd1e338ace7da76d4586",
+        url = "https://github.com/concurrencykit/ck/archive/8698ada9532d880eb1276f3535ef879a23dee8cf.zip",
+        sha256 = "220a13bd1ad663139f15c27f1053594be174e2ce49b29e6fbdb9e6975b3a44f1",
+        strip_prefix = "ck-8698ada9532d880eb1276f3535ef879a23dee8cf",
         build_file = "@rules_iota//:build/BUILD.concurrencykit",
     )
 

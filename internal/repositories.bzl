@@ -265,6 +265,15 @@ def load_concurrencykit():
         build_file = "@rules_iota//:build/BUILD.concurrencykit",
     )
 
+def load_libmicrohttpd():
+    http_archive(
+        name = "libmicrohttpd",
+        url = "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.62.tar.gz",
+        sha256 = "bd3e097d703f5091a6a01b56c0464a90fdd17f5d50478cea50a346b25c88db49",
+        strip_prefix = "libmicrohttpd-0.9.62",
+        build_file = "@rules_iota//:build/BUILD.libmicrohttpd",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -292,3 +301,4 @@ def iota_cpp_repositories():
     load_uthash()
     load_http_parser()
     load_concurrencykit()
+    load_libmicrohttpd()

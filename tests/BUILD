@@ -113,3 +113,9 @@ cc_test(
     srcs = ["concurrencykit_test.c"],
     deps = ["@concurrencykit"],
 )
+
+cc_test(
+    name = "libmicrohttpd_test",
+    srcs = ["libmicrohttpd_test.c"],
+    deps = ["@libmicrohttpd"],
+)

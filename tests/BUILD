@@ -117,5 +117,5 @@ cc_test(
 cc_test(
     name = "libmicrohttpd_test",
     srcs = ["libmicrohttpd_test.c"],
-    deps = ["@libmicrohttpd"],
+    deps = ["@libmicrohttpd//:libmicrohttpd.so"],
 )

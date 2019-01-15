@@ -108,7 +108,7 @@ EOF""",
 )
 
 cc_library(
-    name = "libmicrohttpd",
+    name = "libmicrohttpd.so",
     strip_include_prefix = "src/include",
     hdrs = [":MHD_config_h_linux"] + glob(["src/include/*.h"]),
     srcs = glob(["src/microhttpd/*.h", "src/microhttpd/mhd_*.c"]) + ["src/microhttpd/%s" % x for x in [

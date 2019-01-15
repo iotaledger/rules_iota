@@ -1,4 +1,3 @@
-
 genrule(
     name = "ck_md_h",
     outs = ["include/ck_md.h"],
@@ -32,12 +31,12 @@ genrule(
 #define CK_VERSION "0.6.0"
 #define CK_GIT_SHA "bazel"
 #endif
-EOF""")
-
+EOF""",
+)
 
 cc_library(
     name = "concurrencykit",
-    srcs=glob(["src/**/*.c", "src/**/*.h"]),
+    srcs = glob(["src/**/*.c", "src/**/*.h"]),
     hdrs = glob(["include/**/*.h"]) + [":ck_md_h"],
     strip_include_prefix = "include",
     visibility = ["//visibility:public"],

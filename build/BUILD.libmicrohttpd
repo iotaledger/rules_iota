@@ -107,10 +107,17 @@ genrule(
 EOF""",
 )
 
+MHTTPD_HDRs = [":MHD_config_h_linux"] + glob(["src/include/*.h"])
+
 cc_library(
+  name ="libmicrohttpd_hdrs",
+  hdrs = MHTTPD_HDRs,
+  visibility = ["//visibility:public"],
+  strip_include_prefix = "src/include",
+)
+
+cc_binary(
     name = "libmicrohttpd.so",
-    strip_include_prefix = "src/include",
-    hdrs = [":MHD_config_h_linux"] + glob(["src/include/*.h"]),
     srcs = glob(["src/microhttpd/*.h", "src/microhttpd/mhd_*.c"]) + ["src/microhttpd/%s" % x for x in [
         "base64.c",
         "connection.c",
@@ -123,6 +130,21 @@ cc_library(
         "response.c",
         "tsearch.c",
     ]],
+    linkshared=True,
+    linkstatic=False,
     linkopts = ["-pthread"],
-    visibility = ["//visibility:public"],
+deps=[":libmicrohttpd_hdrs"],
+  visibility = ["//visibility:public"],
+)
+
+cc_import(
+  name = "libmicrohttpd_shared",
+  shared_library = ":libmicrohttpd.so",
+  visibility = ["//visibility:public"],
+)
+
+cc_library(
+  name="libmicrohttpd",
+  deps=[":libmicrohttpd_shared", ":libmicrohttpd_hdrs"],
+  visibility = ["//visibility:public"],
 )

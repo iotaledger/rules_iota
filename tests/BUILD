@@ -119,3 +119,9 @@ cc_test(
     srcs = ["libmicrohttpd_test.c"],
     deps = ["@libmicrohttpd//:libmicrohttpd"],
 )
+
+cc_test(
+    name = "mbedtls_test",
+    srcs = ["mbedtls_test.c"],
+    deps = ["@mbedtls", "@unity"],
+)

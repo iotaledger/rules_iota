@@ -274,6 +274,15 @@ def load_libmicrohttpd():
         build_file = "@rules_iota//:build/BUILD.libmicrohttpd",
     )
 
+def load_mbedtls():
+    http_archive(
+        name = "mbedtls",
+        url = "https://github.com/ARMmbed/mbedtls/archive/mbedtls-2.17.zip",
+        sha256 = "59cec8d3e56e8207b101c93095a038aa62126860bf1f1e8acb552a005a2c6eba",
+        strip_prefix = "mbedtls-mbedtls-2.17",
+        build_file = "@rules_iota//:build/BUILD.mbedtls",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -302,3 +311,4 @@ def iota_cpp_repositories():
     load_http_parser()
     load_concurrencykit()
     load_libmicrohttpd()
+    load_mbedtls()

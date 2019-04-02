@@ -125,3 +125,9 @@ cc_test(
     srcs = ["mbedtls_test.c"],
     deps = ["@mbedtls", "@unity"],
 )
+
+cc_test(
+    name = "xxhash_test",
+    srcs = ["xxhash_test.c"],
+    deps = ["@xxhash", "@unity"],
+)

@@ -283,6 +283,15 @@ def load_mbedtls():
         build_file = "@rules_iota//:build/BUILD.mbedtls",
     )
 
+def load_xxhash():
+    http_archive(
+        name = "xxhash",
+        url = "https://github.com/Cyan4973/xxHash/archive/v0.7.0.zip",
+        sha256 = "9de5d352ddfcf9b3a6a3fe4d533e870edebb402c01c51286a14c2983b73306e3",
+        strip_prefix = "xxHash-0.7.0",
+        build_file = "@rules_iota//:build/BUILD.xxhash",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -312,3 +321,4 @@ def iota_cpp_repositories():
     load_concurrencykit()
     load_libmicrohttpd()
     load_mbedtls()
+    load_xxhash()

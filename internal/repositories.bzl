@@ -222,9 +222,9 @@ def load_sqlite3():
     http_archive(
         name = "sqlite3",
         build_file = "@rules_iota//:build/BUILD.sqlite3",
-        sha256 = "8dba212aeb7c25352a74d70141f20ba421bf20af8b2fb661f2b0dce473aba487",
-        strip_prefix = "sqlite-amalgamation-3250200",
-        url = "https://www.sqlite.org/2018/sqlite-amalgamation-3250200.zip",
+        sha256 = "00fc566f1cece7f4264dc93a7151c64bb794e58c5d20ea65f46b9f7cb36bc34b",
+        strip_prefix = "sqlite-amalgamation-3270200",
+        url = "https://www.sqlite.org/2019/sqlite-amalgamation-3270200.zip",
     )
 
 def load_logger():

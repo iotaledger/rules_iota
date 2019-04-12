@@ -156,12 +156,12 @@ def load_keccak():
     http_archive(
         name = "keccak",
         url =
-            "https://github.com/XKCP/XKCP/archive/c737139c81fd191699886a9a74d3220f6e300b29.zip",
+            "https://github.com/XKCP/XKCP/archive/36002f25c476af3a3d10310287e4a2b1c85bc773.zip",
         strip_prefix =
-            "XKCP-c737139c81fd191699886a9a74d3220f6e300b29",
+            "XKCP-36002f25c476af3a3d10310287e4a2b1c85bc773",
         build_file = "@rules_iota//:build/BUILD.keccak",
         sha256 =
-            "c6afd429cb48f41fe2385fb0f796d212489ff73b14a580f2a822e307d99248b2",
+            "63f5217966631bf8da0d91368bfb664f3c6e227f9d63a6d2920be4058f3d4d22",
     )
 
 def load_libcuckoo():
@@ -178,10 +178,10 @@ def load_libcuckoo():
 def load_cjson():
     http_archive(
         name = "cJSON",
-        url = "https://github.com/DaveGamble/cJSON/archive/v1.7.7.tar.gz",
-        strip_prefix = "cJSON-1.7.7",
+        url = "https://github.com/DaveGamble/cJSON/archive/v1.7.10.tar.gz",
+        strip_prefix = "cJSON-1.7.10",
         sha256 =
-            "6eb9d852a97ffbe149e747f54d63e39a674fa248bb24902a14c079803067949a",
+            "cc544fdd065f3dd19113f1d5ba5f61d696e0f810f291f4b585d1dec361b0188e",
         build_file = "@rules_iota//:build/BUILD.cJSON",
     )
 
@@ -222,9 +222,9 @@ def load_sqlite3():
     http_archive(
         name = "sqlite3",
         build_file = "@rules_iota//:build/BUILD.sqlite3",
-        sha256 = "8dba212aeb7c25352a74d70141f20ba421bf20af8b2fb661f2b0dce473aba487",
-        strip_prefix = "sqlite-amalgamation-3250200",
-        url = "https://www.sqlite.org/2018/sqlite-amalgamation-3250200.zip",
+        sha256 = "00fc566f1cece7f4264dc93a7151c64bb794e58c5d20ea65f46b9f7cb36bc34b",
+        strip_prefix = "sqlite-amalgamation-3270200",
+        url = "https://www.sqlite.org/2019/sqlite-amalgamation-3270200.zip",
     )
 
 def load_logger():
@@ -240,10 +240,10 @@ def load_logger():
 def load_uthash():
     http_archive(
         name = "com_github_uthash",
-        url = "https://github.com/troydhanson/uthash/archive/8b214aefcb81df86a7e5e0d4fa20e59a6c18bc02.zip",
-        strip_prefix = "uthash-8b214aefcb81df86a7e5e0d4fa20e59a6c18bc02",
+        url = "https://github.com/troydhanson/uthash/archive/e5e9ad586f3249733ab3d00bb74fcbb9433e48da.zip",
+        strip_prefix = "uthash-e5e9ad586f3249733ab3d00bb74fcbb9433e48da",
         sha256 =
-            "01cf1f8dff9fc68e5f1043624a866b888ad5709b0a9406e4b3a29b5e127a42ba",
+            "63536aece2b99db21e3b42265d9dd1b57d10f9ecd2edfbdf0afca6697409c831",
         build_file = "@rules_iota//:build/BUILD.uthash",
     )
 
@@ -268,9 +268,9 @@ def load_concurrencykit():
 def load_libmicrohttpd():
     http_archive(
         name = "libmicrohttpd",
-        url = "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.62.tar.gz",
-        sha256 = "bd3e097d703f5091a6a01b56c0464a90fdd17f5d50478cea50a346b25c88db49",
-        strip_prefix = "libmicrohttpd-0.9.62",
+        url = "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.63.tar.gz",
+        sha256 = "37c36f1be177f0e37ef181a645cd3baac1000bd322a01c2eff70f3cc8c91749c",
+        strip_prefix = "libmicrohttpd-0.9.63",
         build_file = "@rules_iota//:build/BUILD.libmicrohttpd",
     )
 

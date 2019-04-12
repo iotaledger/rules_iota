@@ -268,9 +268,9 @@ def load_concurrencykit():
 def load_libmicrohttpd():
     http_archive(
         name = "libmicrohttpd",
-        url = "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.62.tar.gz",
-        sha256 = "bd3e097d703f5091a6a01b56c0464a90fdd17f5d50478cea50a346b25c88db49",
-        strip_prefix = "libmicrohttpd-0.9.62",
+        url = "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.63.tar.gz",
+        sha256 = "37c36f1be177f0e37ef181a645cd3baac1000bd322a01c2eff70f3cc8c91749c",
+        strip_prefix = "libmicrohttpd-0.9.63",
         build_file = "@rules_iota//:build/BUILD.libmicrohttpd",
     )
 

@@ -18,46 +18,44 @@ config_setting(
 
 cc_library(
     name = "snp_1600_reference",
-    srcs = ["SnP/KeccakP-1600/Reference/KeccakP-1600-reference.c"],
+    srcs = ["lib/low/KeccakP-1600/Reference/KeccakP-1600-reference.c"],
     hdrs = [
-        "SnP/KeccakP-1600/Reference/KeccakP-1600-SnP.h",
-        "SnP/KeccakP-1600/Reference/KeccakP-1600-reference.h",
+        "lib/low/KeccakP-1600/Reference/KeccakP-1600-SnP.h",
+        "lib/low/KeccakP-1600/Reference/KeccakP-1600-reference.h",
     ],
-    strip_include_prefix = "SnP/KeccakP-1600/Reference",
+    strip_include_prefix = "lib/low/KeccakP-1600/Reference",
     deps = [":common"],
 )
 
 cc_library(
     name = "common",
     hdrs = [
-        "Common/align.h",
-        "Common/brg_endian.h",
+        "lib/common/align.h",
+        "lib/common/brg_endian.h",
     ],
-    strip_include_prefix = "Common",
+    strip_include_prefix = "lib/common",
 )
 
 cc_library(
     name = "keccak_sponge_common",
     hdrs = [
-        "Constructions/KeccakSponge.inc",
-        "Constructions/KeccakSponge-common.h",
+        "lib/high/Keccak/KeccakSponge.inc",
+        "lib/high/Keccak/KeccakSponge-common.h",
     ],
-    strip_include_prefix = "Constructions",
+    strip_include_prefix = "lib/high/Keccak",
     deps = [":common"],
 )
 
 cc_library(
     name = "keccak_sponge_1600",
     srcs = [
-        "Constructions/KeccakSponge.inc",
-        "Constructions/KeccakSponge-common.h",
-        "Constructions/KeccakSpongeWidth1600.c",
-        "Constructions/KeccakSpongeWidth1600.h",
+        "lib/high/Keccak/KeccakSpongeWidth1600.c",
+        "lib/high/Keccak/KeccakSpongeWidth1600.h",
     ],
     hdrs = [
-        "Constructions/KeccakSpongeWidth1600.h",
+        "lib/high/Keccak/KeccakSpongeWidth1600.h",
     ],
-    strip_include_prefix = "Constructions",
+    strip_include_prefix = "lib/high/Keccak",
     deps = [
         ":keccak_sponge_common",
         ":snp_1600_reference",
@@ -67,14 +65,14 @@ cc_library(
 cc_library(
     name = "keccak",
     srcs = [
-        "Modes/KeccakHash.c",
-        "Modes/KeccakHash.h",
+        "lib/high/Keccak/FIPS202/KeccakHash.c",
+        "lib/high/Keccak/FIPS202/KeccakHash.h",
     ],
     hdrs = [
-        "Modes/KeccakHash.h",
+        "lib/high/Keccak/FIPS202/KeccakHash.h",
     ],
     include_prefix = "keccak",
-    strip_include_prefix = "Modes",
+    strip_include_prefix = "lib/high/Keccak/FIPS202",
     visibility = ["//visibility:public"],
     deps = [":keccak_sponge_1600"],
 )

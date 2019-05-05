@@ -1,7 +1,7 @@
 # Taken from https://github.com/nelhage/rules_boost
 # License: Apache 2.0 - https://github.com/nelhage/rules_boost/commit/dda80955f18ff3dedf2c22b1a8521e5c7294672b
 
-load("@rules_iota//:internal/boost.bzl", "boost_library", "hdr_list", "includes_list")
+load("@rules_iota//internal:boost.bzl", "boost_library", "hdr_list", "includes_list")
 
 config_setting(
     name = "linux",

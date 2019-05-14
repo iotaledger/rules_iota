@@ -1,7 +1,7 @@
 licenses([
     "reciprocal",
     "restricted",
-])
+]) # GPLv3
 
 genrule(
     name = "platform_hpp",

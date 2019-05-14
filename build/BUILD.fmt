@@ -1,4 +1,4 @@
-licenses(["notice"])
+licenses(["notice"]) # BSD 2-Clause
 
 cc_library(
     name = "fmt",

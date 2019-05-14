@@ -1,4 +1,4 @@
-licenses(["notice"])
+licenses(["notice"]) # MIT
 
 cc_library(
     name = "cppzmq",

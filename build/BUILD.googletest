@@ -34,7 +34,7 @@
 
 package(default_visibility = ["//visibility:public"])
 
-licenses(["notice"])
+licenses(["notice"]) # BSD 3-Clause
 
 config_setting(
     name = "windows",

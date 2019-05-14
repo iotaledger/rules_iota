@@ -250,9 +250,9 @@ def load_uthash():
 def load_http_parser():
     http_archive(
         name = "http_parser",
-        url = "https://github.com/nodejs/http-parser/archive/v2.8.1.zip",
-        sha256 = "8d734182456143fc94ab95dcea01b84c13d83b2c9345930445da7eb83ebe4090",
-        strip_prefix = "http-parser-2.8.1",
+        url = "https://github.com/nodejs/http-parser/archive/v2.9.2.zip",
+        sha256 = "be8c89075527aeacecea1c1cbff994cfcfe8c592ecf4517d6e90248c164fcdd6",
+        strip_prefix = "http-parser-2.9.2",
         build_file = "@rules_iota//:build/BUILD.http_parser",
     )
 

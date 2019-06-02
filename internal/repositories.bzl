@@ -240,10 +240,10 @@ def load_logger():
 def load_uthash():
     http_archive(
         name = "com_github_uthash",
-        url = "https://github.com/troydhanson/uthash/archive/e5e9ad586f3249733ab3d00bb74fcbb9433e48da.zip",
-        strip_prefix = "uthash-e5e9ad586f3249733ab3d00bb74fcbb9433e48da",
+        url = "https://github.com/troydhanson/uthash/archive/f19dde22d80a563948a263afe00947e6e42ed8f4.zip",
+        strip_prefix = "uthash-f19dde22d80a563948a263afe00947e6e42ed8f4",
         sha256 =
-            "63536aece2b99db21e3b42265d9dd1b57d10f9ecd2edfbdf0afca6697409c831",
+            "65eed620bfde10a6d5ac88f42c06f5e14f4d98ce3b0e380be8e7a26903c665eb",
         build_file = "@rules_iota//:build/BUILD.uthash",
     )
 

@@ -131,3 +131,9 @@ cc_test(
     srcs = ["xxhash_test.c"],
     deps = ["@xxhash", "@unity"],
 )
+
+cc_test(
+    name = "iota_lib_cpp_test",
+    srcs = ["iota_lib_cpp_test.cc"],
+    deps = ["@iota_lib_cpp"],
+)

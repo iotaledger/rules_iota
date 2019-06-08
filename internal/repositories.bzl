@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
 def load_gflags():
     git_repository(
@@ -292,6 +292,14 @@ def load_xxhash():
         build_file = "@rules_iota//:build/BUILD.xxhash",
     )
 
+def load_iota_lib_cpp():
+    new_git_repository(
+        name = "iota_lib_cpp",
+        build_file = "@rules_iota//:build/BUILD.iota_lib_cpp",
+        commit = "9971c832e6a38972803a4d1506a78c36451c3df3",
+        remote = "https://github.com/th0br0/iota.lib.cpp.git",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -322,3 +330,4 @@ def iota_cpp_repositories():
     load_libmicrohttpd()
     load_mbedtls()
     load_xxhash()
+    load_iota_lib_cpp()

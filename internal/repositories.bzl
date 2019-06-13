@@ -50,10 +50,10 @@ def load_libsodium():
 def load_libzmq():
     http_archive(
         name = "libzmq",
-        url = "https://github.com/zeromq/libzmq/archive/v4.2.5.tar.gz",
-        strip_prefix = "libzmq-4.2.5",
+        url = "https://github.com/zeromq/libzmq/archive/v4.3.1.tar.gz",
+        strip_prefix = "libzmq-4.3.1",
         sha256 =
-            "f33807105ce47f684c26751ce4e27a708a83ce120cbabbc614c8df21252b238c",
+            "e1dec061725b55d791e0c6952b8c220846c8cd901c09d1283a6e902898205b9d",
         build_file = "@rules_iota//:build/BUILD.libzmq",
     )
 

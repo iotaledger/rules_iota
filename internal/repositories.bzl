@@ -296,8 +296,8 @@ def load_iota_lib_cpp():
     new_git_repository(
         name = "iota_lib_cpp",
         build_file = "@rules_iota//:build/BUILD.iota_lib_cpp",
-        commit = "9971c832e6a38972803a4d1506a78c36451c3df3",
-        remote = "https://github.com/th0br0/iota.lib.cpp.git",
+        commit = "1dfde65ac4ea3b81e4ac3a1cabd2e98dc65211be",
+        remote = "https://github.com/thibault-martinez/iota.lib.cpp.git",
     )
 
 def iota_cpp_repositories():

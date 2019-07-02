@@ -137,3 +137,9 @@ cc_test(
     srcs = ["iota_lib_cpp_test.cc"],
     deps = ["@iota_lib_cpp"],
 )
+
+cc_test(
+    name = "libuv_test",
+    srcs = ["libuv_test.c"],
+    deps = ["@libuv"],
+)

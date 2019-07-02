@@ -300,6 +300,15 @@ def load_iota_lib_cpp():
         remote = "https://github.com/thibault-martinez/iota.lib.cpp.git",
     )
 
+def load_libuv():
+    http_archive(
+      name = "libuv",
+      build_file = "@rules_iota//:build/BUILD.libuv",
+      sha256 = "44c8fdadf3b3f393006a4ac4ba144020673a3f9cd72bed1fbb2c366ebcf0d199",
+      strip_prefix = "libuv-1.30.0",
+      url = "https://github.com/libuv/libuv/archive/v1.30.0.tar.gz",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -331,3 +340,4 @@ def iota_cpp_repositories():
     load_mbedtls()
     load_xxhash()
     load_iota_lib_cpp()
+    load_libuv()

@@ -143,3 +143,27 @@ cc_test(
     srcs = ["libuv_test.c"],
     deps = ["@libuv"],
 )
+
+cc_test(
+    name = "sqlite3_test",
+    srcs = ["sqlite3_test.c"],
+    deps = ["@sqlite3"],
+)
+
+cc_test(
+    name = "cppzmq_test",
+    srcs = ["cppzmq_test.cc"],
+    deps = ["@cppzmq"],
+)
+
+cc_test(
+    name = "optional_lite_test",
+    srcs = ["optional_lite_test.cc"],
+    deps = ["@optional_lite"],
+)
+
+cc_test(
+    name = "rxcpp_test",
+    srcs = ["rxcpp_test.cc"],
+    deps = ["@rxcpp"],
+)

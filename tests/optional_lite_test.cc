@@ -22,4 +22,5 @@ int main( int argc, char * argv[] )
 
     if ( oi ) std::cout << "'" << text << "' is " << *oi << std::endl;
     else      std::cout << "'" << text << "' isn't a number" << std::endl;
+    return 0;
 }

@@ -16,4 +16,5 @@ int main(int argc, char* argv[])
       fprintf(stderr, "Opened database successfully\n");
    }
    sqlite3_close(db);
+   return 0;
 }

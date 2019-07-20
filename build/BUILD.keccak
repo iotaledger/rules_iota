@@ -51,6 +51,8 @@ cc_library(
     srcs = [
         "lib/high/Keccak/KeccakSpongeWidth1600.c",
         "lib/high/Keccak/KeccakSpongeWidth1600.h",
+        "lib/high/Keccak/KeccakSponge.inc",
+        "lib/high/Keccak/KeccakSponge-common.h",
     ],
     hdrs = [
         "lib/high/Keccak/KeccakSpongeWidth1600.h",

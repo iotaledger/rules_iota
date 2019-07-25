@@ -83,12 +83,12 @@ genrule(
 #define PACKAGE "libmicrohttpd"
 #define PACKAGE_BUGREPORT "libmicrohttpd@gnu.org"
 #define PACKAGE_NAME "GNU Libmicrohttpd"
-#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.62"
+#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.65"
 #define PACKAGE_TARNAME "libmicrohttpd"
 #define PACKAGE_URL "http://www.gnu.org/software/libmicrohttpd/"
-#define PACKAGE_VERSION "0.9.62"
+#define PACKAGE_VERSION "0.9.65"
 #define STDC_HEADERS 1
-#define VERSION "0.9.62"
+#define VERSION "0.9.65"
 #if defined AC_APPLE_UNIVERSAL_BUILD
 # if defined __BIG_ENDIAN__
 #  define WORDS_BIGENDIAN 1
@@ -189,12 +189,12 @@ EOF""",
 #define PACKAGE "libmicrohttpd"
 #define PACKAGE_BUGREPORT "libmicrohttpd@gnu.org"
 #define PACKAGE_NAME "GNU Libmicrohttpd"
-#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.62"
+#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.65"
 #define PACKAGE_TARNAME "libmicrohttpd"
 #define PACKAGE_URL "http://www.gnu.org/software/libmicrohttpd/"
-#define PACKAGE_VERSION "0.9.62"
+#define PACKAGE_VERSION "0.9.65"
 #define STDC_HEADERS 1
-#define VERSION "0.9.62"
+#define VERSION "0.9.65"
 #if defined AC_APPLE_UNIVERSAL_BUILD
 # if defined __BIG_ENDIAN__
 #  define WORDS_BIGENDIAN 1
@@ -215,18 +215,13 @@ EOF""",
 })
 )
 
-MHTTPD_HDRs = [":MHD_config_h"] + glob(["src/include/*.h"])
-
 cc_library(
-  name ="libmicrohttpd_hdrs",
-  hdrs = MHTTPD_HDRs,
-  visibility = ["//visibility:public"],
-  strip_include_prefix = "src/include",
-)
-
-cc_binary(
-    name = "libmicrohttpd.so",
-    srcs = glob(["src/microhttpd/*.h", "src/microhttpd/mhd_*.c"]) + ["src/microhttpd/%s" % x for x in [
+    name = "libmicrohttpd",
+    srcs = glob(["src/microhttpd/*.h",
+      "src/microhttpd/mhd_*.c",
+      "src/include/*.h"],
+      exclude = ["src/include/microhttpd.h"]) +
+      ["src/microhttpd/%s" % x for x in [
         "base64.c",
         "connection.c",
         "daemon.c",
@@ -237,22 +232,14 @@ cc_binary(
         "sysfdsetsize.c",
         "response.c",
         "tsearch.c",
-    ]],
-    linkshared=True,
-    linkstatic=False,
-    linkopts = ["-pthread"],
-deps=[":libmicrohttpd_hdrs"],
-  visibility = ["//visibility:public"],
-)
-
-cc_import(
-  name = "libmicrohttpd_shared",
-  shared_library = ":libmicrohttpd.so",
-  visibility = ["//visibility:public"],
-)
-
-cc_library(
-  name="libmicrohttpd",
-  deps=[":libmicrohttpd_shared", ":libmicrohttpd_hdrs"],
+      ]] +
+      [":MHD_config_h"],
+    hdrs = ["src/include/microhttpd.h"],
+    includes = ["src/microhttpd", "src/include" ],
+    #linkopts = ["-pthread"],
+    linkopts = select({
+    "@bazel_tools//src/conditions:windows": [],
+    "//conditions:default": ["-pthread"],
+    }),
   visibility = ["//visibility:public"],
 )

@@ -115,12 +115,6 @@ LIBUV_LINUX_HEADERS = [
   "include/uv/linux.h",
 ]
 
-config_setting(
-    name = "win",
-    values = {"cpu": "x64_windows"},
-    visibility = ["//visibility:private"],
-)
-
 cc_library(
   name = "libuv",
   srcs = LIBUV_COMMON_SOURCES +
@@ -138,7 +132,7 @@ cc_library(
     "//conditions:default": LIBUV_UNIX_HEADERS + LIBUV_LINUX_HEADERS,
   }),
   linkopts = select({
-    ":win": ["-lWs2_32", "-liphlpapi", "-luv", "-lmswsock", "-ladvapi32", "-lpsapi", "-luserenv",],
+    "@bazel_tools//src/conditions:windows": ["-lWs2_32", "-liphlpapi", "-luv", "-lmswsock", "-ladvapi32", "-lpsapi", "-luserenv",],
     "//conditions:default":[],
   }),  
   includes = ["include", "src"],

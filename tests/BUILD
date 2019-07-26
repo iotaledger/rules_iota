@@ -44,19 +44,8 @@ cc_test(
 
 cc_test(
     name = "yaml_cpp_test",
-    size = "small",
     srcs = ["yaml_cpp_test.cc"],
-    data = [":copy_config_test_example_file"],
     deps = ["@yaml_cpp"],
-)
-
-genrule(
-    name = "copy_config_test_example_file",
-    srcs = glob(["config_test_example.yaml"]),
-    outs = ["config_example.yaml"],
-    cmd = "cp $(SRCS) $@",
-    local = 1,
-    output_to_bindir = 1,
 )
 
 cc_test(

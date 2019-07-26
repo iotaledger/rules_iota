@@ -131,6 +131,11 @@ cc_library(
     "@bazel_tools//src/conditions:windows": LIBUV_WINNT_HEADERS,
     "//conditions:default": LIBUV_UNIX_HEADERS + LIBUV_LINUX_HEADERS,
   }),
+  linkopts = select({
+    "@bazel_tools//src/conditions:windows": ["-lWs2_32", "-liphlpapi", "-lmswsock", "-ladvapi32", "-lpsapi", "-luserenv",],
+    "@bazel_tools//src/conditions:linux_x86_64":["-pthread", "-ldl"],
+    "//conditions:default":[],
+  }),  
   includes = ["include", "src"],
   visibility = ["//visibility:public"],
 )

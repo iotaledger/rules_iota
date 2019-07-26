@@ -91,10 +91,10 @@ def load_unity():
 def load_yaml():
     http_archive(
         name = "yaml",
-        url = "https://github.com/yaml/libyaml/archive/0.1.7.tar.gz",
-        strip_prefix = "libyaml-0.1.7",
+        url = "https://github.com/yaml/libyaml/archive/0.2.2.tar.gz",
+        strip_prefix = "libyaml-0.2.2",
         sha256 =
-            "e1884d0fa1eec8cf869ac6bebbf25391e81956aa2970267f974a9fa5e0b968e2",
+            "46bca77dc8be954686cff21888d6ce10ca4016b360ae1f56962e6882a17aa1fe",
         build_file = "@rules_iota//:build/BUILD.yaml",
     )
 

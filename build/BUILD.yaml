@@ -9,9 +9,9 @@ cc_library(
     hdrs = glob(["include/*.h"]),
     copts = [
         "-DYAML_DECLARE_EXPORT",
-        "-DYAML_VERSION_STRING='\"0.1.7\"'",
-        "-DYAML_VERSION_PATCH=7",
-        "-DYAML_VERSION_MINOR=1",
+        "-DYAML_VERSION_STRING='\"0.2.2\"'",
+        "-DYAML_VERSION_PATCH=2",
+        "-DYAML_VERSION_MINOR=2",
         "-DYAML_VERSION_MAJOR=0",
     ],
     strip_include_prefix = "include",

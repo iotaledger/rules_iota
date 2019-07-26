@@ -1,5 +1,10 @@
 licenses(["notice"])  # MIT license
 
+config_setting(
+    name = "win",
+    values = {"cpu": "x64_windows"},
+)
+
 cc_library(
     name = "civetweb",
     srcs = [
@@ -18,7 +23,10 @@ cc_library(
         "-DNO_SSL",
         "-DNO_FILES",
     ],
-    linkopts = ["-lpthread"],
+    linkopts = select({
+        ":win": ["-lpthread", "-lWs2_32",],
+        "//conditions:default":["-lpthread"],
+    }),
     strip_include_prefix = "include",
     textual_hdrs = [
         "src/md5.inl",

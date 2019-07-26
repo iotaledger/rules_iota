@@ -83,12 +83,12 @@ genrule(
 #define PACKAGE "libmicrohttpd"
 #define PACKAGE_BUGREPORT "libmicrohttpd@gnu.org"
 #define PACKAGE_NAME "GNU Libmicrohttpd"
-#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.62"
+#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.65"
 #define PACKAGE_TARNAME "libmicrohttpd"
 #define PACKAGE_URL "http://www.gnu.org/software/libmicrohttpd/"
-#define PACKAGE_VERSION "0.9.62"
+#define PACKAGE_VERSION "0.9.65"
 #define STDC_HEADERS 1
-#define VERSION "0.9.62"
+#define VERSION "0.9.65"
 #if defined AC_APPLE_UNIVERSAL_BUILD
 # if defined __BIG_ENDIAN__
 #  define WORDS_BIGENDIAN 1
@@ -189,12 +189,12 @@ EOF""",
 #define PACKAGE "libmicrohttpd"
 #define PACKAGE_BUGREPORT "libmicrohttpd@gnu.org"
 #define PACKAGE_NAME "GNU Libmicrohttpd"
-#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.62"
+#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.65"
 #define PACKAGE_TARNAME "libmicrohttpd"
 #define PACKAGE_URL "http://www.gnu.org/software/libmicrohttpd/"
-#define PACKAGE_VERSION "0.9.62"
+#define PACKAGE_VERSION "0.9.65"
 #define STDC_HEADERS 1
-#define VERSION "0.9.62"
+#define VERSION "0.9.65"
 #if defined AC_APPLE_UNIVERSAL_BUILD
 # if defined __BIG_ENDIAN__
 #  define WORDS_BIGENDIAN 1
@@ -212,21 +212,110 @@ EOF""",
 #define _MHD_static_inline static inline __attribute__((always_inline))
 #define _XOPEN_SOURCE 700
 EOF""",
+
+"@bazel_tools//src/conditions:windows":
+"""cat > $@ <<"EOF"
+#define BAUTH_SUPPORT 1
+#define DAUTH_SUPPORT 1
+#define HAVE_CALLOC 1
+#define HAVE_CLOCK_GETTIME 1
+#define HAVE_C_VARARRAYS 1
+#define HAVE_DECL_SOCK_NONBLOCK 0
+#define HAVE_ERRNO_H 1
+#define HAVE_FCNTL_H 1
+#define HAVE_FSEEKO 1
+#define HAVE_GETSOCKNAME 1
+#define HAVE_GETTIMEOFDAY 1
+#define HAVE_ICONV 1
+#define HAVE_INET6 1
+#define HAVE_INTTYPES_H 1
+#define HAVE_LIMITS_H 1
+#define HAVE_LOCALE_H 1
+#define HAVE_LSEEK64 1
+#define HAVE_MATH_H 1
+#define HAVE_MEMORY_H 1
+#define HAVE_MESSAGES 1
+#define HAVE_NANOSLEEP 1
+#define HAVE_POSTPROCESSOR 1
+#define HAVE_PTHREAD_H 1
+#define HAVE_PTHREAD_PRIO_INHERIT 1
+#define HAVE_RAND 1
+#define HAVE_REAL_BOOL 1
+#define HAVE_SEARCH_H 1
+#define HAVE_SNPRINTF 1
+#define HAVE_STDBOOL_H 1
+#define HAVE_STDDEF_H 1
+#define HAVE_STDINT_H 1
+#define HAVE_STDIO_H 1
+#define HAVE_STDLIB_H 1
+#define HAVE_STRINGS_H 1
+#define HAVE_STRING_H 1
+#define HAVE_SYS_PARAM_H 1
+#define HAVE_SYS_STAT_H 1
+#define HAVE_SYS_TIME_H 1
+#define HAVE_SYS_TYPES_H 1
+#define HAVE_TIME_H 1
+#define HAVE_TSEARCH 1
+#define HAVE_UNISTD_H 1
+#define HAVE_USLEEP 1
+#define HAVE_W32_GMTIME_S 1
+#define HAVE_WINSOCK2_H 1
+#define HAVE_WS2TCPIP_H 1
+#define HAVE_ZLIB_H 1
+#define INLINE_FUNC 1
+#define LT_OBJDIR ".libs/"
+#define MHD_HAVE___BUILTIN_BSWAP32 1
+#define MHD_HAVE___BUILTIN_BSWAP64 1
+#define MHD_NO_THREAD_NAMES 1
+#define MHD_PLUGIN_INSTALL_PREFIX "/mingw64/lib/libmicrohttpd"
+#define MHD_USE_GETSOCKNAME 1
+#define MHD_USE_W32_THREADS 1
+#define MINGW 1
+#define NDEBUG 1
+#define PACKAGE "libmicrohttpd"
+#define PACKAGE_BUGREPORT "libmicrohttpd@gnu.org"
+#define PACKAGE_NAME "GNU Libmicrohttpd"
+#define PACKAGE_STRING "GNU Libmicrohttpd 0.9.65"
+#define PACKAGE_TARNAME "libmicrohttpd"
+#define PACKAGE_URL "http://www.gnu.org/software/libmicrohttpd/"
+#define PACKAGE_VERSION "0.9.65"
+#define STDC_HEADERS 1
+#define UPGRADE_SUPPORT 1
+#define VERSION "0.9.65"
+#define WINDOWS 1
+
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+/* #  undef WORDS_BIGENDIAN */
+# endif
+#endif
+
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
+#endif
+
+#define _FILE_OFFSET_BITS 64
+#define _GNU_SOURCE 1
+#define _MHD_EXTERN __attribute__((visibility("default"))) __declspec(dllexport) extern
+#define _MHD_ITC_SOCKETPAIR 1
+#define _MHD_static_inline static inline __attribute__((always_inline))
+#define _XOPEN_SOURCE 1
+#define _XOPEN_SOURCE_EXTENDED 1
+EOF""",
 })
 )
 
-MHTTPD_HDRs = [":MHD_config_h"] + glob(["src/include/*.h"])
-
 cc_library(
-  name ="libmicrohttpd_hdrs",
-  hdrs = MHTTPD_HDRs,
-  visibility = ["//visibility:public"],
-  strip_include_prefix = "src/include",
-)
-
-cc_binary(
-    name = "libmicrohttpd.so",
-    srcs = glob(["src/microhttpd/*.h", "src/microhttpd/mhd_*.c"]) + ["src/microhttpd/%s" % x for x in [
+    name = "libmicrohttpd",
+    srcs = glob(["src/microhttpd/*.h",
+      "src/microhttpd/mhd_*.c",
+      "src/include/*.h"],
+      exclude = ["src/include/microhttpd.h"]) +
+      ["src/microhttpd/%s" % x for x in [
         "base64.c",
         "connection.c",
         "daemon.c",
@@ -237,22 +326,13 @@ cc_binary(
         "sysfdsetsize.c",
         "response.c",
         "tsearch.c",
-    ]],
-    linkshared=True,
-    linkstatic=False,
-    linkopts = ["-pthread"],
-deps=[":libmicrohttpd_hdrs"],
-  visibility = ["//visibility:public"],
-)
-
-cc_import(
-  name = "libmicrohttpd_shared",
-  shared_library = ":libmicrohttpd.so",
-  visibility = ["//visibility:public"],
-)
-
-cc_library(
-  name="libmicrohttpd",
-  deps=[":libmicrohttpd_shared", ":libmicrohttpd_hdrs"],
+      ]] +
+      [":MHD_config_h"],
+    hdrs = ["src/include/microhttpd.h"],
+    includes = ["src/microhttpd", "src/include" ],
+    linkopts = select({
+    "@bazel_tools//src/conditions:windows": ["-lws2_32"],
+    "//conditions:default": ["-pthread"],
+    }),
   visibility = ["//visibility:public"],
 )

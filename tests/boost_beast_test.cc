@@ -18,5 +18,12 @@ using tcp = net::ip::tcp;       // from <boost/asio/ip/tcp.hpp>
 
 int main(int, char*[])
 {
+
+    // The io_context is required for all I/O
+    net::io_context ioc;
+
+    // The SSL context is required, and holds certificates
+    ssl::context ctx(ssl::context::tlsv12_client);
+
     return 0;
 }

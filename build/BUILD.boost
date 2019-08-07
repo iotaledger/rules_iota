@@ -428,7 +428,15 @@ boost_library(
     ],
     deps = [
         ":config",
+        ":logic",
     ],
+)
+
+boost_library(
+    name = "logic",
+    srcs = glob([
+        "boost/mp11/**/*.hpp",
+    ]),
 )
 
 BOOST_CORO_SRCS = select({
@@ -701,7 +709,6 @@ boost_library(
         "boost/cstdint.hpp",
         "boost/integer_traits.hpp",
         "boost/pending/integer_log2.hpp",
-        "boost/pending/lowest_bit.hpp",
     ],
     deps = [
         ":static_assert",
@@ -1375,7 +1382,6 @@ boost_library(
     ],
     defines = [
         "BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION",
-        "BOOST_THREAD_PROVIDES_EXECUTORS",
         "BOOST_THREAD_PROVIDES_FUTURE",
     ] + select({
         ":windows": [

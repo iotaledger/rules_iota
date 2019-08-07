@@ -260,6 +260,7 @@ boost_library(
         ":throw_exception",
         ":utility",
     ],
+    linkopts = ["-lcrypto", "-lssl"]
 )
 
 boost_library(

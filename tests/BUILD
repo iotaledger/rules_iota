@@ -156,3 +156,9 @@ cc_test(
     srcs = ["rxcpp_test.cc"],
     deps = ["@rxcpp"],
 )
+
+cc_test(
+    name = "boost_beast_test",
+    srcs = ["boost_beast_test.cc"],
+    deps = ["@boost//:beast"],
+)

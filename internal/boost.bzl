@@ -124,8 +124,8 @@ def boost_deps():
         http_archive(
             name="boost",
             url=
-            "https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz",
+            "https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz",
             build_file="@rules_iota//:build/BUILD.boost",
-            strip_prefix="boost_1_66_0/",
+            strip_prefix="boost_1_70_0/",
             sha256=
-            "bd0df411efd9a585e5a2212275f8762079fed8842264954675a4fddc46cfcf60", )
+            "882b48708d211a5f48e60b0124cf5863c1534cd544ecd0664bb534a4b5d506e9", )

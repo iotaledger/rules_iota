@@ -6,7 +6,7 @@ cc_test(name="yaml_test",
 cc_test(name="gtest_test",
         size="small",
         srcs=["gtest_test.cc"],
-        deps=["@gtest//:gtest_main"])
+        deps=["@com_google_googletest//:gtest_main"])
 
 cc_test(name="unity_test",
         size="small",

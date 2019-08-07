@@ -1,26 +1,29 @@
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
 def load_gflags():
-    native.git_repository(
+    git_repository(
         name = "com_github_gflags_gflags",
         commit = "e292e0452fcfd5a8ae055b59052fc041cbab4abf",
         remote = "https://github.com/gflags/gflags.git",
     )
 
 def load_glog():
-    native.git_repository(
+    git_repository(
         name = "com_github_google_glog",
         commit = "2f493d292c92abf16ebd46cfd0cc0bf8eef5724d",
         remote = "https://github.com/google/glog.git",
     )
 
 def load_gtest():
-    native.git_repository(
+    git_repository(
         name = "com_google_googletest",
         commit = "a6f06bf2fd3b832822cd4e9e554b7d47f32ec084",
         remote = "https://github.com/google/googletest.git",
     )
 
 def load_rxcpp():
-    native.new_http_archive(
+    http_archive(
         name = "rxcpp",
         url =
             "https://github.com/Reactive-Extensions/RxCpp/archive/v4.0.0.tar.gz",
@@ -31,7 +34,7 @@ def load_rxcpp():
     )
 
 def load_libsodium():
-    native.new_http_archive(
+    http_archive(
         name = "libsodium",
         url = "https://github.com/jedisct1/libsodium/archive/1.0.16.tar.gz",
         strip_prefix = "libsodium-1.0.16",
@@ -41,7 +44,7 @@ def load_libsodium():
     )
 
 def load_libzmq():
-    native.new_http_archive(
+    http_archive(
         name = "libzmq",
         url = "https://github.com/zeromq/libzmq/archive/v4.2.5.tar.gz",
         strip_prefix = "libzmq-4.2.5",
@@ -51,7 +54,7 @@ def load_libzmq():
     )
 
 def load_cppzmq():
-    native.new_http_archive(
+    http_archive(
         name = "cppzmq",
         url =
             "https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
@@ -62,7 +65,7 @@ def load_cppzmq():
     )
 
 def load_fmtlib():
-    native.new_http_archive(
+    http_archive(
         name = "fmtlib",
         url = "https://github.com/fmtlib/fmt/archive/5.0.0.tar.gz",
         strip_prefix = "fmt-5.0.0",
@@ -72,7 +75,7 @@ def load_fmtlib():
     )
 
 def load_unity():
-    native.new_http_archive(
+    http_archive(
         name = "unity",
         url = "https://github.com/ThrowTheSwitch/Unity/archive/v2.4.3.tar.gz",
         strip_prefix = "Unity-2.4.3",
@@ -82,7 +85,7 @@ def load_unity():
     )
 
 def load_yaml():
-    native.new_http_archive(
+    http_archive(
         name = "yaml",
         url = "https://github.com/yaml/libyaml/archive/0.1.7.tar.gz",
         strip_prefix = "libyaml-0.1.7",
@@ -92,7 +95,7 @@ def load_yaml():
     )
 
 def load_rb_tree():
-    native.new_http_archive(
+    http_archive(
         name = "rb_tree",
         url =
             "http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
@@ -102,7 +105,7 @@ def load_rb_tree():
     )
 
 def load_civetweb():
-    native.new_http_archive(
+    http_archive(
         name = "civetweb",
         strip_prefix = "civetweb-1.9.1",
         sha256 =
@@ -114,7 +117,7 @@ def load_civetweb():
     )
 
 def load_com_google_protobuf():
-    native.http_archive(
+    http_archive(
         name = "com_google_protobuf",
         sha256 =
             "826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f",
@@ -125,7 +128,7 @@ def load_com_google_protobuf():
     )
 
 def load_prometheus_cpp():
-    native.http_archive(
+    http_archive(
         name = "prometheus_cpp",
         url =
             "https://github.com/jupp0r/prometheus-cpp/archive/6f7d712eba93f807cca58d144f525ac53147a234.zip",
@@ -135,7 +138,7 @@ def load_prometheus_cpp():
     )
 
 def load_yaml_cpp():
-    native.new_http_archive(
+    http_archive(
         name = "yaml_cpp",
         url =
             "https://github.com/jbeder/yaml-cpp/archive/4fb1c4b92bf8d94b32ebccdd890407d45b3bc794.zip",
@@ -146,19 +149,19 @@ def load_yaml_cpp():
     )
 
 def load_keccak():
-    native.new_http_archive(
+    http_archive(
         name = "keccak",
         url =
             "https://github.com/gvanas/KeccakCodePackage/archive/c737139c81fd191699886a9a74d3220f6e300b29.zip",
         strip_prefix =
-            "KeccakCodePackage-c737139c81fd191699886a9a74d3220f6e300b29",
+            "XKCP-c737139c81fd191699886a9a74d3220f6e300b29",
         build_file = "@rules_iota//:build/BUILD.keccak",
         sha256 =
-            "35c63620721ac4da418d4bb427ba7ae9aae76b4a1bea7758d6694a29f6e6488a",
+            "c6afd429cb48f41fe2385fb0f796d212489ff73b14a580f2a822e307d99248b2",
     )
 
 def load_libcuckoo():
-    native.new_http_archive(
+    http_archive(
         name = "libcuckoo",
         url =
             "https://github.com/efficient/libcuckoo/archive/6591795a944fa8c7268848d181ba2852f4a7897f.zip",
@@ -169,7 +172,7 @@ def load_libcuckoo():
     )
 
 def load_cjson():
-    native.new_http_archive(
+    http_archive(
         name = "cJSON",
         url = "https://github.com/DaveGamble/cJSON/archive/v1.7.7.tar.gz",
         strip_prefix = "cJSON-1.7.7",
@@ -179,7 +182,7 @@ def load_cjson():
     )
 
 def load_optional_lite():
-    native.new_http_archive(
+    http_archive(
         name = "optional_lite",
         build_file = "@rules_iota//:build/BUILD.optional_lite",
         sha256 =
@@ -191,7 +194,7 @@ def load_optional_lite():
     )
 
 def load_nlohmann():
-    native.new_http_archive(
+    http_archive(
         name = "nlohmann",
         build_file = "@rules_iota//:build/BUILD.nlohmann_json",
         sha256 =
@@ -202,6 +205,8 @@ def load_nlohmann():
     )
 
 def iota_cpp_repositories():
+    load_gflags()
+    load_cjson()
     load_fmtlib()
     load_cppzmq()
     load_libzmq()
@@ -209,7 +214,6 @@ def iota_cpp_repositories():
     load_rxcpp()
     load_glog()
     load_gtest()
-    load_gflags()
     load_unity()
     load_yaml()
     load_rb_tree()
@@ -219,6 +223,6 @@ def iota_cpp_repositories():
     load_yaml_cpp()
     load_keccak()
     load_libcuckoo()
-    load_cjson()
+
     load_optional_lite()
     load_nlohmann()

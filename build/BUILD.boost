@@ -1,7 +1,7 @@
 # Taken from https://github.com/nelhage/rules_boost
 # License: Apache 2.0 - https://github.com/nelhage/rules_boost/commit/f27dac072f2c830b08f0aec3aeaef8c313987202
 
-load("@rules_iota//:internal/boost.bzl", "boost_library")
+load("@rules_iota//internal:boost.bzl", "boost_library")
 
 boost_library(
     name = "algorithm",

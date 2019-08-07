@@ -36,7 +36,10 @@ EOF""",
 
 cc_library(
     name = "concurrencykit",
-    srcs = glob(["src/**/*.c", "src/**/*.h"]),
+    srcs = glob([
+        "src/**/*.c",
+        "src/**/*.h",
+    ]),
     hdrs = glob(["include/**/*.h"]) + [":ck_md_h"],
     strip_include_prefix = "include",
     visibility = ["//visibility:public"],

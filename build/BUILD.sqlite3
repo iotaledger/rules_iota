@@ -11,7 +11,10 @@ cc_library(
         "-DSQLITE_SECURE_DELETE",
     ],
     include_prefix = "",
-    linkopts = ["-ldl"],
+    linkopts = [
+        "-ldl",
+        "-lpthread",
+    ],
     visibility = ["//visibility:public"],
 )
 

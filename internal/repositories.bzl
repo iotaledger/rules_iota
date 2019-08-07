@@ -302,11 +302,11 @@ def load_iota_lib_cpp():
 
 def load_libuv():
     http_archive(
-      name = "libuv",
-      build_file = "@rules_iota//:build/BUILD.libuv",
-      sha256 = "44c8fdadf3b3f393006a4ac4ba144020673a3f9cd72bed1fbb2c366ebcf0d199",
-      strip_prefix = "libuv-1.30.0",
-      url = "https://github.com/libuv/libuv/archive/v1.30.0.tar.gz",
+        name = "libuv",
+        build_file = "@rules_iota//:build/BUILD.libuv",
+        sha256 = "44c8fdadf3b3f393006a4ac4ba144020673a3f9cd72bed1fbb2c366ebcf0d199",
+        strip_prefix = "libuv-1.30.0",
+        url = "https://github.com/libuv/libuv/archive/v1.30.0.tar.gz",
     )
 
 def iota_cpp_repositories():

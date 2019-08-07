@@ -1,4 +1,4 @@
-licenses(["notice"]) # ISC License
+licenses(["notice"])  # ISC License
 
 genrule(
     name = "gen_sh",

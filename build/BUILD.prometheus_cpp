@@ -23,7 +23,7 @@ cc_library(
     strip_include_prefix = "include",
     visibility = ["//visibility:public"],
     deps = [
-        "@civetweb//:civetweb",
+        "@civetweb",
         "@com_google_protobuf//:protobuf",
     ],
 )

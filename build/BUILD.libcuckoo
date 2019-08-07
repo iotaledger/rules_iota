@@ -1,9 +1,10 @@
-licenses(['notice']) #Apache 2.0
+licenses(["notice"])  #Apache 2.0
 
 cc_library(
-    name='libcuckoo',
-    hdrs=glob(['libcuckoo/*.hh']),
-    strip_include_prefix="libcuckoo",
-    include_prefix="libcuckoo",
-    linkopts=["-pthread"],
-    visibility=['//visibility:public'])
+    name = "libcuckoo",
+    hdrs = glob(["libcuckoo/*.hh"]),
+    include_prefix = "libcuckoo",
+    linkopts = ["-pthread"],
+    strip_include_prefix = "libcuckoo",
+    visibility = ["//visibility:public"],
+)

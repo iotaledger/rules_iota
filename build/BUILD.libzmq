@@ -1,9 +1,12 @@
-licenses(['reciprocal', 'restricted'])
+licenses([
+    "reciprocal",
+    "restricted",
+])
 
 genrule(
-    name='platform_hpp',
-    outs=['platform.hpp'],
-    cmd="""cat > $@ <<"EOF"
+    name = "platform_hpp",
+    outs = ["platform.hpp"],
+    cmd = """cat > $@ <<"EOF"
 #ifndef __ZMQ_PLATFORM_HPP_INCLUDED__
 #define __ZMQ_PLATFORM_HPP_INCLUDED__
 
@@ -80,30 +83,36 @@ genrule(
 /* #undef ZMQ_HAVE_WINDOWS */
 
 #endif
-EOF""", )
+EOF""",
+)
 
 config_setting(
-    name="win",
-    values={"cpu": "x64_windows_msvc"}, )
+    name = "win",
+    values = {"cpu": "x64_windows_msvc"},
+)
 
 cc_library(
-    name='zmq',
-    srcs=glob(["src/*.cpp", "src/*.hpp"]),
-    hdrs=[
-        ":platform_hpp",
+    name = "zmq",
+    srcs = glob([
+        "src/*.cpp",
+        "src/*.hpp",
+    ]),
+    hdrs = [
         "include/zmq.h",
         "include/zmq_utils.h",
-        "src/zmq_draft.h",
         "src/tweetnacl.h",
+        "src/zmq_draft.h",
+        ":platform_hpp",
     ],
-    includes=['include'],
-    deps=['@libsodium//:sodium'],
-    linkopts=select({
+    includes = ["include"],
+    linkopts = select({
         ":win": [],
         "//conditions:default": [
             "-pthread",
         ],
     }),
-    visibility=[
+    visibility = [
         "//visibility:public",
-    ])
+    ],
+    deps = ["@libsodium//:sodium"],
+)

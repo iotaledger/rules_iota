@@ -1,8 +1,12 @@
-licenses(['notice'])
+licenses(["notice"])
 
 cc_library(
-    name='fmt',
-    hdrs=glob(['fmt/*.h']),
-    includes=['.'],
-    srcs=glob(['fmt/*.cc', 'fmt/*.h']),
-    visibility=['//visibility:public'])
+    name = "fmt",
+    srcs = glob([
+        "fmt/*.cc",
+        "fmt/*.h",
+    ]),
+    hdrs = glob(["fmt/*.h"]),
+    includes = ["."],
+    visibility = ["//visibility:public"],
+)

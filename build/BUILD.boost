@@ -17,7 +17,7 @@ boost_library(
 )
 
 boost_library(
-    name = "locale"
+    name = "locale",
 )
 
 boost_library(
@@ -28,8 +28,12 @@ boost_library(
     name = "proto",
 )
 
-boost_library( 
+boost_library(
     name = "log",
+    exclude_src = [
+        "libs/log/src/dump_ssse3.cpp",
+        "libs/log/src/dump_avx2.cpp",
+    ],
     deps = [
         ":asio",
         ":filesystem",
@@ -44,10 +48,6 @@ boost_library(
         ":thread",
         ":variant",
     ],
-    exclude_src = [
-        "libs/log/src/dump_ssse3.cpp",
-        "libs/log/src/dump_avx2.cpp",
-    ]
 )
 
 boost_library(
@@ -119,12 +119,12 @@ boost_library(
 
 boost_library(
     name = "asio",
+    linkopts = ["-lpthread"],
     deps = [
         ":bind",
         ":date_time",
         ":regex",
     ],
-    linkopts = ["-lpthread"]
 )
 
 boost_library(
@@ -134,15 +134,15 @@ boost_library(
 boost_library(
     name = "beast",
     deps = [
+        ":asio",
         ":config",
         ":core",
-        ":static_assert",
         ":detail",
-        ":utility",
-        ":throw_exception",
-        ":system",
-        ":asio",
         ":smart_ptr",
+        ":static_assert",
+        ":system",
+        ":throw_exception",
+        ":utility",
     ],
 )
 
@@ -150,9 +150,9 @@ boost_library(
     name = "bimap",
     deps = [
         ":concept_check",
-        ":serialization",
         ":multi_index",
-    ]
+        ":serialization",
+    ],
 )
 
 boost_library(
@@ -167,11 +167,10 @@ boost_library(
     ],
 )
 
-boost_library (
+boost_library(
     name = "callable_traits",
     deps = [
-
-    ]
+    ],
 )
 
 boost_library(
@@ -415,16 +414,16 @@ boost_library(
         ":config",
         ":core",
         ":detail",
-        ":functional",
         ":function_types",
+        ":functional",
         ":get_pointer",
         ":mpl",
         ":preprocessor",
         ":ref",
         ":static_assert",
         ":tuple",
-        ":typeof",
         ":type_traits",
+        ":typeof",
         ":utility",
     ],
 )
@@ -432,16 +431,16 @@ boost_library(
 boost_library(
     name = "property_tree",
     deps = [
-        ":multi_index",
-        ":utility",
-        ":optional",
-        ":throw_exception",
-        ":ref",
-        ":bind",
         ":any",
-        ":range",
+        ":bind",
         ":format",
-    ]
+        ":multi_index",
+        ":optional",
+        ":range",
+        ":ref",
+        ":throw_exception",
+        ":utility",
+    ],
 )
 
 boost_library(
@@ -503,7 +502,6 @@ boost_library(
         "boost/next_prior.hpp",
         "boost/pointee.hpp",
         "boost/shared_container_iterator.hpp",
-
     ],
     deps = [
         ":detail",
@@ -562,7 +560,7 @@ boost_library(
         ":utility",
         "@net_zlib_zlib//:zlib",
         "@org_bzip_bzip2//:bz2lib",
-        "@org_lzma_lzma//:lzma"
+        "@org_lzma_lzma//:lzma",
     ],
 )
 
@@ -687,8 +685,8 @@ boost_library(
         ":shared_array",
         ":static_assert",
         ":timer",
-        ":typeof",
         ":type_traits",
+        ":typeof",
         ":utility",
     ],
 )
@@ -727,14 +725,14 @@ boost_library(
 boost_library(
     name = "process",
     deps = [
-        ":config",
-        ":system",
-        ":filesystem",
         ":algorithm",
         ":asio",
+        ":config",
+        ":filesystem",
         ":fusion",
+        ":system",
         ":winapi",
-    ]
+    ],
 )
 
 boost_library(
@@ -784,9 +782,9 @@ boost_library(
         ":detail",
         ":foreach",
         ":integer",
+        ":interprocess",
         ":lexical_cast",
         ":limits",
-        ":interprocess",
         ":math",
         ":mpl",
         ":multi_index",
@@ -1031,6 +1029,11 @@ boost_library(
     hdrs = [
         "libs/thread/src/pthread/once_atomic.cpp",
     ],
+    defines = [
+        "BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION",
+        "BOOST_THREAD_PROVIDES_EXECUTORS",
+        "BOOST_THREAD_PROVIDES_FUTURE",
+    ],
     linkopts = ["-lpthread"],
     deps = [
         ":algorithm",
@@ -1051,12 +1054,6 @@ boost_library(
         ":tuple",
         ":type_traits",
     ],
-    defines = [
-	"BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION",
-	"BOOST_THREAD_PROVIDES_EXECUTORS",
-	"BOOST_THREAD_PROVIDES_FUTURE",
-    ],
-
 )
 
 boost_library(
@@ -1170,8 +1167,8 @@ boost_library(
         ":random",
         ":serialization",
         ":static_assert",
-        ":type_traits",
         ":throw_exception",
+        ":type_traits",
     ],
 )
 
@@ -1263,7 +1260,7 @@ boost_library(
     ],
 )
 
-boost_library (
+boost_library(
     name = "winapi",
-    visibility = ["//visibility:private"]
+    visibility = ["//visibility:private"],
 )

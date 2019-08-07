@@ -5,11 +5,11 @@ package(default_visibility = ["//visibility:public"])
 cc_library(
     name = "xxhash",
     srcs = [
-      "xxhash.c",
+        "xxhash.c",
     ],
     hdrs = [
-      "xxhash.h",
-      "xxh3.h",
+        "xxh3.h",
+        "xxhash.h",
     ],
     copts = [
     ],

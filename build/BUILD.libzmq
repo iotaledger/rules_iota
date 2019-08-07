@@ -1,14 +1,13 @@
 licenses([
     "reciprocal",
     "restricted",
-]) # GPLv3
+])  # GPLv3
 
 genrule(
     name = "platform_hpp",
     outs = ["platform.hpp"],
     cmd = select({
-    "@bazel_tools//src/conditions:darwin":
-    """cat > $@ <<"EOF"
+        "@bazel_tools//src/conditions:darwin": """cat > $@ <<"EOF"
 #ifndef __ZMQ_PLATFORM_HPP_INCLUDED__
 #define __ZMQ_PLATFORM_HPP_INCLUDED__
 
@@ -84,8 +83,7 @@ genrule(
 
 #endif
 EOF""",
-"//conditions:default":
-"""cat > $@ <<"EOF"
+        "//conditions:default": """cat > $@ <<"EOF"
 #ifndef __ZMQ_PLATFORM_HPP_INCLUDED__
 #define __ZMQ_PLATFORM_HPP_INCLUDED__
 
@@ -165,7 +163,7 @@ EOF""",
 
 #endif
 EOF""",
-})
+    }),
 )
 
 config_setting(

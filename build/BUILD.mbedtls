@@ -4,11 +4,14 @@ cc_library(
     name = "mbedtls",
     srcs = glob(["library/*.c"]),
     hdrs = glob(["include/mbedtls/*.h"]),
-    linkopts = select({
-        "@bazel_tools//src/conditions:windows": ["-lwsock32", "-lWs2_32",],
-        "//conditions:default":[],
-    }),
     include_prefix = "mbedtls",
+    linkopts = select({
+        "@bazel_tools//src/conditions:windows": [
+            "-lwsock32",
+            "-lWs2_32",
+        ],
+        "//conditions:default": [],
+    }),
     strip_include_prefix = "include/mbedtls",
     visibility = ["//visibility:public"],
 )

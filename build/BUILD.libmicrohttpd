@@ -2,8 +2,7 @@ genrule(
     name = "MHD_config_h",
     outs = ["src/include/MHD_config.h"],
     cmd = select({
-    "@bazel_tools//src/conditions:darwin":
-    """cat > $@ <<"EOF"
+        "@bazel_tools//src/conditions:darwin": """cat > $@ <<"EOF"
 #define HAVE_ACCEPT4 0
 #define HAVE_ARPA_INET_H 1
 #define HAVE_CALLOC 1
@@ -106,9 +105,7 @@ genrule(
 #define _MHD_static_inline static inline __attribute__((always_inline))
 #define _XOPEN_SOURCE 700
 EOF""",
-
- "//conditions:default":
- """cat > $@ <<"EOF"
+        "//conditions:default": """cat > $@ <<"EOF"
 #define EPOLL_SUPPORT 1
 #define HAVE_ACCEPT4 1
 #define HAVE_ARPA_INET_H 1
@@ -212,9 +209,7 @@ EOF""",
 #define _MHD_static_inline static inline __attribute__((always_inline))
 #define _XOPEN_SOURCE 700
 EOF""",
-
-"@bazel_tools//src/conditions:windows":
-"""cat > $@ <<"EOF"
+        "@bazel_tools//src/conditions:windows": """cat > $@ <<"EOF"
 #define BAUTH_SUPPORT 1
 #define DAUTH_SUPPORT 1
 #define HAVE_CALLOC 1
@@ -306,16 +301,19 @@ EOF""",
 #define _XOPEN_SOURCE 1
 #define _XOPEN_SOURCE_EXTENDED 1
 EOF""",
-})
+    }),
 )
 
 cc_library(
     name = "libmicrohttpd",
-    srcs = glob(["src/microhttpd/*.h",
-      "src/microhttpd/mhd_*.c",
-      "src/include/*.h"],
-      exclude = ["src/include/microhttpd.h"]) +
-      ["src/microhttpd/%s" % x for x in [
+    srcs = glob(
+        [
+            "src/microhttpd/*.h",
+            "src/microhttpd/mhd_*.c",
+            "src/include/*.h",
+        ],
+        exclude = ["src/include/microhttpd.h"],
+    ) + ["src/microhttpd/%s" % x for x in [
         "base64.c",
         "connection.c",
         "daemon.c",
@@ -326,13 +324,17 @@ cc_library(
         "sysfdsetsize.c",
         "response.c",
         "tsearch.c",
-      ]] +
-      [":MHD_config_h"],
+    ]] + [
+        ":MHD_config_h",
+    ],
     hdrs = ["src/include/microhttpd.h"],
-    includes = ["src/microhttpd", "src/include" ],
+    includes = [
+        "src/include",
+        "src/microhttpd",
+    ],
     linkopts = select({
-    "@bazel_tools//src/conditions:windows": ["-lws2_32"],
-    "//conditions:default": ["-pthread"],
+        "@bazel_tools//src/conditions:windows": ["-lws2_32"],
+        "//conditions:default": ["-pthread"],
     }),
-  visibility = ["//visibility:public"],
+    visibility = ["//visibility:public"],
 )

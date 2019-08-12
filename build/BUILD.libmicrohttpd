@@ -24,7 +24,6 @@ genrule(
 #define HAVE_LIMITS_H 1
 #define HAVE_LISTEN_SHUTDOWN 1
 #define HAVE_LOCALE_H 1
-#define HAVE_LSEEK64 1
 #define HAVE_MATH_H 1
 #define HAVE_MEMMEM 1
 #define HAVE_MEMORY_H 1

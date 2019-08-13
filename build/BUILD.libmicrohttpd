@@ -22,10 +22,8 @@ genrule(
 #define HAVE_INET6 1
 #define HAVE_INTTYPES_H 1
 #define HAVE_LIMITS_H 1
-//#define HAVE_LINUX_SENDFILE 0
 #define HAVE_LISTEN_SHUTDOWN 1
 #define HAVE_LOCALE_H 1
-#define HAVE_LSEEK64 1
 #define HAVE_MATH_H 1
 #define HAVE_MEMMEM 1
 #define HAVE_MEMORY_H 1
@@ -38,8 +36,6 @@ genrule(
 #define HAVE_POLL 1
 #define HAVE_POLL_H 1
 #define HAVE_POSTPROCESSOR 1
-#define HAVE_PREAD 1
-#define HAVE_PREAD64 1
 #define HAVE_PTHREAD_H 1
 #define HAVE_PTHREAD_PRIO_INHERIT 1
 #define HAVE_PTHREAD_SETNAME_NP_GNU 1

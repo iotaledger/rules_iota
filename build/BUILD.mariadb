@@ -306,7 +306,7 @@ cc_library(
         "libmariadb/mariadb_lib.c",
         "libmariadb/mariadb_rpl.c",
         "libmariadb/mariadb_stmt.c",
-    ] + ["@//build/sources/mariadb:ma_client_plugin_c"],
+    ] + ["@rules_iota//build/sources/mariadb:ma_client_plugin_c"],
     copts = [
         "-DHAVE_COMPRESS",
         "-DLIBMARIADB",

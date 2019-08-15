@@ -18,21 +18,17 @@ def load_glog():
 def load_gtest():
     http_archive(
         name = "com_google_googletest",
-        url =
-            "https://github.com/google/googletest/archive/587ceaeaee6c2ccb5e565858d7fe12aaf69795e6.tar.gz",
+        url = "https://github.com/google/googletest/archive/587ceaeaee6c2ccb5e565858d7fe12aaf69795e6.tar.gz",
         strip_prefix = "googletest-587ceaeaee6c2ccb5e565858d7fe12aaf69795e6",
-        sha256 =
-            "c9bc49be74e3551826b8b2554342ef388c67b831c635520cf67c200ed565ce1e",
+        sha256 = "c9bc49be74e3551826b8b2554342ef388c67b831c635520cf67c200ed565ce1e",
         build_file = "@rules_iota//:build/BUILD.googletest",
     )
 
 def load_rxcpp():
     http_archive(
         name = "rxcpp",
-        url =
-            "https://github.com/Reactive-Extensions/RxCpp/archive/v4.1.0.tar.gz",
-        sha256 =
-            "d3bb49c7ac6b5c43235df710510fce87d827bb88a1b78242017f190d2acbbdea",
+        url = "https://github.com/Reactive-Extensions/RxCpp/archive/v4.1.0.tar.gz",
+        sha256 = "d3bb49c7ac6b5c43235df710510fce87d827bb88a1b78242017f190d2acbbdea",
         strip_prefix = "RxCpp-4.1.0",
         build_file = "@rules_iota//:build/BUILD.rxcpp",
     )
@@ -42,8 +38,7 @@ def load_libsodium():
         name = "libsodium",
         url = "https://github.com/jedisct1/libsodium/archive/1.0.16.tar.gz",
         strip_prefix = "libsodium-1.0.16",
-        sha256 =
-            "0c14604bbeab2e82a803215d65c3b6e74bb28291aaee6236d65c699ccfe1a98c",
+        sha256 = "0c14604bbeab2e82a803215d65c3b6e74bb28291aaee6236d65c699ccfe1a98c",
         build_file = "@rules_iota//:build/BUILD.libsodium",
     )
 
@@ -52,19 +47,16 @@ def load_libzmq():
         name = "libzmq",
         url = "https://github.com/zeromq/libzmq/archive/v4.3.1.tar.gz",
         strip_prefix = "libzmq-4.3.1",
-        sha256 =
-            "e1dec061725b55d791e0c6952b8c220846c8cd901c09d1283a6e902898205b9d",
+        sha256 = "e1dec061725b55d791e0c6952b8c220846c8cd901c09d1283a6e902898205b9d",
         build_file = "@rules_iota//:build/BUILD.libzmq",
     )
 
 def load_cppzmq():
     http_archive(
         name = "cppzmq",
-        url =
-            "https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
+        url = "https://github.com/zeromq/cppzmq/archive/97d2cb249851447856a850216d5f8fb68264511a.zip",
         strip_prefix = "cppzmq-97d2cb249851447856a850216d5f8fb68264511a",
-        sha256 =
-            "8ad004a648172479ff31126045c1034f90b4b5ca8c6349c7b6903504f37384cf",
+        sha256 = "8ad004a648172479ff31126045c1034f90b4b5ca8c6349c7b6903504f37384cf",
         build_file = "@rules_iota//:build/BUILD.cppzmq",
     )
 
@@ -73,8 +65,7 @@ def load_fmtlib():
         name = "fmtlib",
         url = "https://github.com/fmtlib/fmt/archive/5.0.0.tar.gz",
         strip_prefix = "fmt-5.0.0",
-        sha256 =
-            "fc33d64d5aa2739ad2ca1b128628a7fc1b7dca1ad077314f09affc57d59cf88a",
+        sha256 = "fc33d64d5aa2739ad2ca1b128628a7fc1b7dca1ad077314f09affc57d59cf88a",
         build_file = "@rules_iota//:build/BUILD.fmt",
     )
 
@@ -83,8 +74,7 @@ def load_unity():
         name = "unity",
         url = "https://github.com/ThrowTheSwitch/Unity/archive/v2.4.3.tar.gz",
         strip_prefix = "Unity-2.4.3",
-        sha256 =
-            "a8c5e384f511a03c603bbecc9edc24d2cb4a916998d51a29cf2e3a2896920d03",
+        sha256 = "a8c5e384f511a03c603bbecc9edc24d2cb4a916998d51a29cf2e3a2896920d03",
         build_file = "@rules_iota//:build/BUILD.unity",
     )
 
@@ -93,18 +83,15 @@ def load_yaml():
         name = "yaml",
         url = "https://github.com/yaml/libyaml/archive/0.2.2.tar.gz",
         strip_prefix = "libyaml-0.2.2",
-        sha256 =
-            "46bca77dc8be954686cff21888d6ce10ca4016b360ae1f56962e6882a17aa1fe",
+        sha256 = "46bca77dc8be954686cff21888d6ce10ca4016b360ae1f56962e6882a17aa1fe",
         build_file = "@rules_iota//:build/BUILD.yaml",
     )
 
 def load_rb_tree():
     http_archive(
         name = "rb_tree",
-        url =
-            "http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
-        sha256 =
-            "899a13a40c2d1c64a4690f0f316e9832c5db0df4971d51e35a66084295f7d0fc",
+        url = "http://web.mit.edu/~emin/www.old/source_code/red_black_tree/rb_tree.tar.gz",
+        sha256 = "899a13a40c2d1c64a4690f0f316e9832c5db0df4971d51e35a66084295f7d0fc",
         build_file = "@rules_iota//:build/BUILD.rb_tree",
     )
 
@@ -112,67 +99,52 @@ def load_civetweb():
     http_archive(
         name = "civetweb",
         strip_prefix = "civetweb-1.9.1",
-        sha256 =
-            "880d741724fd8de0ebc77bc5d98fa673ba44423dc4918361c3cd5cf80955e36d",
-        urls = [
-            "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
-        ],
+        sha256 = "880d741724fd8de0ebc77bc5d98fa673ba44423dc4918361c3cd5cf80955e36d",
+        urls = "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
         build_file = "@rules_iota//:build/BUILD.civetweb",
     )
 
 def load_com_google_protobuf():
     http_archive(
         name = "com_google_protobuf",
-        sha256 =
-            "826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f",
+        sha256 = "826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f",
         strip_prefix = "protobuf-3.5.1",
-        urls = [
-            "https://github.com/google/protobuf/archive/v3.5.1.tar.gz",
-        ],
+        urls = "https://github.com/google/protobuf/archive/v3.5.1.tar.gz",
     )
 
 def load_prometheus_cpp():
     http_archive(
         name = "prometheus_cpp",
-        url =
-            "https://github.com/jupp0r/prometheus-cpp/archive/6f7d712eba93f807cca58d144f525ac53147a234.zip",
+        url = "https://github.com/jupp0r/prometheus-cpp/archive/6f7d712eba93f807cca58d144f525ac53147a234.zip",
         strip_prefix = "prometheus-cpp-6f7d712eba93f807cca58d144f525ac53147a234",
-        sha256 =
-            "42f4854c83aad5d6688f130375d55bb14e000062c541050c58ba533d5aedb8ee",
+        sha256 = "42f4854c83aad5d6688f130375d55bb14e000062c541050c58ba533d5aedb8ee",
     )
 
 def load_yaml_cpp():
     http_archive(
         name = "yaml_cpp",
-        url =
-            "https://github.com/jbeder/yaml-cpp/archive/4fb1c4b92bf8d94b32ebccdd890407d45b3bc794.zip",
+        url = "https://github.com/jbeder/yaml-cpp/archive/4fb1c4b92bf8d94b32ebccdd890407d45b3bc794.zip",
         strip_prefix = "yaml-cpp-4fb1c4b92bf8d94b32ebccdd890407d45b3bc794",
-        sha256 =
-            "e434837d4eb49832fa982c111c7da4e3c9c2b8d5627736f295dd129199559f42",
+        sha256 = "e434837d4eb49832fa982c111c7da4e3c9c2b8d5627736f295dd129199559f42",
         build_file = "@rules_iota//:build/BUILD.yaml_cpp",
     )
 
 def load_keccak():
     http_archive(
         name = "keccak",
-        url =
-            "https://github.com/XKCP/XKCP/archive/36002f25c476af3a3d10310287e4a2b1c85bc773.zip",
-        strip_prefix =
-            "XKCP-36002f25c476af3a3d10310287e4a2b1c85bc773",
+        url = "https://github.com/XKCP/XKCP/archive/36002f25c476af3a3d10310287e4a2b1c85bc773.zip",
+        strip_prefix = "XKCP-36002f25c476af3a3d10310287e4a2b1c85bc773",
         build_file = "@rules_iota//:build/BUILD.keccak",
-        sha256 =
-            "63f5217966631bf8da0d91368bfb664f3c6e227f9d63a6d2920be4058f3d4d22",
+        sha256 = "63f5217966631bf8da0d91368bfb664f3c6e227f9d63a6d2920be4058f3d4d22",
     )
 
 def load_libcuckoo():
     http_archive(
         name = "libcuckoo",
-        url =
-            "https://github.com/efficient/libcuckoo/archive/6591795a944fa8c7268848d181ba2852f4a7897f.zip",
+        url = "https://github.com/efficient/libcuckoo/archive/6591795a944fa8c7268848d181ba2852f4a7897f.zip",
         strip_prefix = "libcuckoo-6591795a944fa8c7268848d181ba2852f4a7897f",
         build_file = "@rules_iota//:build/BUILD.libcuckoo",
-        sha256 =
-            "c31f300fe33a5668528027174150715b238c96f9e9a77cd1d933d7ba43480452",
+        sha256 = "c31f300fe33a5668528027174150715b238c96f9e9a77cd1d933d7ba43480452",
     )
 
 def load_cjson():
@@ -180,8 +152,7 @@ def load_cjson():
         name = "cJSON",
         url = "https://github.com/DaveGamble/cJSON/archive/v1.7.10.tar.gz",
         strip_prefix = "cJSON-1.7.10",
-        sha256 =
-            "cc544fdd065f3dd19113f1d5ba5f61d696e0f810f291f4b585d1dec361b0188e",
+        sha256 = "cc544fdd065f3dd19113f1d5ba5f61d696e0f810f291f4b585d1dec361b0188e",
         build_file = "@rules_iota//:build/BUILD.cJSON",
     )
 
@@ -189,24 +160,18 @@ def load_optional_lite():
     http_archive(
         name = "optional_lite",
         build_file = "@rules_iota//:build/BUILD.optional_lite",
-        sha256 =
-            "4627df0f5c8631b1f1e09a520a023d1b690f44b0c8addc31a09f38bc62b12c1f",
-        url =
-            "https://github.com/martinmoene/optional-lite/archive/807da49219e55210614402e4937f364f486b897d.zip",
-        strip_prefix =
-            "optional-lite-807da49219e55210614402e4937f364f486b897d",
+        sha256 = "4627df0f5c8631b1f1e09a520a023d1b690f44b0c8addc31a09f38bc62b12c1f",
+        url = "https://github.com/martinmoene/optional-lite/archive/807da49219e55210614402e4937f364f486b897d.zip",
+        strip_prefix = "optional-lite-807da49219e55210614402e4937f364f486b897d",
     )
 
 def load_nlohmann():
     http_archive(
         name = "nlohmann",
         build_file = "@rules_iota//:build/BUILD.nlohmann_json",
-        sha256 =
-            "a422ae5511024efd36111716bb5a9dae21813caaaec365990747dbf76d77960a",
-        url =
-            "https://github.com/th0br0/json/archive/0ae87e9993dc802b17ad7850a727b86bb9b98287.zip",
-        strip_prefix =
-            "json-0ae87e9993dc802b17ad7850a727b86bb9b98287",
+        sha256 = "a422ae5511024efd36111716bb5a9dae21813caaaec365990747dbf76d77960a",
+        url = "https://github.com/th0br0/json/archive/0ae87e9993dc802b17ad7850a727b86bb9b98287.zip",
+        strip_prefix = "json-0ae87e9993dc802b17ad7850a727b86bb9b98287",
     )
 
 def load_argon2():
@@ -232,8 +197,7 @@ def load_logger():
         name = "com_github_embear_logger",
         url = "https://github.com/embear/logger/archive/v4.0.x.zip",
         strip_prefix = "logger-4.0.x",
-        sha256 =
-            "f82b485ef0e3d42de22b49f483c93c4c721d80a9ee8b6bd80c1c0ceb3bfc64a0",
+        sha256 = "f82b485ef0e3d42de22b49f483c93c4c721d80a9ee8b6bd80c1c0ceb3bfc64a0",
         build_file = "@rules_iota//:build/BUILD.logger",
     )
 
@@ -242,8 +206,7 @@ def load_uthash():
         name = "com_github_uthash",
         url = "https://github.com/troydhanson/uthash/archive/f19dde22d80a563948a263afe00947e6e42ed8f4.zip",
         strip_prefix = "uthash-f19dde22d80a563948a263afe00947e6e42ed8f4",
-        sha256 =
-            "65eed620bfde10a6d5ac88f42c06f5e14f4d98ce3b0e380be8e7a26903c665eb",
+        sha256 = "65eed620bfde10a6d5ac88f42c06f5e14f4d98ce3b0e380be8e7a26903c665eb",
         build_file = "@rules_iota//:build/BUILD.uthash",
     )
 

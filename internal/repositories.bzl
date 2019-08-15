@@ -100,7 +100,7 @@ def load_civetweb():
         name = "civetweb",
         strip_prefix = "civetweb-1.9.1",
         sha256 = "880d741724fd8de0ebc77bc5d98fa673ba44423dc4918361c3cd5cf80955e36d",
-        urls = "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
+        url = "https://github.com/civetweb/civetweb/archive/v1.9.1.tar.gz",
         build_file = "@rules_iota//:build/BUILD.civetweb",
     )
 
@@ -109,7 +109,7 @@ def load_com_google_protobuf():
         name = "com_google_protobuf",
         sha256 = "826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f",
         strip_prefix = "protobuf-3.5.1",
-        urls = "https://github.com/google/protobuf/archive/v3.5.1.tar.gz",
+        url = "https://github.com/google/protobuf/archive/v3.5.1.tar.gz",
     )
 
 def load_prometheus_cpp():
@@ -278,6 +278,14 @@ def load_boring_ssl():
         commit = "1df19da23c005eee572747a5038072bc9404047f",
         remote = "https://boringssl.googlesource.com/boringssl",
         build_file = "@rules_iota//:build/BUILD.boringssl",
+
+def load_mariadb():
+    http_archive(
+        name = "mariadb",
+        build_file = "@rules_iota//:build/BUILD.mariadb",
+        sha256 = "7afac2ef28aea7d71c95473c7a3da0f021a5ef2364480cd3e80eab83016341c2",
+        strip_prefix = "mariadb-connector-c-3.1.3",
+        url = "https://github.com/MariaDB/mariadb-connector-c/archive/v3.1.3.tar.gz",
     )
 
 def iota_cpp_repositories():
@@ -313,3 +321,4 @@ def iota_cpp_repositories():
     load_iota_lib_cpp()
     load_libuv()
     load_boring_ssl()
+    load_mariadb()

@@ -259,8 +259,10 @@ boost_library(
         ":system",
         ":throw_exception",
         ":utility",
+        "@boringssl//:ssl",
+        "@boringssl//:crypto",
     ],
-    linkopts = ["-lcrypto", "-lssl"]
+
 )
 
 boost_library(

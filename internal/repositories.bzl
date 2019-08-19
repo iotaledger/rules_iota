@@ -309,6 +309,13 @@ def load_libuv():
         url = "https://github.com/libuv/libuv/archive/v1.30.0.tar.gz",
     )
 
+def load_boring_ssl():
+    git_repository(
+        name = "boringssl",
+        commit = "b9e923fbf95bb5465ee8da7c5eea1d7b3d63657d",
+        remote = "https://boringssl.googlesource.com/boringssl",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -341,3 +348,4 @@ def iota_cpp_repositories():
     load_xxhash()
     load_iota_lib_cpp()
     load_libuv()
+    load_boring_ssl()

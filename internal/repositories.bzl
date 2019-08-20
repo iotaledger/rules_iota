@@ -278,6 +278,7 @@ def load_boring_ssl():
         commit = "1df19da23c005eee572747a5038072bc9404047f",
         remote = "https://boringssl.googlesource.com/boringssl",
         build_file = "@rules_iota//:build/BUILD.boringssl",
+    )
 
 def load_mariadb():
     http_archive(

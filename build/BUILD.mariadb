@@ -312,6 +312,10 @@ cc_library(
         "-DLIBMARIADB",
         "-DTHREAD",
     ],
+    linkopts = select({
+        "@bazel_tools//src/conditions:darwin": ["-liconv"],
+        "//conditions:default": [],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         ":mariadb-hdrs",

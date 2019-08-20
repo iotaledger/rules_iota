@@ -35,11 +35,12 @@
 #define FORCE_INIT_OF_VARS 1
 #endif
 
-#include <ma_common.h>
 #include <ma_global.h>
+#include <ma_sys.h>
+
+#include <ma_common.h>
 #include <ma_pthread.h>
 #include <ma_string.h>
-#include <ma_sys.h>
 
 #include "errmsg.h"
 #include <mysql/client_plugin.h>

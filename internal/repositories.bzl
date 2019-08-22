@@ -310,10 +310,11 @@ def load_libuv():
     )
 
 def load_boring_ssl():
-    git_repository(
+    new_git_repository(
         name = "boringssl",
-        commit = "b9e923fbf95bb5465ee8da7c5eea1d7b3d63657d",
+        commit = "1df19da23c005eee572747a5038072bc9404047f",
         remote = "https://boringssl.googlesource.com/boringssl",
+        build_file = "@rules_iota//:build/BUILD.boringssl",
     )
 
 def iota_cpp_repositories():

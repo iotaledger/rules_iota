@@ -413,48 +413,6 @@ cc_library(
 )
 
 cc_library(
-    name = "mariadb-plugin-auth",
-    srcs = [
-        "libmariadb/get_password.c",
-        "plugins/auth/dialog.c",
-        "plugins/auth/my_auth.c",
-        "plugins/auth/old_password.c",
-    ],
-    hdrs = glob([
-        "plugins/auth/**/*.h",
-    ]),
-    visibility = ["//visibility:private"],
-    deps = [":mariadb-hdrs"],
-)
-
-cc_library(
-    name = "mariadb-plugin-pvio",
-    srcs = [
-        "plugins/pvio/pvio_npipe.c",
-        "plugins/pvio/pvio_shmem.c",
-        "plugins/pvio/pvio_socket.c",
-    ],
-    hdrs = glob([
-        "plugins/pvio/**/*.h",
-    ]),
-    visibility = ["//visibility:private"],
-    deps = [":mariadb-hdrs"],
-)
-
-cc_library(
-    name = "mariadb-plugin-connection",
-    srcs = [
-        "plugins/connection/aurora.c",
-        "plugins/connection/replication.c",
-    ],
-    hdrs = glob([
-        "plugins/pvio/**/*.h",
-    ]),
-    visibility = ["//visibility:private"],
-    deps = [":mariadb-hdrs"],
-)
-
-cc_library(
     name = "mariadb",
     srcs = [
         "libmariadb/ma_alloc.c",
@@ -484,7 +442,26 @@ cc_library(
         "libmariadb/mariadb_lib.c",
         "libmariadb/mariadb_rpl.c",
         "libmariadb/mariadb_stmt.c",
-    ] + ["@rules_iota//build/sources/mariadb:ma_client_plugin_c"],
+    ] + ["@rules_iota//build/sources/mariadb:ma_client_plugin_c"] + [
+        "libmariadb/get_password.c",
+        "plugins/auth/dialog.c",
+        "plugins/auth/my_auth.c",
+        "plugins/auth/old_password.c",
+    ] + [
+        "plugins/pvio/pvio_npipe.c",
+        "plugins/pvio/pvio_shmem.c",
+        "plugins/pvio/pvio_socket.c",
+    ] + [
+        "plugins/connection/aurora.c",
+        "plugins/connection/replication.c",
+    ],
+    hdrs = glob([
+        "plugins/auth/**/*.h",
+    ]) + glob([
+        "plugins/pvio/**/*.h",
+    ]) + glob([
+        "plugins/pvio/**/*.h",
+    ]),
     copts = [
         "-DHAVE_COMPRESS",
         "-DLIBMARIADB",
@@ -501,9 +478,6 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         ":mariadb-hdrs",
-        ":mariadb-plugin-auth",
-        ":mariadb-plugin-connection",
-        ":mariadb-plugin-pvio",
         ":zlib",
     ],
 )

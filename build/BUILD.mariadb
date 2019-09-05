@@ -41,7 +41,7 @@ genrule(
 #define MARIADB_PACKAGE_VERSION_ID 30104
 #define MARIADB_SYSTEM_TYPE "Darwin"
 #define MARIADB_MACHINE_TYPE "x86_64"
-#define MARIADB_PLUGINDIR "/usr/local//usr/local/lib/mariadb/plugin"
+#define MARIADB_PLUGINDIR "/usr/local/lib/mariadb/plugin"
 
 /* mysqld compile time options */
 #ifndef MYSQL_CHARSET
@@ -83,7 +83,7 @@ This file is public domain and comes with NO WARRANTY of any kind */
 #define MARIADB_PACKAGE_VERSION_ID 30104
 #define MARIADB_SYSTEM_TYPE "Linux"
 #define MARIADB_MACHINE_TYPE "x86_64"
-#define MARIADB_PLUGINDIR "/usr/local//usr/local/lib/mariadb/plugin"
+#define MARIADB_PLUGINDIR "/usr/local/lib/mariadb/plugin"
 
 /* mysqld compile time options */
 #ifndef MYSQL_CHARSET

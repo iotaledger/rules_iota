@@ -150,9 +150,9 @@ def load_libcuckoo():
 def load_cjson():
     http_archive(
         name = "cJSON",
-        url = "https://github.com/DaveGamble/cJSON/archive/v1.7.10.tar.gz",
-        strip_prefix = "cJSON-1.7.10",
-        sha256 = "cc544fdd065f3dd19113f1d5ba5f61d696e0f810f291f4b585d1dec361b0188e",
+        url = "https://github.com/DaveGamble/cJSON/archive/v1.7.12.tar.gz",
+        strip_prefix = "cJSON-1.7.12",
+        sha256 = "760687665ab41a5cff9c40b1053c19572bcdaadef1194e5cba1b5e6f824686e7",
         build_file = "@rules_iota//:build/BUILD.cJSON",
     )
 

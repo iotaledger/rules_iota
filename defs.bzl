@@ -354,6 +354,7 @@ def iota_common_external():
     load_keccak()
     load_logger()
     load_uthash()
+    load_gtest()
 
 def iota_client_external():
     iota_common_external()

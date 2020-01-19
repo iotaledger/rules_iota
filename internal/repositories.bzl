@@ -289,6 +289,24 @@ def load_mariadb():
         url = "https://github.com/MariaDB/mariadb-connector-c/archive/v3.1.3.tar.gz",
     )
 
+def load_linenoise():
+    http_archive(
+        name = "linenoise",
+        url = "https://github.com/antirez/linenoise/archive/4a961c0108720741e2683868eb10495f015ee422.tar.gz",
+        strip_prefix = "linenoise-4a961c0108720741e2683868eb10495f015ee422",
+        sha256 = "b2aa29de7480bf93fdd875a19800d5f087b7436ca77f27d0e2177232941e6938",
+        build_file = "@rules_iota//:build/BUILD.linenoise",
+    )
+
+def load_argtable3():
+    http_archive(
+        name = "argtable3",
+        url = "https://github.com/argtable/argtable3/releases/download/v3.1.5.1c1bb23/argtable-3.1.5-amalgamation.tar.gz",
+        strip_prefix = "argtable-3.1.5-amalgamation",
+        sha256 = "336fadb994cd5aae06fd58b05afa8c53cdff6c9ae2fc30b7910863deedd6746c",
+        build_file = "@rules_iota//:build/BUILD.argtable3",
+    )
+
 def iota_cpp_repositories():
     load_fmtlib()
     load_cppzmq()
@@ -323,3 +341,5 @@ def iota_cpp_repositories():
     load_libuv()
     load_boring_ssl()
     load_mariadb()
+    load_linenoise()
+    load_argtable3()

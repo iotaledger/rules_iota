@@ -1,0 +1,12 @@
+licenses(["notice"])  # BSD 2-Clause
+
+cc_library(
+    name = "linenoise",
+    srcs = [
+        "linenoise.c",
+    ],
+    hdrs = [
+        "linenoise.h",
+    ],
+    visibility = ["//visibility:public"],
+)

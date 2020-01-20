@@ -106,19 +106,25 @@ cc_test(
 cc_test(
     name = "libmicrohttpd_test",
     srcs = ["libmicrohttpd_test.c"],
-    deps = ["@libmicrohttpd//:libmicrohttpd"],
+    deps = ["@libmicrohttpd"],
 )
 
 cc_test(
     name = "mbedtls_test",
     srcs = ["mbedtls_test.c"],
-    deps = ["@mbedtls", "@unity"],
+    deps = [
+        "@mbedtls",
+        "@unity",
+    ],
 )
 
 cc_test(
     name = "xxhash_test",
     srcs = ["xxhash_test.c"],
-    deps = ["@xxhash", "@unity"],
+    deps = [
+        "@unity",
+        "@xxhash",
+    ],
 )
 
 cc_test(
@@ -167,4 +173,19 @@ cc_test(
     name = "mariadb_test",
     srcs = ["mariadb_test.c"],
     deps = ["@mariadb"],
+)
+
+cc_test(
+    name = "linenoise_test",
+    srcs = ["linenoise_test.c"],
+    deps = ["@linenoise"],
+)
+
+cc_test(
+    name = "argtable3_test",
+    srcs = ["argtable3_test.c"],
+    deps = [
+        "@argtable3",
+        "@unity",
+    ],
 )

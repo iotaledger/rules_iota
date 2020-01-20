@@ -1,0 +1,4 @@
+startup --host_jvm_args=-Xmx2500m
+startup --host_jvm_args=-Xms2500m
+common --color=yes
+build --verbose_failures

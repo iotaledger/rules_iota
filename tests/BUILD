@@ -51,7 +51,10 @@ cc_test(
 cc_test(
     name = "keccak_test",
     srcs = ["keccak_test.c"],
-    deps = ["@keccak"],
+    deps = [
+        "@keccak",
+        "@unity",
+    ],
 )
 
 cc_test(

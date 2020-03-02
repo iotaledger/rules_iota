@@ -256,14 +256,6 @@ def load_xxhash():
         build_file = "@rules_iota//:build/BUILD.xxhash",
     )
 
-def load_iota_lib_cpp():
-    new_git_repository(
-        name = "iota_lib_cpp",
-        build_file = "@rules_iota//:build/BUILD.iota_lib_cpp",
-        commit = "1dfde65ac4ea3b81e4ac3a1cabd2e98dc65211be",
-        remote = "https://github.com/thibault-martinez/iota.lib.cpp.git",
-    )
-
 def load_libuv():
     http_archive(
         name = "libuv",
@@ -338,7 +330,6 @@ def iota_cpp_repositories():
     load_libmicrohttpd()
     load_mbedtls()
     load_xxhash()
-    load_iota_lib_cpp()
     load_libuv()
     load_boring_ssl()
     load_mariadb()

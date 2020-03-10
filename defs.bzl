@@ -133,10 +133,10 @@ def load_yaml_cpp():
 def load_keccak():
     http_archive(
         name = "keccak",
-        url = "https://github.com/XKCP/XKCP/archive/36002f25c476af3a3d10310287e4a2b1c85bc773.zip",
-        strip_prefix = "XKCP-36002f25c476af3a3d10310287e4a2b1c85bc773",
+        url = "https://github.com/XKCP/XKCP/archive/a7a105cefc172178c3c9bb7e5f0768e0b226016b.zip",
+        strip_prefix = "XKCP-a7a105cefc172178c3c9bb7e5f0768e0b226016b",
         build_file = "@rules_iota//:build/BUILD.keccak",
-        sha256 = "63f5217966631bf8da0d91368bfb664f3c6e227f9d63a6d2920be4058f3d4d22",
+        sha256 = "1e8130ab11718592b7dacd5294b0cb2409973ae2a962193592c1c1bfb4f3e4b8",
     )
 
 def load_libcuckoo():
@@ -256,14 +256,6 @@ def load_xxhash():
         build_file = "@rules_iota//:build/BUILD.xxhash",
     )
 
-def load_iota_lib_cpp():
-    new_git_repository(
-        name = "iota_lib_cpp",
-        build_file = "@rules_iota//:build/BUILD.iota_lib_cpp",
-        commit = "1dfde65ac4ea3b81e4ac3a1cabd2e98dc65211be",
-        remote = "https://github.com/thibault-martinez/iota.lib.cpp.git",
-    )
-
 def load_libuv():
     http_archive(
         name = "libuv",
@@ -338,7 +330,6 @@ def iota_cpp_repositories():
     load_libmicrohttpd()
     load_mbedtls()
     load_xxhash()
-    load_iota_lib_cpp()
     load_libuv()
     load_boring_ssl()
     load_mariadb()

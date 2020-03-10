@@ -73,8 +73,7 @@ cc_library(
     hdrs = [
         "lib/high/Keccak/FIPS202/KeccakHash.h",
     ],
-    include_prefix = "keccak",
-    strip_include_prefix = "lib/high/Keccak/FIPS202",
+    strip_include_prefix = "lib/high/Keccak",
     visibility = ["//visibility:public"],
     deps = [":keccak_sponge_1600"],
 )

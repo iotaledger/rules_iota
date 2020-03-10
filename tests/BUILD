@@ -51,7 +51,10 @@ cc_test(
 cc_test(
     name = "keccak_test",
     srcs = ["keccak_test.c"],
-    deps = ["@keccak"],
+    deps = [
+        "@keccak",
+        "@unity",
+    ],
 )
 
 cc_test(
@@ -125,12 +128,6 @@ cc_test(
         "@unity",
         "@xxhash",
     ],
-)
-
-cc_test(
-    name = "iota_lib_cpp_test",
-    srcs = ["iota_lib_cpp_test.cc"],
-    deps = ["@iota_lib_cpp"],
 )
 
 cc_test(
